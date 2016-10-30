@@ -1,4 +1,4 @@
-package com.github.wesleyegberto.scope;
+package com.github.wesleyegberto.lambdas.scope;
 
 public class ShadowingTest {
 
