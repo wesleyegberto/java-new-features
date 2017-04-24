@@ -1,4 +1,4 @@
-# java-new-features
+# Java 8 New Features
 @author Wesley Egberto
 
 A project to explore more about the new features of Java...
