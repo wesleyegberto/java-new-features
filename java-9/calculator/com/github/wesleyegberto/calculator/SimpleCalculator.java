@@ -1,6 +1,6 @@
 package com.github.wesleyegberto.calculator;
 
-// must be public and exported (at module-info)
+// must be public and exported (in the module-info.java)
 import com.github.wesleyegberto.mathlib.*;
 
 public class SimpleCalculator {

@@ -3,7 +3,7 @@ package com.github.wesleyegberto.mathlib;
 import com.github.wesleyegberto.mathlib.impl.*;
 
 /**
- * We can expose our implementation using a exported public interface
+ * We can expose our implementation using an exported public interface
  */
 public class MathIntegerOperations {
 	public Operation<Integer, Integer> getAdditionOperation() {
