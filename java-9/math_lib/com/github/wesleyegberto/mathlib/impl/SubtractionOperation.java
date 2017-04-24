@@ -1,5 +1,6 @@
 package com.github.wesleyegberto.mathlib.impl;
 
+import com.github.wesleyegberto.mathapi.Operation;
 import com.github.wesleyegberto.mathlib.*;
 /**
  * This implementation we won't export, but we can access it

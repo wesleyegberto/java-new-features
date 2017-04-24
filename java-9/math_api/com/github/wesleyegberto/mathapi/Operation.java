@@ -1,4 +1,4 @@
-package com.github.wesleyegberto.mathlib;
+package com.github.wesleyegberto.mathapi;
 
 /**
  * with exported public interface

@@ -3,13 +3,16 @@
 A project to explore more about the new features of Java...
 
 * Jigsaw
-  * Creating modules
-  * Exports and requires
-  * Using non-exported class through its exported interface
-  * Running a module
+  * Creating modules;
+  * Exports and requires;
+  * Requires transitive;
+  * Using non-exported class through its exported interface;
+  * Running a module.
 * jlink
-  * Tool to assemble and optimized our modules and their deps into a custom runtime image
-  * We can set --launcher option to generate a script to run a module/class
+  * Tool to assemble and optimized our modules and their deps into a custom runtime image;
+  * The runtime image will contain the JVM, only the Java modules we need and our code;
+  * The runtime image is generated for the platform we are using (current jdk platform);
+  * We can set --launcher option to generate a script to run a module/class.
 
 
 ## Project
@@ -17,8 +20,10 @@ The shell script uses env var JAVA9_HOME to jdk-9 dir.
 
 The calculator module uses math_libs module.
 
-The math_lib module export an interfaces and a class:
+The math_api module export an interface:
 * Operation: defines an operation;
+
+The math_lib module export a class:
 * MathIntegerOperations: expose the implementations of Operation;
 
 * Showing dependencies
