@@ -1,5 +1,7 @@
 *.class
+.idea/
 target/
+output/
 *.jar
 *.war
 *.ear

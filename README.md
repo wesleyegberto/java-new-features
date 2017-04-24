@@ -9,5 +9,5 @@ A project to explore more about the new features of Java 8, 9, ...
   * Lambda
   
 * Java 9
-  * Modules
-  * JLink
+  * Jigsaw
+  * jlink

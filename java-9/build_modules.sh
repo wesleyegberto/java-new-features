@@ -6,9 +6,9 @@ mkdir -p output/mlibs
 echo 'Building Math module'
 mkdir output/classes
 # compile the files
-$JAVA9_HOME/bin/javac -d output/classes `find math_lib -name *.java`
+$JAVA9_HOME/bin/javac -d output/classes --module-version 1.0 `find math_lib -name *.java`
 # build the modules
-$JAVA9_HOME/bin/jar -cf output/mlibs/mathlib.jar -C output/classes .
+$JAVA9_HOME/bin/jar -cf output/mlibs/mathlib-1.0.jar -C output/classes .
 rm -rf output/classes
 
 
