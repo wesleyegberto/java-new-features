@@ -23,8 +23,10 @@ The math_lib module export an interfaces and a class:
 
 * Showing dependencies
 To show the deps we need to set modules path if a module use any other define
-> $JAVA9_HOME/bin/jdeps output/mlibs/mathlib-1.0.jar
-> $JAVA9_HOME/bin/jdeps --module-path output/mlibs/ output/mlibs/calculator.jar
+```
+$JAVA9_HOME/bin/jdeps output/mlibs/mathlib-1.0.jar
+$JAVA9_HOME/bin/jdeps --module-path output/mlibs/ output/mlibs/calculator.jar
+```
 
 
 ### Links
