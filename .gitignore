@@ -1,4 +1,7 @@
 *.class
+.classpath
+.project
+.settings/
 .idea/
 target/
 output/

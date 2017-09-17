@@ -22,7 +22,7 @@ $JAVA9_HOME/bin/jar -cf output/mlibs/mathlib-1.0.jar -C output/classes .
 rm -rf output/classes
 
 
-# Building the user module that use the first one
+# Building the user module
 echo 'Building Calculator module'
 mkdir output/classes
 $JAVA9_HOME/bin/javac -p output/mlibs -d output/classes `find calculator -name *.java`
