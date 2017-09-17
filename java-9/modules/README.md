@@ -15,23 +15,23 @@ A project to explore more about the new features of Java...
   * We can set --launcher option to generate a script to run a module/class.
 
 
-## Project
+## Projects
 The shell script uses env var JAVA9_HOME to jdk-9 dir.
 
+### Simple Deps
 The calculator module uses math_libs module.
-
 The math_api module export an interface:
 * Operation: defines an operation;
-
 The math_lib module export a class:
 * MathIntegerOperations: expose the implementations of Operation;
-
 * Showing dependencies
 To show the deps we need to set modules path if a module use any other define
 ```
 $JAVA9_HOME/bin/jdeps output/mlibs/mathlib-1.0.jar
 $JAVA9_HOME/bin/jdeps --module-path output/mlibs/ output/mlibs/calculator.jar
 ```
+
+### Services
 
 
 ### Links
