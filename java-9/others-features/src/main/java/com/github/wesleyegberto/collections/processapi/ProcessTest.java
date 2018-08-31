@@ -1,4 +1,4 @@
-package com.github.wesleyegberto.processapi;
+package com.github.wesleyegberto.collections.processapi;
 
 import java.io.IOException;
 

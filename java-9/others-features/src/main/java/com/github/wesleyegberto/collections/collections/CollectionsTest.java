@@ -1,4 +1,4 @@
-package com.github.wesleyegberto.collections;
+package com.github.wesleyegberto.collections.collections;
 
 import java.util.List;
 import java.util.Map;

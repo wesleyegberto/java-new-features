@@ -3,7 +3,9 @@ package com.github.wesleyegberto.map;
 import java.util.*;
 import java.util.stream.Stream;
 import java.util.function.Function; // map operations -> transformations
-import com.github.wesleyegberto.model.*;
+
+import com.github.wesleyegberto.model.Person;
+import com.github.wesleyegberto.model.Warrior;
 
 public class StreamMapTest {
 

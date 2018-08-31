@@ -1,4 +1,4 @@
-package com.github.wesleyegberto.httpclient;
+package com.github.wesleyegberto.collections.httpclient;
 
 import java.io.IOException;
 import java.net.URI;

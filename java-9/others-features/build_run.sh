@@ -8,9 +8,9 @@ mkdir -p $JAR_DIR
 
 $JAVA9_HOME/bin/javac -p jdk.incubator.httpclient -d $CLASSES_DIR --module-version 1.0 `find src/main/java -name *.java`
 
-	# --main-class com.github.wesleyegberto.httpclient.HttpClientTest \
+	# --main-class HttpClientTest \
 $JAVA9_HOME/bin/jar -c -f $JAR_DIR/http-client-test.jar \
-    --main-class com.github.wesleyegberto.collections.CollectionsTest \
+    --main-class CollectionsCopyOf.CollectionsTest \
 	-C $CLASSES_DIR .
 
 

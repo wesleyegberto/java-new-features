@@ -1,4 +1,4 @@
-package com.github.wesleyegberto.reactive;
+package com.github.wesleyegberto.collections.reactive;
 
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
