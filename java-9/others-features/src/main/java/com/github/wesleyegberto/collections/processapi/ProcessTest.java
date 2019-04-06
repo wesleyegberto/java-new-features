@@ -12,7 +12,9 @@ public class ProcessTest {
 		System.out.println("Sleepy pid: " + sleepy.pid());
 		
 		System.out.println("Destroying sleepy");
-		sleepy.onExit()
+		ProcessHandle handle = ProcessHandle.of(sleepy.pid()).get();
+		handle.onExit()
+		// sleepy.onExit()
 			.thenRun(() -> {
 				System.out.println("Alive: " + sleepy.isAlive());
 				System.out.println("Exit code: " + sleepy.exitValue());
