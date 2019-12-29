@@ -30,7 +30,7 @@ To run each example use:
 * [12](https://openjdk.java.net/jeps/12) - Preview language and VM features
 * [325](http://openjdk.java.net/jeps/325) - Switch expressions (preview)
 * [341](http://openjdk.java.net/jeps/341) - Default CDS Archives
-* [189](http://openjdk.java.net/jeps/189) - Low-Pause-Time GC
+* [189](http://openjdk.java.net/jeps/189) - Low-Pause-Time GC (experimental)
 * [344](http://openjdk.java.net/jeps/344) - Abortable mixed collections for G1
 * [345](http://openjdk.java.net/jeps/346) - Promptly return unused memory from G1
 * [334](http://openjdk.java.net/jeps/334) - JVM Constants API
@@ -43,7 +43,7 @@ Tools:
   * compiler plugin: 3.8.0
   * surefire and failsafe: 2.22.0
 
-```
+```xml
 <plugin>
     <artifactId>maven-compiler-plugin</artifactId>
     <configuration>
@@ -70,3 +70,4 @@ Libs which manipulate bytecode that will need update:
 
 * [Java 12 Guide](https://blog.codefx.org/java/java-12-guide/)
 * [Should you adopt Java 12 or stick on Java 11?](https://blog.joda.org/2018/10/adopt-java-12-or-stick-on-11.html)
+* [Shenandoah GC](https://wiki.openjdk.java.net/display/shenandoah/Main)
