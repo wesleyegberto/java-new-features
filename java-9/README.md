@@ -13,11 +13,14 @@
   * The runtime image will contain the JVM, only the Java modules we need and our code;
   * The runtime image is generated for the platform we are using (current jdk platform);
   * We can set --launcher option to generate a script to run a module/class.
+* Unified Logging
+  * `-Xlog` to give uniform access to log messages from different subsystems (class loading, threading, GC, module system, so on)
 
 ## JEPs
 
 * [143](https://openjdk.java.net/jeps/143) - Improve contended locking
   * Improvement in monitor enter and exit, faster notifications
+* [158](http://openjdk.java.net/jeps/158) - Unified JVM Logging
 * [197](https://openjdk.java.net/jeps/197) - Segmented code cache
   * Improvement of code cache by separeting in three segments: Non-method, Profiled and Non-profiled.
   * Command line params to set the size in bytes:
@@ -58,4 +61,6 @@ The consumer uses the exposed service by loooking up using ServiceLoader.
 
 * [Virtual Hackday: Become an early Java 9 expert](https://www.youtube.com/watch?v=y868lMk6NtY)
 * [Devoxx - Exploring Java 9 by Venkat Subramaniam](https://www.youtube.com/watch?v=8XmYT89fBKg)
-* [jlink reference](https://docs.oracle.com/javase/9/tools/jlink.htm)
+* [jlink Reference](https://docs.oracle.com/javase/9/tools/jlink.htm)
+* [Unified Logging Of JVM Messages With The -Xlog Option](https://blog.codefx.org/java/unified-logging-with-the-xlog-option/)
+* [Java 9 Migration Guide](https://blog.codefx.org/java/java-9-migration-guide/)

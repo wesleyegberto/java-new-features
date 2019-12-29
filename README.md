@@ -23,7 +23,11 @@ A project to explore more about the new features of Java 8, 9, ...
   * var
 
 * Java 11
+  * Removal of Java EE Modules, JavaFX and deprecated API
   * Http Client (incubator)
+  * var in lambda expressions
+  * API improvements
+  * Null I/O
 
 * Java 12
   * Switch expression (preview 1)
