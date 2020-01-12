@@ -1,6 +1,12 @@
 package com.github.wesleyegberto.api.datetime;
 
-import java.time.*;
+import java.time.Clock;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 /**
  * @author Wesley Egberto
@@ -35,7 +41,7 @@ public class ClockTest {
 		// Zoned Date Time
 		ZonedDateTime zonedDateTime = ZonedDateTime.now();
 		ZonedDateTime clockZoned = ZonedDateTime.now(currentClock);
-		ZonedDateTime zonedDatetimeFromZone = ZonedDateTime.now(ZoneId.of( "America/Los_Angeles") );
+		ZonedDateTime zonedDatetimeFromZone = ZonedDateTime.now(ZoneId.of("America/Los_Angeles"));
 
 		System.out.println("zonedDateTime = " + zonedDateTime);
 		System.out.println("clockZoned = " + clockZoned);
