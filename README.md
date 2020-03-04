@@ -45,3 +45,10 @@ A project to explore more about the new features of Java 8, 9, ...
   * Socket and ServerSocket reimplementation (Project Loom)
   * Dynamic CDS Archives
   * ZGC: Uncommit Unused Memory
+
+* Java 14 (May 17th, 2020)
+  * Switch expression (standard)
+  * Pattern matching for `instanceof` (preview)
+  * Text blocks improvements
+  * Records (preview)
+  * Helpful NullPointerExceptions
