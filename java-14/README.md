@@ -1,5 +1,7 @@
 # Java 14
 
+To run each example use: `java --enable-preview --source 14 <FileName.java>`
+
 ## Features
 
 ### Language

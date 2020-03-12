@@ -46,4 +46,3 @@
 * [Oracle's Z GC](https://wiki.openjdk.java.net/display/zgc/Main)
 * [Replacements for deprecated JPMS modules with Java EE APIs](https://stackoverflow.com/questions/48204141/replacements-for-deprecated-jpms-modules-with-java-ee-apis/48204154#48204154)
 * [Scripting Java 11, Shebang And All](https://blog.codefx.org/java/scripting-java-shebang/)
-* 
