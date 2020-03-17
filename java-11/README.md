@@ -42,6 +42,7 @@
 
 ## Links
 
+* [Java 11 Documentation](https://docs.oracle.com/en/java/javase/11/index.html)
 * [Java 11 Migration Guide](https://blog.codefx.org/java/java-11-migration-guide/)
 * [Oracle's Z GC](https://wiki.openjdk.java.net/display/zgc/Main)
 * [Replacements for deprecated JPMS modules with Java EE APIs](https://stackoverflow.com/questions/48204141/replacements-for-deprecated-jpms-modules-with-java-ee-apis/48204154#48204154)

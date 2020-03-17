@@ -1,5 +1,4 @@
 # Java 8 New Features
-@author Wesley Egberto
 
 A project to explore more about the new features of Java...
 
@@ -25,3 +24,6 @@ E.g.:
 
 For further information read the Java Tutorial at section about [Lambda Expressions] (http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html).
 
+## Links
+
+* [JDK 8 Documentation](https://docs.oracle.com/javase/8/)

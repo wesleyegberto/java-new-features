@@ -69,6 +69,7 @@ To run each example use: `java --enable-preview --source 13 <FileName.java>`
 
 ## Links
 
+* [Java 13 Documentation](https://docs.oracle.com/en/java/javase/13/index.html)
 * [Java 13 Guide](https://blog.codefx.org/java/java-13-guide/)
 * [Switch Expression](https://blog.codefx.org/java/switch-expressions/)
 * [Text Block Guid](http://cr.openjdk.java.net/~jlaskey/Strings/TextBlocksGuide_v9.html)

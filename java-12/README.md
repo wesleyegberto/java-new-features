@@ -68,6 +68,7 @@ Libs which manipulate bytecode that will need update:
 
 ## Links
 
+* [Java 12 Documentation](https://docs.oracle.com/en/java/javase/12/index.html)
 * [Java 12 Guide](https://blog.codefx.org/java/java-12-guide/)
 * [Should you adopt Java 12 or stick on Java 11?](https://blog.joda.org/2018/10/adopt-java-12-or-stick-on-11.html)
 * [Shenandoah GC](https://wiki.openjdk.java.net/display/shenandoah/Main)
