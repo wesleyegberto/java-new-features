@@ -1,3 +1,9 @@
+import java.lang.annotation.*;
+
+/**
+ * We can see all the changes here:
+ * http://cr.openjdk.java.net/~gbierman/jep359/jep359-20191031/specs/records-jls.html
+ */
 public class RecordsTest {
 	public static void main(String[] args) {
 		System.out.println("=== Old point: " + new PointPojo(10, 10));
@@ -28,14 +34,27 @@ public class RecordsTest {
 /**
  * This record has the same effect as PointPojo, but the getters has differents name.
  * Behide the scene a class which extends `java.lang.Record` is generated.
+ * The parameters of a Record are called components.
  * 
  * To see:
  * Compile: `javac --enable-preview --source 14 RecordsTest.java`
  * See compiled class: `javap PointRecord.class`
  */
-record PointRecord(int x, int y) {
-	// we can decalare `serialVersionUID` to use in serialization
+record PointRecord(int x, @Validatable(validate = true) int y) {
+	// we can declare `serialVersionUID` to use in serialization
 	public static final long serialVersionUID = 1L;
+
+	/**
+	 * This is the canonical constructor declared by the compiler when
+	 * using Record.
+	 * It has the same parameters from record components.
+	 */
+	/*
+	public PointRecord(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	*/
 
 	/**
 	 * We should use compact constructor to validate the state.
@@ -51,6 +70,7 @@ record PointRecord(int x, int y) {
 	public PointRecord() {
 		// We are required to call the record constructor:
 		// error: constructor is not canonical, so its first statement must invoke another constructor
+		// http://cr.openjdk.java.net/~gbierman/jep359/jep359-20191031/specs/records-jls.html#jls-8.10.4
 		this(0, 0);
 		System.out.println("No-arg constructor...");
 	}
@@ -80,6 +100,15 @@ record PointRecord(int x, int y) {
 	public int sum() {
 		return x + y;
 	}
+}
+
+/**
+ * Now the is a new location for annotation.
+ */
+@Target(ElementType.RECORD_COMPONENT)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Validatable {
+  boolean validate();
 }
 
 /**
