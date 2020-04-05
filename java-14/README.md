@@ -6,6 +6,15 @@ To run each example use: `java --enable-preview --source 14 <FileName.java>`
 
 ### Language
 
+* Switch expressions
+  * Promotion to standard
+* Text blocks improvements
+  * added new flags
+* Patttern  matching for `instanceof`
+  * added as Preview
+* Records
+  * added as Preview
+
 ## JEPs
 
 * [305](https://openjdk.java.net/jeps/305) - Pattern Matching for instanceof (Preview)
