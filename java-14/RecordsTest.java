@@ -35,7 +35,7 @@ public class RecordsTest {
  * This record has the same effect as PointPojo, but the getters has differents name.
  * Behide the scene a class which extends `java.lang.Record` is generated.
  * The parameters of a Record are called components.
- * 
+ *
  * To see:
  * Compile: `javac --enable-preview --source 14 RecordsTest.java`
  * See compiled class: `javap PointRecord.class`
