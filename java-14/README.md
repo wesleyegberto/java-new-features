@@ -10,10 +10,16 @@ To run each example use: `java --enable-preview --source 14 <FileName.java>`
   * Promotion to standard
 * Text blocks improvements
   * added new flags
-* Patttern  matching for `instanceof`
+* Patttern matching for `instanceof`
   * added as Preview
 * Records
   * added as Preview
+* Helpful NullPointerExpections
+  * flag to enable: `-XX:+ShowCodeDetailsInExceptionMessages`
+* Packaging tool to create self-contained Java applications
+  * bin: `jpackage`
+* JFR Event Stream
+  * [Here](https://github.com/flight-recorder/health-report) is a great example of a tool built
 
 ## JEPs
 
