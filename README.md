@@ -6,13 +6,13 @@ A project to explore more about the new features of Java 8, 9, ...
 
 ## Resume by Version
 
-* [Java 8](java-8/README.md)
+* [Java 8](java-8/)
   * API
   * Stream API
   * Project Lambda
   * Repeating annotations
 
-* [Java 9](java-9/README.md)
+* [Java 9](java-9/)
   * Milling Project Coin
   * Process API
   * Platform Logging API and Service
@@ -23,20 +23,20 @@ A project to explore more about the new features of Java 8, 9, ...
   * JShell
   * much more (see JEPs)
 
-* [Java 10](java-10/README.md) (March 20th, 2018)
+* [Java 10](java-10/) (March 20th, 2018)
   * Process API improvements
   * Collections improvements
   * Application Class-Data Sharing
   * `var` keyword to declare variables
 
-* [Java 11](java-11/README.md)
+* [Java 11](java-11/)
   * Removal of Java EE Modules, JavaFX and deprecated API
   * Http Client (incubator)
   * var in lambda expressions
   * API improvements
   * Null I/O
 
-* [Java 12](java-12/README.md)
+* [Java 12](java-12/)
   * Switch expression (preview 1)
   * Compact Number Format
   * Collectors improvements
@@ -44,7 +44,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * CDS enable by default
   * New GC and improvements
 
-* [Java 13](java-13/README.md)
+* [Java 13](java-13/)
   * Switch expression (preview 2)
   * Text blocks
   * String API updates
@@ -53,7 +53,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * Dynamic CDS Archives
   * ZGC: Uncommit Unused Memory
 
-* [Java 14](java-14/README.md) (May 17th, 2020)
+* [Java 14](java-14/) (May 17th, 2020)
   * Switch expression (standard)
   * Pattern matching for `instanceof` (preview)
   * Text blocks improvements
@@ -61,3 +61,5 @@ A project to explore more about the new features of Java 8, 9, ...
   * Helpful NullPointerExceptions
   * Packaging tool
   * JFR even streaming
+
+* [Java 15](java-15/)
