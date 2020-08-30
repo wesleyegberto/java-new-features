@@ -7,6 +7,14 @@ To run each example use: `java --enable-preview --source 15 <FileName.java>`
 ### Language
 
 * Sealed types
+  * Restrict which types can extend/implement a type
+  * Constraints:
+    * The sealed class and its permitted subclasses must belong to the same module, and, if declared in an unnamed module, the same package.
+    * Every permitted subclass must directly extend the sealed class.
+    * Every permitted subclass must choose a modifier to describe how it continues the sealing initiated by its superclass:
+      * `final`
+      * `sealed`
+      * `non-sealed` (back to a normal class open to extensibility)
 * Pattern matching for `instanceof` (second preview)
 * Text blocks (standard)
 * Records (second preview)
