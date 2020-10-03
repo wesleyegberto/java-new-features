@@ -6,6 +6,7 @@
 .idea/
 target/
 output/
+bin/
 *.jar
 *.war
 *.ear

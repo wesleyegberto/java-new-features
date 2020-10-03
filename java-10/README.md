@@ -1,5 +1,10 @@
 # Java 10
 
+```sh
+sh build.sh
+java -cp bin <ClassName>
+```
+
 ## Features
 
 ### Language

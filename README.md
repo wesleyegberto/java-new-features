@@ -37,7 +37,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * Null I/O
 
 * [Java 12](java-12/)
-  * Switch expression (preview 1)
+  * Switch expression (preview)
   * Compact Number Format
   * Collectors improvements
   * CompletableFuture improvements
@@ -46,7 +46,7 @@ A project to explore more about the new features of Java 8, 9, ...
 
 * [Java 13](java-13/)
   * Switch expression (preview 2)
-  * Text blocks
+  * Text blocks (preview)
   * String API updates
   * NIO updates
   * Socket and ServerSocket reimplementation (Project Loom)
@@ -56,10 +56,21 @@ A project to explore more about the new features of Java 8, 9, ...
 * [Java 14](java-14/) (May 17th, 2020)
   * Switch expression (standard)
   * Pattern matching for `instanceof` (preview)
-  * Text blocks improvements
+  * Text blocks improvements (preview 2)
   * Records (preview)
   * Helpful NullPointerExceptions
   * Packaging tool
   * JFR even streaming
 
-* [Java 15](java-15/)
+* [Java 15](java-15/) (GA - Sep, 2020)
+  * Sealed classes (preview)
+  * Hidden classes
+  * DatagramSocket reimplementation
+  * Pattern matching for `instanceof` (preview 2)
+  * Records (preview 2)
+  * Foreign-Memory Access API (incubator)
+
+## Helpful Links
+
+* [Considerations Bumping Java EE](https://vorozco.com/blog/2020/2020-08-21-considerations-bumping-javaee.html)
+* [The Role of Preview Features in Java and Beyond](https://blogs.oracle.com/javamagazine/the-role-of-previews-in-java-14-java-15-java-16-and-beyond)

@@ -8,7 +8,7 @@ To run each example use: `java --enable-preview --source 14 <FileName.java>`
 
 * Switch expressions
   * Promotion to standard
-* Text blocks improvements
+* Text blocks improvements (preview)
   * added new flags
 * Pattern matching for `instanceof`
   * added as Preview

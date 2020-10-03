@@ -1,5 +1,3 @@
-package com.github.wesleyegberto.java11.http;
-
 import java.net.http.HttpClient;
 import java.time.Duration;
 

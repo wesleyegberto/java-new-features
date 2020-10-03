@@ -1,5 +1,12 @@
 # Java 11
 
+To run each example use:
+
+```sh
+sh build.sh
+java -cp bin <ClassName>
+```
+
 ## Features
 
 ### Language
