@@ -69,6 +69,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * Pattern matching for `instanceof` (preview 2)
   * Records (preview 2)
   * Foreign-Memory Access API (incubator)
+  * GCs ZGC and Shenandoah turned final
 
 ## Helpful Links
 

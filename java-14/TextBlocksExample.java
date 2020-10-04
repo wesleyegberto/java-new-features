@@ -25,12 +25,12 @@ public class TextBlocksExample {
 
 		String badJson = """
 				{
-			"name": "Odair Jose",
+			"name": \""Odair Jose",
 			"language": "Java"
 				}""";
 		System.out.println(badJson);
 
-		
+
 		// Java 14 - New escape sequences
 
 		String sameLine = """

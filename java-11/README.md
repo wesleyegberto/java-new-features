@@ -47,6 +47,16 @@ java -cp bin <ClassName>
   * `Predicate::not`
   * `Pattern::asMatchPredicate`
 
+### JVM
+
+* CDS
+  * The Class data sharing (CDS) feature helps reduce the startup time and memory footprint between multiple Java Virtual Machines (JVM).
+  * To use CDS we need permition to write to lib dir: `$JAVA_HOME/lib/server/classes.jsa`
+  * Steps:
+    * First we need to generate the class list with the loaded classes: `java -XX:DumpLoadedClassList=<my-classes-list-file.lst>`
+    * Then generate the dump using the class list: `java -XX:SharedClassListFile=<my-classes-list-file.jsa> -Xshare:dump`
+    * To use: `java -XX:SharedArchiveFile=<my-classes-list-file.jsa>`
+
 ## JEPs
 
 * [181](https://openjdk.java.net/jeps/181) - Nest-Based Access Control
@@ -75,3 +85,4 @@ java -cp bin <ClassName>
 * [Oracle's Z GC](https://wiki.openjdk.java.net/display/zgc/Main)
 * [Replacements for deprecated JPMS modules with Java EE APIs](https://stackoverflow.com/questions/48204141/replacements-for-deprecated-jpms-modules-with-java-ee-apis/48204154#48204154)
 * [Scripting Java 11, Shebang And All](https://blog.codefx.org/java/scripting-java-shebang/)
+* [Class Data Sharing](https://docs.oracle.com/en/java/javase/11/vm/class-data-sharing.html#GUID-EC975B2E-B4AB-45B4-B91F-51C3A264D0CE)

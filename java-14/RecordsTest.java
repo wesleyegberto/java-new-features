@@ -27,7 +27,21 @@ public class RecordsTest {
 		System.out.println(new PointRecord(10, 10, 0));
 
 		System.out.println("\n=== Invalid new point: ");
-		System.out.println(new PointRecord(-10));
+		try {
+			System.out.println(new PointRecord(-10));
+		} catch (RuntimeException ex) {
+			System.err.println("Error: " + ex.getMessage());
+		}
+
+		record LocalRecord(int val) {
+			public void access() {
+				// Record is always static
+				// System.out.println("method var: " + aRecord);
+			}
+		}
+
+		var local = new LocalRecord(5);
+		System.out.println("Local: " + local);
 	}
 }
 
@@ -43,6 +57,9 @@ public class RecordsTest {
 record PointRecord(int x, @Validatable(validate = true) int y) {
 	// we can declare `serialVersionUID` to use in serialization
 	public static final long serialVersionUID = 1L;
+
+	// Only static fields is allowed
+	// private int z;
 
 	/**
 	 * This is the canonical constructor declared by the compiler when
@@ -66,6 +83,13 @@ record PointRecord(int x, @Validatable(validate = true) int y) {
 		if (x < 0 || y < 0)
 			throw new IllegalArgumentException("x and y cannot be negative");
 	}
+
+	// Cannot contain instance initializer
+	/*
+	{
+		System.out.println("Instance initializer");
+	}
+	*/
 
 	public PointRecord() {
 		// We are required to call the record constructor:
@@ -100,10 +124,23 @@ record PointRecord(int x, @Validatable(validate = true) int y) {
 	public int sum() {
 		return x + y;
 	}
+
+	/**
+	 * Can be nested with class, interface and record, but they will be static.
+	 */
+	record NestedOne(int z) {
+
+	}
 }
 
 /**
  * Now the is a new location for annotation.
+ *
+ * Behavior depends on type:
+ * - RECORD_COMPONENT: will be replicated to field, constructor and accessor method
+ * - METHOD: will be replicated only to the accessor method
+ * - FIELD: will be replicated only to the field declaration
+ * - CONSTRUCTOR: will be replicated only to the constructor
  */
 @Target(ElementType.RECORD_COMPONENT)
 @Retention(RetentionPolicy.RUNTIME)

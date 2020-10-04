@@ -15,12 +15,19 @@ To run each example use: `java --enable-preview --source 15 <FileName.java>`
       * `final`
       * `sealed`
       * `non-sealed` (back to a normal class open to extensibility)
-* Pattern matching for `instanceof` (second preview)
+* Pattern matching for `instanceof` (second preview - no changes)
 * Text blocks (standard)
 * Records (second preview)
-  * Integration with sealed types
+  * Integration with sealed types in interfaces
+    * The combination of record and sealed types is referred as algebraic data types.
 
 ### JVM
+
+* GC turned final:
+  * [Shenandoah](https://wiki.openjdk.java.net/display/shenandoah/Main)
+    * Flag: `-XX:+UseShenandoahGC`
+  * [ZGC](https://wiki.openjdk.java.net/display/zgc/Main)
+    * Flag: `-XX:+UseZGC`
 
 ## JEPs
 
@@ -43,3 +50,5 @@ To run each example use: `java --enable-preview --source 15 <FileName.java>`
 
 * [JDK 15 Jeps](https://openjdk.java.net/projects/jdk/15/)
 * [Doc about record and sealed types](https://cr.openjdk.java.net/~briangoetz/amber/datum.html)
+* [ZGC | What's new in JDK 15](https://malloc.se/blog/zgc-jdk15)
+* [Inside Java 15 JEPs in Five Buckets](https://blogs.oracle.com/javamagazine/inside-java-15-fourteen-jeps-in-five-buckets)

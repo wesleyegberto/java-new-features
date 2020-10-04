@@ -14,6 +14,13 @@ To run each example use: `java --enable-preview --source 14 <FileName.java>`
   * added as Preview
 * Records
   * added as Preview
+  * Notes:
+    * Does not have a `extends` clause, only extends `java.lang.Record`;
+    * Is implicitly final, thus cannot be extended;
+    * Cannot declare other fields and cannot contain instance initializers, it only contains its components declared at record header;
+    * Its components are final and cannot be updated via reflection (throw `IllegalAccessException`);
+    * Cannot declare native methods;
+    * Local records is always static (local class and enum as never static).
 * JFR Event Streaming
   * [Here](https://github.com/flight-recorder/health-report) is a great example of a tool built
 
