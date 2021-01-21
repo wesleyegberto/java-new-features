@@ -23,7 +23,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * JShell
   * much more (see JEPs)
 
-* [Java 10](java-10/) (March 20th, 2018)
+* [Java 10](java-10/) (March, 2018)
   * Process API improvements
   * Collections improvements
   * Application Class-Data Sharing
@@ -53,7 +53,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * Dynamic CDS Archives
   * ZGC: Uncommit Unused Memory
 
-* [Java 14](java-14/) (May 17th, 2020)
+* [Java 14](java-14/) (May, 2020)
   * Switch expression (standard)
   * Pattern matching for `instanceof` (preview)
   * Text blocks improvements (preview 2)
@@ -62,7 +62,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * Packaging tool
   * JFR even streaming
 
-* [Java 15](java-15/) (GA - Sep, 2020)
+* [Java 15](java-15/) (Sep, 2020)
   * Sealed classes (preview)
   * Hidden classes
   * DatagramSocket reimplementation
@@ -70,6 +70,16 @@ A project to explore more about the new features of Java 8, 9, ...
   * Records (preview 2)
   * Foreign-Memory Access API (incubator)
   * GCs ZGC and Shenandoah turned final
+
+* [Java 16](java-16/) (Mar, 2020)
+  * Records (standard)
+  * Pattern matching for `instanceof` (standard)
+  * Sealed classes (preview 2)
+  * Warnings for Value-Based Classes
+  * Foreign-Memory Access API (incubator)
+  * Vector API (Incubator)
+  * Foreign Linker API (Incubator)
+  * Packaging Tool
 
 ## Helpful Links
 
