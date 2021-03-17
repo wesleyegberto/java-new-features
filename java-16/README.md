@@ -6,7 +6,25 @@ To run each example use: `java --enable-preview --source 16 <FileName.java>`
 
 ### Language
 
+* Pattern matching for `instanceof` (standard)
+* Record
+  * now we can declare static class or a record in an inner class
+* Warnings for [Value-Based Classes](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/doc-files/ValueBased.html)
+  * starting the preparatives for Project Valhalla (can't wait for it to be fully implemented)
+  * warning the using value-based classes in synchronization and flag to force an error (1) or log (2)
+    * flag: `-XX:DiagnoseSyncOnValueBasedClasses=1|2`
+  * starting with primitive wrappers (but soon might be expanded)
+* Foreign-Memory Access API
+  * change in the API
+* Sealed classes (second preview)
+  *
+
 ### JVM
+
+* Elastic Metaspace - allow JVM to return unused memory to OS
+  * flag to customize: `-XX:MetaspaceReclaimPolicy=balanced|aggressive|none`
+* Packaging tool promoted to standard
+  * changing only on flag: `--bind-services` to `--jlink-options`
 
 ## JEPs
 

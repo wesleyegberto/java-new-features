@@ -6,11 +6,63 @@ A project to explore more about the new features of Java 8, 9, ...
 
 ## Resume by Version
 
-* [Java 8](java-8/)
-  * API
-  * Stream API
-  * Project Lambda
-  * Repeating annotations
+* [Java 16](java-16/) (Mar, 2021)
+  * Records (standard)
+  * Pattern matching for `instanceof` (standard)
+  * Sealed classes (preview 2)
+  * Warnings for Value-Based Classes
+  * Foreign-Memory Access API (incubator)
+  * Vector API (Incubator)
+  * Foreign Linker API (Incubator)
+  * Packaging Tool
+
+* [Java 15](java-15/) (Sep, 2020)
+  * Sealed classes (preview)
+  * Hidden classes
+  * DatagramSocket reimplementation
+  * Pattern matching for `instanceof` (preview 2)
+  * Records (preview 2)
+  * Foreign-Memory Access API (incubator)
+  * GCs ZGC and Shenandoah turned final
+
+* [Java 14](java-14/) (May, 2020)
+  * Switch expression (standard)
+  * Pattern matching for `instanceof` (preview)
+  * Text blocks improvements (preview 2)
+  * Records (preview)
+  * Helpful NullPointerExceptions
+  * Packaging tool
+  * JFR even streaming
+
+* [Java 13](java-13/)
+  * Switch expression (preview 2)
+  * Text blocks (preview)
+  * String API updates
+  * NIO updates
+  * Socket and ServerSocket reimplementation (Project Loom)
+  * Dynamic CDS Archives
+  * ZGC: Uncommit Unused Memory
+
+* [Java 12](java-12/)
+  * Switch expression (preview)
+  * Compact Number Format
+  * Collectors improvements
+  * CompletableFuture improvements
+  * CDS enable by default
+  * New GC and improvements
+
+* [Java 11](java-11/)
+  * Removal of Java EE Modules, JavaFX and deprecated API
+  * Http Client (incubator)
+  * var in lambda expressions
+  * API improvements
+  * Null I/O
+
+* [Java 10](java-10/) (March, 2018)
+  * Process API improvements
+  * Collections improvements
+  * Application Class-Data Sharing
+  * `var` keyword to declare variables
 
 * [Java 9](java-9/)
   * Milling Project Coin
@@ -23,63 +75,11 @@ A project to explore more about the new features of Java 8, 9, ...
   * JShell
   * much more (see JEPs)
 
-* [Java 10](java-10/) (March, 2018)
-  * Process API improvements
-  * Collections improvements
-  * Application Class-Data Sharing
-  * `var` keyword to declare variables
-
-* [Java 11](java-11/)
-  * Removal of Java EE Modules, JavaFX and deprecated API
-  * Http Client (incubator)
-  * var in lambda expressions
-  * API improvements
-  * Null I/O
-
-* [Java 12](java-12/)
-  * Switch expression (preview)
-  * Compact Number Format
-  * Collectors improvements
-  * CompletableFuture improvements
-  * CDS enable by default
-  * New GC and improvements
-
-* [Java 13](java-13/)
-  * Switch expression (preview 2)
-  * Text blocks (preview)
-  * String API updates
-  * NIO updates
-  * Socket and ServerSocket reimplementation (Project Loom)
-  * Dynamic CDS Archives
-  * ZGC: Uncommit Unused Memory
-
-* [Java 14](java-14/) (May, 2020)
-  * Switch expression (standard)
-  * Pattern matching for `instanceof` (preview)
-  * Text blocks improvements (preview 2)
-  * Records (preview)
-  * Helpful NullPointerExceptions
-  * Packaging tool
-  * JFR even streaming
-
-* [Java 15](java-15/) (Sep, 2020)
-  * Sealed classes (preview)
-  * Hidden classes
-  * DatagramSocket reimplementation
-  * Pattern matching for `instanceof` (preview 2)
-  * Records (preview 2)
-  * Foreign-Memory Access API (incubator)
-  * GCs ZGC and Shenandoah turned final
-
-* [Java 16](java-16/) (Mar, 2020)
-  * Records (standard)
-  * Pattern matching for `instanceof` (standard)
-  * Sealed classes (preview 2)
-  * Warnings for Value-Based Classes
-  * Foreign-Memory Access API (incubator)
-  * Vector API (Incubator)
-  * Foreign Linker API (Incubator)
-  * Packaging Tool
+* [Java 8](java-8/)
+  * API
+  * Stream API
+  * Project Lambda
+  * Repeating annotations
 
 ## Helpful Links
 
