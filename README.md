@@ -6,6 +6,13 @@ A project to explore more about the new features of Java 8, 9, ...
 
 ## Resume by Version
 
+* [Java 17](java-17/)
+  * Sealed classes (standard)
+  * Enhanced Pseudo-Random Number Generator
+  * Deprecate the Applet API for Removal
+  * New macOS rendering for Java 2D API
+  * Remove the experimental AOT and JIT compiler
+
 * [Java 16](java-16/) (Mar, 2021)
   * Records (standard)
   * Pattern matching for `instanceof` (standard)

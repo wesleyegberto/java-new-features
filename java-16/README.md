@@ -17,7 +17,7 @@ To run each example use: `java --enable-preview --source 16 <FileName.java>`
 * Foreign-Memory Access API
   * change in the API
 * Sealed classes (second preview)
-  *
+  * `sealed`, `non-sealed` and `permits` became contextual keywords (we can use it as var name or method name)
 
 ### JVM
 
