@@ -17,6 +17,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * Records (standard)
   * Pattern matching for `instanceof` (standard)
   * Sealed classes (preview 2)
+  * Unix-Domain Socket Channels
   * Warnings for Value-Based Classes
   * Foreign-Memory Access API (incubator)
   * Vector API (Incubator)
