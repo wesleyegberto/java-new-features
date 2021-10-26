@@ -6,6 +6,11 @@ A project to explore more about the new features of Java 8, 9, ...
 
 ## Resume by Version
 
+* [Java 18](java-18/)
+  * UTF-8 by Default
+  * Simple Web Server
+  * Code Snippets in Java API Documentation
+
 * [Java 17](java-17/)
   * Sealed classes (standard)
   * Enhanced Pseudo-Random Number Generator
