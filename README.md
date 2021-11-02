@@ -96,6 +96,7 @@ A project to explore more about the new features of Java 8, 9, ...
 
 ## Helpful Links
 
+* [Dev.java - tutorials, news and more](https://dev.java/)
 * [Considerations Bumping Java EE](https://vorozco.com/blog/2020/2020-08-21-considerations-bumping-javaee.html)
 * [The Role of Preview Features in Java and Beyond](https://blogs.oracle.com/javamagazine/the-role-of-previews-in-java-14-java-15-java-16-and-beyond)
 * [Place to get early releases from Oracle's JDK](https://jdk.java.net/)
