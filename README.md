@@ -10,6 +10,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * UTF-8 by Default
   * Simple Web Server
   * Code Snippets in Java API Documentation
+  * Pattern matching for `switch` (preview 2)
 
 * [Java 17](java-17/)
   * Sealed classes (standard)
