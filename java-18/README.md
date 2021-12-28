@@ -24,7 +24,8 @@ To run each example use: `java --enable-preview --source 18 <FileName.java>`
 * [417](https://openjdk.java.net/jeps/417) - Vector API (Third Incubator)
 * [418](https://openjdk.java.net/jeps/418) - Internet-Address Resolution SPI
 * [419](https://openjdk.java.net/jeps/419) - Foreign Function & Memory API (Second Incubator)
-* [420](https://openjdk.java.net/jeps/420) - Pattern matching for `swatch` (Second Preview)
+* [420](https://openjdk.java.net/jeps/420) - Pattern matching for `switch` (Second Preview)
+* [421](https://openjdk.java.net/jeps/421) - Deprecate Finalization for Removal
 
 ## Links
 

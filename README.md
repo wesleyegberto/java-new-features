@@ -11,6 +11,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * Simple Web Server
   * Code Snippets in Java API Documentation
   * Pattern matching for `switch` (preview 2)
+  * Deprecated method `finalize`
 
 * [Java 17](java-17/)
   * Sealed classes (standard)
