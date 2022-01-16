@@ -6,6 +6,16 @@ To run each example use: `java --enable-preview --source 18 <FileName.java>`
 
 ### Language
 
+* chartset UTF-8 will be default for all O.S.
+  * to see which is default: `java -XshowSettings:properties -version 2>&1 | grep file.encoding`
+  * we can change the chartset with property: `-Dfile.encoding=UTF-8`
+  * affected classes:
+    * Stream Reader and Writer
+    * File Reader and Writer
+    * `Formatter` and `Scanner`
+    * `URLEncoder` and `URLDecoder`
+  * the `System.out` and `System.err` will use the same charset from the terminal
+      * we can see with: `Console.charset()`
 * Pattern matching for `switch`
   * Minor improvements from JDK 17:
     * refined to use dominance checking that will force constant case label to appear before a guarded pattern of the same type;

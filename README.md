@@ -13,7 +13,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * Pattern matching for `switch` (preview 2)
   * Deprecated method `finalize`
 
-* [Java 17](java-17/)
+* [Java 17](java-17/) (Sep, 2021)
   * Sealed classes (standard)
   * Enhanced Pseudo-Random Number Generator
   * Deprecate the Applet API for Removal
@@ -40,7 +40,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * Foreign-Memory Access API (incubator)
   * GCs ZGC and Shenandoah turned final
 
-* [Java 14](java-14/) (May, 2020)
+* [Java 14](java-14/) (Mar, 2020)
   * Switch expression (standard)
   * Pattern matching for `instanceof` (preview)
   * Text blocks improvements (preview 2)
@@ -49,7 +49,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * Packaging tool
   * JFR even streaming
 
-* [Java 13](java-13/)
+* [Java 13](java-13/) (Sep, 2019)
   * Switch expression (preview 2)
   * Text blocks (preview)
   * String API updates
@@ -58,7 +58,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * Dynamic CDS Archives
   * ZGC: Uncommit Unused Memory
 
-* [Java 12](java-12/)
+* [Java 12](java-12/) (Mar, 2019)
   * Switch expression (preview)
   * Compact Number Format
   * Collectors improvements
@@ -66,20 +66,20 @@ A project to explore more about the new features of Java 8, 9, ...
   * CDS enable by default
   * New GC and improvements
 
-* [Java 11](java-11/)
+* [Java 11](java-11/) (Sep, 2018)
   * Removal of Java EE Modules, JavaFX and deprecated API
   * Http Client (incubator)
   * var in lambda expressions
   * API improvements
   * Null I/O
 
-* [Java 10](java-10/) (March, 2018)
+* [Java 10](java-10/) (Mar, 2018)
   * Process API improvements
   * Collections improvements
   * Application Class-Data Sharing
   * `var` keyword to declare variables
 
-* [Java 9](java-9/)
+* [Java 9](java-9/) (Sep, 2017)
   * Milling Project Coin
   * Process API
   * Platform Logging API and Service
@@ -90,7 +90,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * JShell
   * much more (see JEPs)
 
-* [Java 8](java-8/)
+* [Java 8](java-8/) (Marc, 2014)
   * API
   * Stream API
   * Project Lambda
