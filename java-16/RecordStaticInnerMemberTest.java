@@ -1,5 +1,4 @@
-
-public class RecordTest {
+public class RecordStaticInnerMemberTest {
 	public static void main(String[] args) {
 		var outer = new OutterClass();
 		var inner = outer.new InnerClass();

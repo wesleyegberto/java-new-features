@@ -40,15 +40,15 @@ public class RecordsSerializationTest {
 /**
  * Records are serialized different from ordinary classes.
  * Its fields are written in the same order as declared.
- * When it is read, the component constructor as called as normal code would need to do.
+ * When it is read, the component constructor is called as normal code would need to do.
  * It cannot customize its serialization, only the method `writeReplace` can be used to
  * create a copy to be serialized.
- * 
+ *
  * The value of serialVersionUID is fixed to 0L. If we added components to the record,
  * it will contain the default value for that type.
  * If we change the existing componentes it will throw something like:
  * `java.io.InvalidClassException: CustomSerializableRecord; incompatible types for field x`
- * 
+ *
  * http://cr.openjdk.java.net/~chegar/records/spec/records-serialization.03.html#serialization-of-records
  */
 record CustomSerializableRecord(int x, int y) implements Serializable {
@@ -61,6 +61,11 @@ record CustomSerializableRecord(int x, int y) implements Serializable {
 	private Object writeReplace() throws ObjectStreamException {
 		System.out.print("Creating a copy to be serialized: ");
 		return new CustomSerializableRecord(x + 1, y + 1);
+	}
+
+	private Object readResolve() throws ObjectStreamException {
+		System.out.printf("Reading from serialized object - x: %s, y: %s\n", x, y);
+		return new CustomSerializableRecord(x - 1, y - 1);
 	}
 
 	// Won't be called
