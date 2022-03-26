@@ -20,13 +20,12 @@ public class CodeSnippetInJavaDoc {
 
 	/**
 	* Builder to help execute math operation =).
-	*
 	* Usage:
 	* {@snippet :
 	* // sum two numbers
 	* int sum = MathOperationBuilder.builder()  // @highlight substring="builder"
-	*     .withA(1)                             // @replace regex="\\d+" replacement="..."
-	*     .withB(2)                             // @replace regex="\\d+" replacement="..."
+	*     .withA(1)                             // @replace regex="\d+" replacement="..."
+	*     .withB(2)                             // @replace regex="\d+" replacement="..."
 	*     .sum();                               // @highlight substring="sum"
 	* System.out.println(sum);                  // @link substring="System.out" target="System#out"
 	* }
