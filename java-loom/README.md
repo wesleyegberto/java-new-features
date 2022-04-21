@@ -2,7 +2,7 @@
 
 This project tries to explore the features that Project Loom is bringing to Java.
 
-At project site, we can see details about it.
+We can see details about it at [project wiki](https://wiki.openjdk.java.net/display/loom/Main).
 
 > Project Loom aims to drastically reduce the effort of writing, maintaining, and observing high-throughput concurrent applications that make the best use of available hardware.
 
