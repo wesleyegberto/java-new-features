@@ -6,7 +6,7 @@ A project to explore more about the new features of Java 8, 9, ...
 
 ## OpenJDK Projects
 
-* [Loom](./java-loom/README.md)
+* [Loom](./java-loom/)
 
 ## Resume by Version
 
