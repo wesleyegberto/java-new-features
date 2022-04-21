@@ -4,6 +4,10 @@ A project to explore more about the new features of Java 8, 9, ...
 
 [JDK Release Notes](https://www.oracle.com/java/technologies/javase/jdk-relnotes-index.html)
 
+## OpenJDK Projects
+
+* [Loom](./java-loom/README.md)
+
 ## Resume by Version
 
 * [Java 18](java-18/)
@@ -103,3 +107,4 @@ A project to explore more about the new features of Java 8, 9, ...
 * [Considerations Bumping Java EE](https://vorozco.com/blog/2020/2020-08-21-considerations-bumping-javaee.html)
 * [The Role of Preview Features in Java and Beyond](https://blogs.oracle.com/javamagazine/the-role-of-previews-in-java-14-java-15-java-16-and-beyond)
 * [Place to get early releases from Oracle's JDK](https://jdk.java.net/)
+* [OpenJDK Projects](https://openjdk.java.net/projects/)
