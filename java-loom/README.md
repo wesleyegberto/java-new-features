@@ -31,7 +31,7 @@ About the API:
 
 > [...] we learned during that experiment — that we can keep parts of the Thread API and de-emphasize others — moved the needle in favor of keeping the existing API, and representing our user-mode threads with the Thread class. And here we are: virtual threads are just Threads, and any library that knows Thread already knows virtual threads.
 
-Abount concurrent access:
+About concurrent access:
 
 > [...] how do we limit concurrent access to some service? Instead of breaking the task down and running the service-call subtask in a separate, constrained pool, we just let the entire task run start-to-finish, in its own thread, and use a semaphore in the service-call code to limit concurrency — this is how it should be done.
 

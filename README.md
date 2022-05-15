@@ -10,6 +10,11 @@ A project to explore more about the new features of Java 8, 9, ...
 
 ## Resume by Version
 
+* [Java 19](java-19/)
+  * Virtual Thread :rocket:
+  * Pattern matching for `switch` (preview 3)
+  * Vector API (fourth incubator)
+
 * [Java 18](java-18/)
   * UTF-8 by Default
   * Simple Web Server
@@ -31,8 +36,8 @@ A project to explore more about the new features of Java 8, 9, ...
   * Unix-Domain Socket Channels
   * Warnings for Value-Based Classes
   * Foreign-Memory Access API (incubator)
-  * Vector API (Incubator)
-  * Foreign Linker API (Incubator)
+  * Vector API (incubator)
+  * Foreign Linker API (incubator)
   * Packaging Tool
 
 * [Java 15](java-15/) (Sep, 2020)
