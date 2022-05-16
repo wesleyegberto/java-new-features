@@ -108,6 +108,7 @@ A project to explore more about the new features of Java 8, 9, ...
 ## Helpful Links
 
 * [Dev.java - tutorials, news and more](https://dev.java/)
+  * [Java Platform Evolution](https://dev.java/evolution/)
 * [Inside.java - Sip of Java](https://inside.java/2021/10/21/sip24/)
 * [Considerations Bumping Java EE](https://vorozco.com/blog/2020/2020-08-21-considerations-bumping-javaee.html)
 * [The Role of Preview Features in Java and Beyond](https://blogs.oracle.com/javamagazine/the-role-of-previews-in-java-14-java-15-java-16-and-beyond)
