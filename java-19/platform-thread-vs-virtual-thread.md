@@ -88,9 +88,9 @@ Note the different between the memory and thread graphs for Platform and Virtual
 
 **My interpretation:**
 
-The Platform Thread used real thread for each task (100), there were concorrency that caused all the calculation to end together, thus doing all the requesting also together (high slope in memory and thread count graph).
+The Platform Thread used OS thread for each task (100), there were concorrency that caused all the calculation to end together, thus doing all the requesting also together (high slope in memory and thread count graph).
 
-The Virtual Thread version had few real threads (pool with 10 threads), the OS [maybe] gave more time to taks allowing them to finish sooner, thus causing the requestings in small batches (smoothier slope in memory and thread count graph).
+The Virtual Thread version had few OS threads (pool with 8 threads), the OS [maybe] gave more time to each ask allowing them to finish sooner, thus causing the requestings in small batches (smoothier slope in memory and thread count graph).
 
 ### Platform Thread
 
