@@ -15,7 +15,7 @@ A project to explore more about the new features of Java 8, 9, ...
   * Pattern matching for `switch` (preview 3)
   * Vector API (fourth incubator)
 
-* [Java 18](java-18/)
+* [Java 18](java-18/) (Mar, 2022)
   * UTF-8 by Default
   * Simple Web Server
   * Code Snippets in Java API Documentation
