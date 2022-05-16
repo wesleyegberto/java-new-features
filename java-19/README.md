@@ -1,6 +1,6 @@
-# Java 18
+# Java 19
 
-To run each example use: `java --enable-preview --source 18 <FileName.java>`
+To run each example use: `java --enable-preview --source 19 <FileName.java>`
 
 ## Features
 
@@ -12,7 +12,8 @@ To run each example use: `java --enable-preview --source 18 <FileName.java>`
     * definition: guard is the boolean expression, guarded pattern is the case with guard
       * guarded pattern: `case Hero h when h.getCity() == Cities.NEW_YORK`
       * guard: `h.getCity() == Cities.NEW_YORK`
-* Virtual Threads (user-mode threads)
+* Virtual Threads
+  * also called user-mode threads or [fiber](https://en.wikipedia.org/wiki/Fiber_(computer_science))
   * `Virtual threads are lightweight threads that dramatically reduce the effort of writing, maintaining, and observing high-throughput concurrent applications`
   * definitions:
     * virtual thread is an instance of `java.lang.Thread` that is not tied to a particular OS thread, only consumes an OS thread only while it performs calculations on the CPU;
@@ -28,6 +29,7 @@ To run each example use: `java --enable-preview --source 18 <FileName.java>`
   * support thread-local variables and interruption
   * more notes about Project Loom [here](../java-loom/)
   * we can use `Executors.newVirtualThreadPerTaskExecutor` to create virtual threads
+  * [here](platform-thread-vs-virtual-thread.md) is some details about the Platform Thread vs Virtual Thread examples
 
 ## JEPs
 
