@@ -26,6 +26,8 @@ To run each example use: `java --enable-preview --source 16 <FileName.java>`
   * flag to customize: `-XX:MetaspaceReclaimPolicy=balanced|aggressive|none`
 * Packaging tool promoted to standard
   * changing only on flag: `--bind-services` to `--jlink-options`
+* Changed default flag for JDK internals:
+  * now it is `--illegal-access=deny`
 
 ## JEPs
 

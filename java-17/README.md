@@ -28,6 +28,12 @@ To run each example use: `java --enable-preview --source 17 <FileName.java>`
     * `ArbitrarilyJumpableGenerator`: extends LeapableRandomGenerator and allow to jump arbitrary numbero of draws.
   * more detailed info in the [docs](https://download.java.net/java/early_access/jdk17/docs/api/java.base/java/util/random/package-summary.html)
 
+### JVM
+
+* Strongly encapsulate JDK internals
+  * make illegal access internal API flag obsolate (was `--illegal-access=deny` in Java 16)
+  * only `sun.misc` and `sun.reflect` will be allowed to be access through `jdk.unsupported` module
+
 ## JEPs
 
 * [306](https://openjdk.java.net/jeps/306) - Restore Always-Strict Floating-Point Semantics
