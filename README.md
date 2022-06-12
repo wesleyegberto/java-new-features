@@ -14,6 +14,8 @@ A project to explore more about the new features of Java 8, 9, ...
   * Virtual Thread :rocket:
   * Pattern matching for `switch` (preview 3)
   * Vector API (fourth incubator)
+  * Record pattern
+  * Structured concurrency
 
 * [Java 18](java-18/) (Mar, 2022)
   * UTF-8 by Default
@@ -24,6 +26,7 @@ A project to explore more about the new features of Java 8, 9, ...
 
 * [Java 17](java-17/) (Sep, 2021)
   * Sealed classes (standard)
+  * Pattern matching for `switch` (preview)
   * Enhanced Pseudo-Random Number Generator
   * Deprecate the Applet API for Removal
   * New macOS rendering for Java 2D API

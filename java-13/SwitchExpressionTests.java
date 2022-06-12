@@ -1,5 +1,5 @@
-/*
- * Same example from Java 12 but with syntax update.
+/**
+ * Same example from Java 12 but with syntax update (changed `break` to `yield`).
  */
 public class SwitchExpressionTests {
     public static void main(String ... args) {

@@ -86,7 +86,7 @@ public class SwitchExpressionExample {
 		var mood = Incomes.Good;
 
 		// compiler infers the most specific supertype
-		// of String and IllegalArgumentException = Serializable
+		// of String and IllegalArgumentException is Serializable
 		// Serializable whichType // we can only use its supertype
 		var whichType = switch (mood) {
 			case Good -> "All right";
