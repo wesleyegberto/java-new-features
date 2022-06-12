@@ -12,6 +12,12 @@ To run each example use: `java --enable-preview --source 19 <FileName.java>`
     * definition: guard is the boolean expression, guarded pattern is the case with guard
       * guarded pattern: `case Hero h when h.getCity() == Cities.NEW_YORK`
       * guard: `h.getCity() == Cities.NEW_YORK`
+* Record patterns
+  * added suport to deconstruct record values in pattern matcher
+    * record pattern: `Point(int x, int y)`
+  * now we can use type pattern and record pattern together
+  * we can check the type and extract the record components using `instanceof` operator
+    * `o instanceOf Point(int x, int y)`
 * Virtual Threads:
   * also called user-mode threads or [fiber](https://en.wikipedia.org/wiki/Fiber_(computer_science))
   * more notes about Project Loom [here](../java-loom/)
@@ -67,12 +73,27 @@ To run each example use: `java --enable-preview --source 19 <FileName.java>`
     * `Thread.ofPlatform().start(() -> {})`;
     * **do not use** any cached method from `Executors`.
   * [here](platform-thread-vs-virtual-thread.md) is some details about the Platform Thread vs Virtual Thread examples
-* Record patterns
-  * added suport to deconstruct record values in pattern matcher
-    * record pattern: `Point(int x, int y)`
-  * now we can use type pattern and record pattern together
-  * we can check the type and extract the record components using `instanceof` operator
-    * `o instanceOf Point(int x, int y)`
+* Structured Concurrency
+  * goal is simplify multithreaded programming;
+  * treats multiple tasks running in different threads as a single unit of work:
+    * streamlining error handling and cancellation
+    * improving reliability
+    * enhancing observability
+  * steps to use:
+    * create a scope (using `StructuredTaskScope`);
+    * fork concurrent subtasks in the scope:
+      * any subtask or the scope owner can call `shutdown` to request cancelation of all remaining subtasks;
+    * scope's owner joins the scope:
+      * blocks until all subtasks either complete (sucessfully or not) or any call shutdown;
+    * after joining, handle any errors and process theirs results;
+    * close the scope (implicity when using try-with-resources).
+  * characteristics:
+    * each fork creates its own thread (by default is a virtual thread)
+    * allow nested scope (when creating a scope in a subtask)
+    * shutdown causes the threads of all forks that are still active in the scope to be interrupted
+    * when calling `close`, it propagates the the state of the unit of work (either awaits all subtasks to finish or cancel each one of them)
+  * [output from the structured concurrency example](structured-concurrency-example.md):
+
 
 ## JEPs
 
