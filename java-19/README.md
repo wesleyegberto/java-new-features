@@ -7,12 +7,12 @@ To run each example use: `java --enable-preview --source 19 <FileName.java>`
 ### Language
 
 * Pattern matching for `switch`
-  * Minor improvements from JDK 18:
+  * minor improvements from JDK 18:
     * changed guarded pattern from `&&` to `when` keyword
     * definition: guard is the boolean expression, guarded pattern is the case with guard
       * guarded pattern: `case Hero h when h.getCity() == Cities.NEW_YORK`
       * guard: `h.getCity() == Cities.NEW_YORK`
-* Virtual Threads
+* Virtual Threads:
   * also called user-mode threads or [fiber](https://en.wikipedia.org/wiki/Fiber_(computer_science))
   * more notes about Project Loom [here](../java-loom/)
   * `Virtual threads are lightweight threads that dramatically reduce the effort of writing, maintaining, and observing high-throughput concurrent applications`
@@ -54,8 +54,10 @@ To run each example use: `java --enable-preview --source 19 <FileName.java>`
     * has normal priority;
     * is not member of any thread group;
     * supports concurrent lock API;
-    * supports thread-local variables and interruption;
+    * supports thread-local variables (be careful cause we will tend to use a lot of virtual threads, using too much thread-local variables could easily increase de memory footprint)
+    * interruption and LockSupport;
     * can opt-out from having a thread locals (using Builder);
+    * doesn't supports ThreadGroup (deprecated in favor of structured concurrency);
   * scenarios where it can significantly improve throughput when:
     * number of concurrent tasks is high, and
     * work is not CPU-bound.
@@ -65,14 +67,22 @@ To run each example use: `java --enable-preview --source 19 <FileName.java>`
     * `Thread.ofPlatform().start(() -> {})`;
     * **do not use** any cached method from `Executors`.
   * [here](platform-thread-vs-virtual-thread.md) is some details about the Platform Thread vs Virtual Thread examples
+* Record patterns
+  * added suport to deconstruct record values in pattern matcher
+    * record pattern: `Point(int x, int y)`
+  * now we can use type pattern and record pattern together
+  * we can check the type and extract the record components using `instanceof` operator
+    * `o instanceOf Point(int x, int y)`
 
 ## JEPs
 
+* [405](https://openjdk.java.net/jeps/405) - Record Patterns (Preview)
 * [422](https://openjdk.java.net/jeps/422) - Linux/RISC-V Port
 * [424](https://openjdk.java.net/jeps/424) - Foreign Function & Memory API (Preview)
 * [425](https://openjdk.java.net/jeps/425) - Virtual Threads (Preview)
 * [426](https://openjdk.java.net/jeps/426) - Vector API (Fourth Incubator)
 * [427](https://openjdk.java.net/jeps/427) - Pattern Matching for switch (Third Preview)
+* [428](https://openjdk.java.net/jeps/428) - Structured Concurrency (Incubator)
 
 ## Links
 
