@@ -108,3 +108,4 @@ To run each example use: `java --enable-preview --source 19 <FileName.java>`
 ## Links
 
 * [JDK 19 Jeps](https://openjdk.java.net/projects/jdk/19/)
+* [Chat project comparing Platform vs Virtual Threads](https://github.com/wesleyegberto/java-virtualthreads-chat)
