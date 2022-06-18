@@ -114,3 +114,36 @@ Time taken to run:
 | Monitor | Timeline |
 |---|---|
 | ![](img/virtual-thread-fibreq-monitor.png) | ![](img/virtual-thread-fibreq-timeline.png) |
+
+## WebServer
+
+The code in `WebServerThreads` shows how to use Virtual Thread to handle HTTP requests using `HttpServer` from Java 18.
+
+The goal here is to show resources usage in VisualVM, the response was a simple text message.
+
+The response time and throughput aren't much different here as the processing is a simple message write.
+We should see some difference if the processing was making some IO-bound work.
+
+To run stress test: `jmeter -n -t WebServer-StressTest.jmx -l jmeter_requests_logs.csv -e -o jmeter-report/`
+
+### Platform Thread
+
+JMeter Summary
+
+![](img/webserver-platform-thread-jmeter-summary.png)
+
+| Response Time | Monitor |
+|---|---|
+| ![](img/webserver-platform-thread-response-time.png) | ![](img/webserver-platform-thread-monitor.png) |
+
+### Virtual Thread
+
+JMeter Summary
+
+![](img/webserver-virtual-thread-jmeter-summary.png)
+
+| Response Time | Monitor |
+|---|---|
+| ![](img/webserver-virtual-thread-response-time.png) | ![](img/webserver-virtual-thread-monitor.png) |
+
+
