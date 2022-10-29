@@ -6,11 +6,14 @@ A project to explore more about the new features of Java 8, 9, ...
 
 ## OpenJDK Projects
 
-* [Loom](./java-loom/): project to bring user-mode threads.
+* [Valhalla](./projects/valhalla/): enhance Java object model with value objects and primitive values.
+* [Loom](./projects/loom/): project to bring user-mode threads.
 
 ## Resume by Version
 
-* [Java 19](java-19/)
+* [Java 20](java-20/)
+
+* [Java 19](java-19/) (Sep, 2022)
   * Virtual Thread :rocket:
   * Pattern matching for `switch` (preview 3)
   * Vector API (fourth incubator)

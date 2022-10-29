@@ -20,7 +20,7 @@ To run each example use: `java --enable-preview --source 19 <FileName.java>`
     * `o instanceOf Point(int x, int y)`
 * Virtual Threads:
   * also called user-mode threads or [fiber](https://en.wikipedia.org/wiki/Fiber_(computer_science))
-  * more notes about Project Loom [here](../java-loom/)
+  * more notes about Project Loom [here](../projects/loom/)
   * `Virtual threads are lightweight threads that dramatically reduce the effort of writing, maintaining, and observing high-throughput concurrent applications`
   * definitions:
     * virtual thread is an instance of `java.lang.Thread` that is not tied to a particular OS thread, only consumes an OS thread only while it performs calculations on the CPU;
