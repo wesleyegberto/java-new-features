@@ -10,5 +10,5 @@ Exploring... =)
 
 * [JDK 20 Jeps](https://openjdk.java.net/projects/jdk/20/)
 * [JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=21004)
-* [JDK 20 EA Release Notes](https://jdk.java.net/20/release-notes)
+* [JDK 20 EA Builds](https://jdk.java.net/20/)
 
