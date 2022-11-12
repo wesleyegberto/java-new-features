@@ -3,11 +3,33 @@
  */
 public class RecordPatternsTest {
 	public static void main(String[] args) {
+		simpleExampleOfDeconstruct();
+
 		var p1 = new Point(10, 10);
 		var p2 = new ColoredPoint(new Point(10, 10), Color.GREEN);
 
 		System.out.println("Has collision: " + checkCollisionIfs(p1, p2));
+
 		System.out.println("Has collision: " + checkCollisionSwitches(p1, p2));
+	}
+
+	static void simpleExampleOfDeconstruct() {
+		record ComputedPoint (int x, int y) {
+			// the accessor method is used is the deconstruction
+			public int y() {
+				return this.y + 10;
+			}
+		}
+
+		Object point = new ComputedPoint(42, 42);
+
+		// `int x` will receive the result of implitcy accessor `Point.x()`
+		// `int y` will receive the result of explicity accesor `Point.y()`
+		if (point instanceof ComputedPoint(int x, var y)) {
+			System.out.printf("Deconstruction: x=%d, y=%d%n%n", x, y);
+		} else {
+			System.out.println("Not a instance of ComputedPoint");
+		}
 	}
 
 	static boolean checkCollisionIfs(Object p1, Object p2) {
@@ -63,3 +85,4 @@ record Point(int x, int y) {}
 enum Color { RED, GREEN, BLUE }
 
 record ColoredPoint(Point p, Color c) {}
+
