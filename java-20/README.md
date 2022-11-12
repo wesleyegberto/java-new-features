@@ -11,6 +11,8 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
   * added support for record patterns to appear in the headere of an enhanced for statement;
     * `for (Point(var x, var y) : shapePoints)`
   * remove support for named record pattner.
+* Patteren matching for `switch` (fourth preview)
+  * added support for inference of type arguments for generic record patterns
 
 ## JEPs
 
