@@ -15,7 +15,9 @@ To run each example use: `java --enable-preview --source 19 <FileName.java>`
 * Record patterns
   * added suport to deconstruct record values in pattern matcher
     * record pattern: `Point(int x, int y)`
-	* the variable `int x` is initialized with the result of accessor method `Point.x()`, not directly from the field `x`
+    * the variable `int x` is initialized with the result of accessor method `Point.x()`, not directly from the field `x`
+    * the variable doesn't need to be the same as the name of the record component
+    * the null value does not match any record pattern
   * now we can use type pattern and record pattern together
   * we can check the type and extract the record components using `instanceof` operator
     * `o instanceOf Point(int x, int y)`
