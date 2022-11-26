@@ -6,6 +6,17 @@ From the project's wiki:
 > combining the abstractions of object-oriented programming with the performance characteristics of simple
 > primitives.
 
+## Running the Examples
+
+To run the examples we need to compile first with primitive classe feature activated.
+Then run it enabling primitive class, using single-file source code feature doesn't work.
+
+```java
+javac -XDenablePrimitiveClasses --source 20 <ClassName>.java
+
+java -XX:+EnablePrimitiveClasses <ClassName>
+```
+
 ## JEPs
 
 ### [JEP 401 - Primitive Classes](https://openjdk.org/jeps/401)
@@ -45,7 +56,10 @@ Primitive type characteristics:
 - freely convert an instance between its value object and simpler primitive value (use its reference or its value);
 - supports the `==` and `!=` operators recursively throughout its fields values;
 - cannot be used as the operand of a synchronized statement;
-- do not allow null:
+- reads and writes are not guaranteed to be atomic;
+- it is a null-free type:
+  - the primitive value is a null-free type, cannot be assign to null without explicity using it as reference;
+    - to use as reference we need to use `.ref` keyword (like `Point.ref aPoint`);
   - the variable will receive a default value;
   - default value for primitive type:
     - the default value is the initial instance whose fields are all set to their own default values;
@@ -73,7 +87,7 @@ primitive class Point implements Shape {
 
 	public double y() { return y; }
 
-	public Point translate(double dx, double yd) {
+	public Point translate(double dx, double dy) {
 		return new Point (x + dx, y + dy);
 	}
 
@@ -212,7 +226,7 @@ With primitive types we can mix them, a `Point[]` is a subtype of `Point.ref[]`,
 // primitive values array
 var points = new Point[5];
 
-// the compiler checks the typese hierarchy
+// the compiler checks the type hierarchy
 Object[] arr = points;
 
 // value object conversion (primitive value Point to Object)
