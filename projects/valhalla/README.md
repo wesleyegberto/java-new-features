@@ -243,4 +243,6 @@ arr[1] = null;
 
 * [Project Wiki](https://openjdk.org/projects/valhalla/)
 * [Early-Access Builds](https://jdk.java.net/valhalla/)
+* [JEP draft - Value Objects](https://openjdk.org/jeps/8277163)
+* [JEP 401 - Primitive Classes](https://openjdk.org/jeps/401)
 
