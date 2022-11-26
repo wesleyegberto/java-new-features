@@ -12,12 +12,15 @@ A project to explore more about the new features of Java 8, 9, ...
 ## Resume by Version
 
 * [Java 20](java-20/)
+  * Record pattern (preview 2)
+  * Pattern matching for `switch` (preview 4)
+  * Virtual Threads (preview 2)
 
 * [Java 19](java-19/) (Sep, 2022)
   * Virtual Thread :rocket:
   * Pattern matching for `switch` (preview 3)
   * Vector API (fourth incubator)
-  * Record pattern
+  * Record pattern (preview)
   * Structured concurrency
 
 * [Java 18](java-18/) (Mar, 2022)

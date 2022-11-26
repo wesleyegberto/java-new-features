@@ -13,11 +13,23 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
   * remove support for named record pattner.
 * Patteren matching for `switch` (fourth preview)
   * added support for inference of type arguments for generic record patterns
+* Virtual threads (second preview)
+  * small numbeer of API changes described by JEP 425 were made permanent in JDK 19 and are not proporsed to preview:
+    * `Thread.join(Durantion)`
+    * `Thread.sleep(Duration)`
+    * `Thread.threadId()`
+    * `Future.resultNow()`
+    * `Future.exceptionNow()`
+    * `Future.state()`
+    * `ExecutorSerevice` extends `AutoClosable`
 
 ## JEPs
 
+JEPs proposed to target:
+
 * [432](https://openjdk.java.net/jeps/432) - Record Patterns (Second Preview)
 * [433](https://openjdk.java.net/jeps/433) - Pattern Matching for switch (Fourth Preview)
+* [436](https://openjdk.java.net/jeps/436) - Virtual Threads (Second Preview)
 
 ## Links
 
