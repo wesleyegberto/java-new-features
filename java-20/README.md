@@ -27,9 +27,12 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
 
 JEPs proposed to target:
 
+* [429](https://openjdk.java.net/jeps/429) - Scoped Values (Incubator)
 * [432](https://openjdk.java.net/jeps/432) - Record Patterns (Second Preview)
 * [433](https://openjdk.java.net/jeps/433) - Pattern Matching for switch (Fourth Preview)
+* [434](https://openjdk.java.net/jeps/434) - Foreign Function & Memory API (Second Preview)
 * [436](https://openjdk.java.net/jeps/436) - Virtual Threads (Second Preview)
+* [437](https://openjdk.java.net/jeps/437) - Structured Concurrency (Second Incubator)
 
 ## Links
 
