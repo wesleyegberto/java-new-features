@@ -22,7 +22,36 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
     * `Future.exceptionNow()`
     * `Future.state()`
     * `ExecutorSerevice` extends `AutoClosable`
-
+* Scoped values (incubator)
+  * enable the sharing of immutable data within and across threads
+  * they are preferred to thread-local variables (specially using virtual threads)
+  * goals:
+    * provide a programming model to share data both within a thread and with child threads
+    * make the lifetime of shared data visible from structure of code
+    * ensura that data sahred by a caller can be retrieved only by legitimate callees
+    * thread shared data as immuatable so as to allow sharing by a large number of threads and to enable runtime otimiziations
+  * problems with thread-local variables:
+    * mutability: any object can update the variable if it has access to it
+    * unbounded lifetime: it is stored until the thread is destroyed, if is used in a pool it can take a long time
+    * expensive inheritance: a child thread must allocate memory for every variable stored in the parent thread
+  * a scoped value allows data to be safely and efficiently shared between components
+  * we use an attribute of type `ScopedValue` declared as final static
+    * scoped value has multiple incarnations, one per thread
+    * once the value is written to scoped value it becomes immutable and is available only for a bounded period during execution of a thread
+  * usage:
+    * we use `ScopedValue.where` to set the value
+    * then use the method `run` or `call` to bind the scoped value with the current thread and defining the lambda expression
+    * the scope of the methods `run`/`call`, the lambda expression (and every method called by it) can access the scoped value using the method `get` from static final attribute
+  * ex.:
+    * ```java
+    public final static ScopedValue<String> PRINCIPAL = new ScopedValue<>();
+    // [...]
+    ScopedValue.where(PRINCIPAL, "guest")
+    	.run(() -> {
+    		var userRole = PRINCIPAL.get();
+    	});
+    ```
+  
 ## JEPs
 
 JEPs proposed to target:
