@@ -43,7 +43,8 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
     * then use the method `run` or `call` to bind the scoped value with the current thread and defining the lambda expression
     * the scope of the methods `run`/`call`, the lambda expression (and every method called by it) can access the scoped value using the method `get` from static final attribute
   * ex.:
-    * ```java
+    *
+    ```java
     public final static ScopedValue<String> PRINCIPAL = new ScopedValue<>();
     // [...]
     ScopedValue.where(PRINCIPAL, "guest")
