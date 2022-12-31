@@ -24,6 +24,7 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
     * `ExecutorSerevice` extends `AutoClosable`
 * Scoped values (incubator)
   * enable the sharing of immutable data within and across threads
+  * it were inspired by the way that Lipst dialects provide support for dyanamically scoped free variables
   * they are preferred to thread-local variables (specially using virtual threads)
   * goals:
     * provide a programming model to share data both within a thread and with child threads
@@ -38,6 +39,10 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
   * we use an attribute of type `ScopedValue` declared as final static
     * scoped value has multiple incarnations, one per thread
     * once the value is written to scoped value it becomes immutable and is available only for a bounded period during execution of a thread
+  * we can create nested scope when inside a scope we use another variable to create a scope
+  * we can create nested scope with rebinded value when using the same `ScopedValue` to create a new scope
+    * the created scope will have the new value binded
+    * the current scope will still have its original value
   * usage:
     * we use `ScopedValue.where` to set the value
     * then use the method `run` or `call` to bind the scoped value with the current thread and defining the lambda expression
@@ -45,13 +50,33 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
   * ex.:
     *
     ```java
-    public final static ScopedValue<String> PRINCIPAL = new ScopedValue<>();
+    public final static ScopedValue<String> PRINCIPAL = ScopedValue.newInstance();
     // [...]
     ScopedValue.where(PRINCIPAL, "guest")
     	.run(() -> {
     		var userRole = PRINCIPAL.get();
     	});
     ```
+  * `ScopedValue.where` provides a one-way sharing to the execution scope of method `run`
+  * to receive a result from another execution scope we need to use `call` instead of `run`
+  * ex.:
+    *
+    ```java
+    var universeAnswer = ScopedValue.where(SUBJECT, "Deep Thought")
+    	.call(() -> {
+    		// some magic
+    		return 42;
+    	});
+    ```
+   * virtual thread and cross-thread sharing
+     * to share data between a thread and its child thread we need to make the scoped values inherited by child thread
+       * we can use the Structured Concurrency API
+       * the class `StructuredTaskScope` automatically make the scoped value inherited by child thread
+       * the fork must occurrs inside the `ScopedValue` method `run`/`call`
+       * the binding will remains until the child thread are finished and we can use `StructuredTaskScoped.join` to ensure
+       that the child threads will terminate before `run`/`call`
+     * when we try to access a scoped value not shared with current thread an exception `NoSuchElementException` will be thrown
+
   
 ## JEPs
 
