@@ -45,8 +45,8 @@ class Worker {
 		ScopedValue.where(ScopedValueUsageExample.MAIN_SCOPE, "message from worker over main")
 			.run(() -> {
 				// the outmost scope will still works
-				var messageInShadowedScope = ScopedValueUsageExample.MAIN_SCOPE.get();
-				System.out.println("shared value from shadowed scope: " + messageInShadowedScope);
+				var rebindedMessage = ScopedValueUsageExample.MAIN_SCOPE.get();
+				System.out.println("shared value from shadowed scope: " + rebindedMessage);
 			});
 
 		// but the original scope from main will still have its initial value (immutable)
