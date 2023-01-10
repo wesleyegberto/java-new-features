@@ -126,3 +126,5 @@ A project to explore more about the new features of Java 8, 9, ...
 * [The Role of Preview Features in Java and Beyond](https://blogs.oracle.com/javamagazine/the-role-of-previews-in-java-14-java-15-java-16-and-beyond)
 * [Place to get early releases from Oracle's JDK](https://jdk.java.net/)
 * [OpenJDK Projects](https://openjdk.java.net/projects/)
+* [JDK Update Releases](https://openjdk.org/projects/jdk-updates/)
+
