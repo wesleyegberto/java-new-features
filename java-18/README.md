@@ -2,6 +2,18 @@
 
 To run each example use: `java --enable-preview --source 18 <FileName.java>`
 
+## JEPs
+
+* [400](https://openjdk.java.net/jeps/400) - UTF-8 by Default
+* [408](https://openjdk.java.net/jeps/408) - Simple Web Server
+* [413](https://openjdk.java.net/jeps/413) - Code Snippets in Java API Documentation
+* [416](https://openjdk.java.net/jeps/416) - Reimplement Code Reflection with Method Handles
+* [417](https://openjdk.java.net/jeps/417) - Vector API (Third Incubator)
+* [418](https://openjdk.java.net/jeps/418) - Internet-Address Resolution SPI
+* [419](https://openjdk.java.net/jeps/419) - Foreign Function & Memory API (Second Incubator)
+* [420](https://openjdk.java.net/jeps/420) - Pattern matching for `switch` (Second Preview)
+* [421](https://openjdk.java.net/jeps/421) - Deprecate Finalization for Removal
+
 ## Features
 
 ### Language
@@ -35,18 +47,6 @@ To run each example use: `java --enable-preview --source 18 <FileName.java>`
 ### JVM
 
 * Reimplemented code reflection to use Method Handles
-
-## JEPs
-
-* [400](https://openjdk.java.net/jeps/400) - UTF-8 by Default
-* [408](https://openjdk.java.net/jeps/408) - Simple Web Server
-* [413](https://openjdk.java.net/jeps/413) - Code Snippets in Java API Documentation
-* [416](https://openjdk.java.net/jeps/416) - Reimplement Code Reflection with Method Handles
-* [417](https://openjdk.java.net/jeps/417) - Vector API (Third Incubator)
-* [418](https://openjdk.java.net/jeps/418) - Internet-Address Resolution SPI
-* [419](https://openjdk.java.net/jeps/419) - Foreign Function & Memory API (Second Incubator)
-* [420](https://openjdk.java.net/jeps/420) - Pattern matching for `switch` (Second Preview)
-* [421](https://openjdk.java.net/jeps/421) - Deprecate Finalization for Removal
 
 ## Links
 

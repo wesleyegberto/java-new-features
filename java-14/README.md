@@ -2,6 +2,25 @@
 
 To run each example use: `java --enable-preview --source 14 <FileName.java>`
 
+## JEPs
+
+* [305](https://openjdk.java.net/jeps/305) - Pattern Matching for instanceof (Preview)
+* [343](https://openjdk.java.net/jeps/343) - Packaging Tool (Incubator)
+* [345](https://openjdk.java.net/jeps/345) - NUMA-Aware Memory Allocation for G1
+* [349](https://openjdk.java.net/jeps/349) - JFR Event Streaming
+* [352](https://openjdk.java.net/jeps/352) - Non-Volatile Mapped Byte Buffers
+* [358](https://openjdk.java.net/jeps/358) - Helpful NullPointerExceptions
+* [359](https://openjdk.java.net/jeps/359) - Records (Preview)
+* [361](https://openjdk.java.net/jeps/361) - Switch Expressions (Standard)
+* [362](https://openjdk.java.net/jeps/362) - Deprecate the Solaris and SPARC Ports
+* [363](https://openjdk.java.net/jeps/363) - Remove the Concurrent Mark Sweep (CMS) Garbage Collector
+* [364](https://openjdk.java.net/jeps/364) - ZGC on macOS
+* [365](https://openjdk.java.net/jeps/365) - ZGC on Windows
+* [366](https://openjdk.java.net/jeps/366) - Deprecate the ParallelScavenge + SerialOld GC Combination
+* [367](https://openjdk.java.net/jeps/367) - Remove the Pack200 Tools and API
+* [368](https://openjdk.java.net/jeps/368) - Text Blocks (Second Preview)
+* [370](https://openjdk.java.net/jeps/370) - Foreign-Memory Access API (Incubator)
+
 ## Features
 
 ### Language
@@ -30,26 +49,6 @@ To run each example use: `java --enable-preview --source 14 <FileName.java>`
   * flag to enable: `-XX:+ShowCodeDetailsInExceptionMessages`
 * Packaging tool to create self-contained Java applications
   * bin: `jpackage`
-
-
-## JEPs
-
-* [305](https://openjdk.java.net/jeps/305) - Pattern Matching for instanceof (Preview)
-* [343](https://openjdk.java.net/jeps/343) - Packaging Tool (Incubator)
-* [345](https://openjdk.java.net/jeps/345) - NUMA-Aware Memory Allocation for G1
-* [349](https://openjdk.java.net/jeps/349) - JFR Event Streaming
-* [352](https://openjdk.java.net/jeps/352) - Non-Volatile Mapped Byte Buffers
-* [358](https://openjdk.java.net/jeps/358) - Helpful NullPointerExceptions
-* [359](https://openjdk.java.net/jeps/359) - Records (Preview)
-* [361](https://openjdk.java.net/jeps/361) - Switch Expressions (Standard)
-* [362](https://openjdk.java.net/jeps/362) - Deprecate the Solaris and SPARC Ports
-* [363](https://openjdk.java.net/jeps/363) - Remove the Concurrent Mark Sweep (CMS) Garbage Collector
-* [364](https://openjdk.java.net/jeps/364) - ZGC on macOS
-* [365](https://openjdk.java.net/jeps/365) - ZGC on Windows
-* [366](https://openjdk.java.net/jeps/366) - Deprecate the ParallelScavenge + SerialOld GC Combination
-* [367](https://openjdk.java.net/jeps/367) - Remove the Pack200 Tools and API
-* [368](https://openjdk.java.net/jeps/368) - Text Blocks (Second Preview)
-* [370](https://openjdk.java.net/jeps/370) - Foreign-Memory Access API (Incubator)
 
 ## Links
 

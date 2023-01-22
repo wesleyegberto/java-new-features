@@ -1,77 +1,5 @@
 # Java 9
 
-## Features
-
-### Language
-
-* Milling Project Coin:
-  * More concise try-with-resources statements
-  * `@SafeVarargs` annotation is allowed on private instance methods
-  * Use diamond syntax in conjunction with anonymous inner classes
-  * Private interface methods are supported
-* The underscore character is not a legal name
-* Platform Logging API and Service
-* Concurrency improvements
-* Collections improvements
-* Method handles improvements
-* Project Jigsaw
-  * Creating modules;
-  * Exports and requires;
-  * Requires transitive;
-  * Using non-exported class through its exported interface;
-  * Running a module.
-* jlink
-  * Tool to assemble and optimized our modules and their deps into a custom runtime image;
-  * The runtime image will contain the JVM, only the Java modules we need and our code;
-  * The runtime image is generated for the platform we are using (current jdk platform);
-  * We can set --launcher option to generate a script to run a module/class.
-* Unified Logging
-  * `-Xlog` to give uniform access to log messages from different subsystems (class loading, threading, GC, module system, so on)
-
-### JVM
-
-* Compact Strings
-* Improve contended locking
-  * Improvement in monitor enter and exit, faster notifications
-* Segmented code cache
-  * Improvement of code cache by separeting in three segments: Non-method, Profiled and Non-profiled.
-  * Command line params to set the size in bytes:
-    * `-XX:NonMethodCodeHeapSize`
-    * `-XX:ProfiledCodeHeapSize`
-    * `-XX:NonProfiledCodeHeapSize`
-* JShell
-  * bin: `jshell`
-* Compiler control
-* Dynamic linking of language defined object models
-
-## Sample Projects
-
-The shell script uses env var JAVA9_HOME to jdk-9 dir.
-
-### Simple Deps
-
-The calculator module uses math_libs module.
-The math_api module export an interface:
-
-* Operation: defines an operation;
-
-The math_lib module export a class:
-
-* MathIntegerOperations: expose the implementations of Operation;
-* Showing dependencies
-
-To show the deps we need to set modules path if a module use any other define
-
-```sh
-$JAVA9_HOME/bin/jdeps output/mlibs/mathlib-1.0.jar
-$JAVA9_HOME/bin/jdeps --module-path output/mlibs/ output/mlibs/calculator.jar
-```
-
-### Services
-
-The provider module exposes a service Calculator using the its implementation HitchhikerCalculator.
-The consumer uses the exposed service by loooking up using ServiceLoader.
-
 ## JEPs
 
 * [102](https://openjdk.java.net/jeps/102) - Process API Updates
@@ -158,13 +86,85 @@ The consumer uses the exposed service by loooking up using ServiceLoader.
 * [288](https://openjdk.java.net/jeps/288) - Disable SHA-1 Certificates
 * [289](https://openjdk.java.net/jeps/289) - Deprecate the Applet API
 * [290](https://openjdk.java.net/jeps/290) - Filter Incoming Serialization Data
-* [291](https://openjdk.java.net/jeps/291) - Deprecate the Concurrent Mark Sweep (CMS) Garbage Collector
-* [292](https://openjdk.java.net/jeps/292) - Implement Selected ECMAScript 6 Features in Nashorn
-* [294](https://openjdk.java.net/jeps/294) - Linux/s390x Port
-* [295](https://openjdk.java.net/jeps/295) - Ahead-of-Time Compilation
-* [297](https://openjdk.java.net/jeps/297) - Unified arm32/arm64 Port
-* [298](https://openjdk.java.net/jeps/298) - Remove Demos and Samples
+* [291](HTTPS://OPENJDK.JAVA.NET/JEPS/291) - DEPRECATE THE CONCURRENT MARK SWEEP (CMS) GARBAGE COLLECTOR
+* [292](HTTPS://OPENJDK.JAVA.NET/JEPS/292) - IMPLEMENT SELECTED ECMASCRIPT 6 FEATURES IN NASHORN
+* [294](HTTPS://OPENJDK.JAVA.NET/JEPS/294) - LINUX/S390X PORT
+* [295](HTTPS://OPENJDK.JAVA.NET/JEPS/295) - AHEAD-OF-TIME COMPILATION
+* [297](HTTPS://OPENJDK.JAVA.NET/JEPS/297) - UNIFIED ARM32/ARM64 PORT
+* [298](HTTPS://OPENJDK.JAVA.NET/JEPS/298) - REMOVE DEMOS AND SAMPLES
 * [299](https://openjdk.java.net/jeps/299) - Reorganize Documentation
+
+## Features
+
+### Language
+
+* Milling Project Coin:
+  * More concise try-with-resources statements
+  * `@SafeVarargs` annotation is allowed on private instance methods
+  * Use diamond syntax in conjunction with anonymous inner classes
+  * Private interface methods are supported
+* The underscore character is not a legal name
+* Platform Logging API and Service
+* Concurrency improvements
+* Collections improvements
+* Method handles improvements
+* Project Jigsaw
+  * Creating modules;
+  * Exports and requires;
+  * Requires transitive;
+  * Using non-exported class through its exported interface;
+  * Running a module.
+* jlink
+  * Tool to assemble and optimized our modules and their deps into a custom runtime image;
+  * The runtime image will contain the JVM, only the Java modules we need and our code;
+  * The runtime image is generated for the platform we are using (current jdk platform);
+  * We can set --launcher option to generate a script to run a module/class.
+* Unified Logging
+  * `-Xlog` to give uniform access to log messages from different subsystems (class loading, threading, GC, module system, so on)
+
+### JVM
+
+* Compact Strings
+* Improve contended locking
+  * Improvement in monitor enter and exit, faster notifications
+* Segmented code cache
+  * Improvement of code cache by separeting in three segments: Non-method, Profiled and Non-profiled.
+  * Command line params to set the size in bytes:
+    * `-XX:NonMethodCodeHeapSize`
+    * `-XX:ProfiledCodeHeapSize`
+    * `-XX:NonProfiledCodeHeapSize`
+* JShell
+  * bin: `jshell`
+* Compiler control
+* Dynamic linking of language defined object models
+
+## Sample Projects
+
+The shell script uses env var JAVA9_HOME to jdk-9 dir.
+
+### Simple Deps
+
+The calculator module uses math_libs module.
+The math_api module export an interface:
+
+* Operation: defines an operation;
+
+The math_lib module export a class:
+
+* MathIntegerOperations: expose the implementations of Operation;
+* Showing dependencies
+
+To show the deps we need to set modules path if a module use any other define
+
+```sh
+$JAVA9_HOME/bin/jdeps output/mlibs/mathlib-1.0.jar
+$JAVA9_HOME/bin/jdeps --module-path output/mlibs/ output/mlibs/calculator.jar
+```
+
+### Services
+
+The provider module exposes a service Calculator using the its implementation HitchhikerCalculator.
+The consumer uses the exposed service by loooking up using ServiceLoader.
 
 ## Links
 

@@ -2,6 +2,17 @@
 
 To run each example use: `java --enable-preview --source 20 <FileName.java>`
 
+## JEPs
+
+JEPs proposed to target:
+
+* [429](https://openjdk.java.net/jeps/429) - Scoped Values (Incubator)
+* [432](https://openjdk.java.net/jeps/432) - Record Patterns (Second Preview)
+* [433](https://openjdk.java.net/jeps/433) - Pattern Matching for switch (Fourth Preview)
+* [434](https://openjdk.java.net/jeps/434) - Foreign Function & Memory API (Second Preview)
+* [436](https://openjdk.java.net/jeps/436) - Virtual Threads (Second Preview)
+* [437](https://openjdk.java.net/jeps/437) - Structured Concurrency (Second Incubator)
+
 ## Features
 
 * Record patterns (second preview)
@@ -76,18 +87,6 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
        * the binding will remains until the child thread are finished and we can use `StructuredTaskScoped.join` to ensure
        that the child threads will terminate before `run`/`call`
      * when we try to access a scoped value not shared with current thread an exception `NoSuchElementException` will be thrown
-
-  
-## JEPs
-
-JEPs proposed to target:
-
-* [429](https://openjdk.java.net/jeps/429) - Scoped Values (Incubator)
-* [432](https://openjdk.java.net/jeps/432) - Record Patterns (Second Preview)
-* [433](https://openjdk.java.net/jeps/433) - Pattern Matching for switch (Fourth Preview)
-* [434](https://openjdk.java.net/jeps/434) - Foreign Function & Memory API (Second Preview)
-* [436](https://openjdk.java.net/jeps/436) - Virtual Threads (Second Preview)
-* [437](https://openjdk.java.net/jeps/437) - Structured Concurrency (Second Incubator)
 
 ## Links
 

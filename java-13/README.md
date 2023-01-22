@@ -2,6 +2,14 @@
 
 To run each example use: `java --enable-preview --source 13 <FileName.java>`
 
+## JEPs
+
+* [354](https://openjdk.java.net/jeps/354) - Switch expression (preview 2)
+* [355](https://openjdk.java.net/jeps/355) - Text blocks (preview)
+* [350](https://openjdk.java.net/jeps/350) - Dynamic CDS Archives
+* [351](https://openjdk.java.net/jeps/351) - ZGC: Uncommit Unused Memory
+* [353](https://openjdk.java.net/jeps/353) - Reimplement the Legacy Socket API
+
 ## Features
 
 ### Language
@@ -26,14 +34,6 @@ To run each example use: `java --enable-preview --source 13 <FileName.java>`
 * ZGC (Oracle's Z GC) returns unused memory to SO
   * `-XX:ZUncommitDelay=<seconds>` to set the delay in seconds
   * `-XX:SoftMaxHeapSize`: soft (won't generate OutOfMemoryError - will request more) limit to avoid the JVM to grow in memory
-
-## JEPs
-
-* [354](https://openjdk.java.net/jeps/354) - Switch expression (preview 2)
-* [355](https://openjdk.java.net/jeps/355) - Text blocks (preview)
-* [350](https://openjdk.java.net/jeps/350) - Dynamic CDS Archives
-* [351](https://openjdk.java.net/jeps/351) - ZGC: Uncommit Unused Memory
-* [353](https://openjdk.java.net/jeps/353) - Reimplement the Legacy Socket API
 
 ## Warnings
 
@@ -73,3 +73,4 @@ To run each example use: `java --enable-preview --source 13 <FileName.java>`
 * [Java 13 Guide](https://blog.codefx.org/java/java-13-guide/)
 * [Switch Expression](https://blog.codefx.org/java/switch-expressions/)
 * [Text Block Guid](http://cr.openjdk.java.net/~jlaskey/Strings/TextBlocksGuide_v9.html)
+

@@ -1,7 +1,18 @@
 # Java 12
 
-To run each example use:
-`java --enable-preview --source 12 <FileName.java>`
+To run each example use: `java --enable-preview --source 12 <FileName.java>`
+
+## JEPs
+
+* [12](https://openjdk.java.net/jeps/12) - Preview language and VM features
+* [189](https://openjdk.java.net/jeps/189) - Low-Pause-Time GC (experimental)
+* [230](https://openjdk.java.net/jeps/230) - Microbenchmark Suite
+* [325](https://openjdk.java.net/jeps/325) - Switch expressions (preview)
+* [334](https://openjdk.java.net/jeps/334) - JVM Constants API
+* [340](https://openjdk.java.net/jeps/340) - One AArch64
+* [341](https://openjdk.java.net/jeps/341) - Default CDS Archives
+* [344](https://openjdk.java.net/jeps/344) - Abortable mixed collections for G1
+* [345](https://openjdk.java.net/jeps/346) - Promptly return unused memory from G1
 
 ## Features
 
@@ -24,18 +35,6 @@ To run each example use:
 * Garbage Collection
   * Shenandoah: Red Hat low-pause-time GC, experimental;
   * G1: improvements and promptly returns unused memory SO;
-
-## JEPs
-
-* [12](https://openjdk.java.net/jeps/12) - Preview language and VM features
-* [189](https://openjdk.java.net/jeps/189) - Low-Pause-Time GC (experimental)
-* [230](https://openjdk.java.net/jeps/230) - Microbenchmark Suite
-* [325](https://openjdk.java.net/jeps/325) - Switch expressions (preview)
-* [334](https://openjdk.java.net/jeps/334) - JVM Constants API
-* [340](https://openjdk.java.net/jeps/340) - One AArch64
-* [341](https://openjdk.java.net/jeps/341) - Default CDS Archives
-* [344](https://openjdk.java.net/jeps/344) - Abortable mixed collections for G1
-* [345](https://openjdk.java.net/jeps/346) - Promptly return unused memory from G1
 
 ## Warnings
 
@@ -66,7 +65,7 @@ Libs which manipulate bytecode that will need update:
 
 * Spring
 * Hibernate
-* Mockiot
+* Mockito
 
 ## Links
 

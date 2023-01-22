@@ -2,6 +2,16 @@
 
 To run each example use: `java --enable-preview --source 19 <FileName.java>`
 
+## JEPs
+
+* [405](https://openjdk.java.net/jeps/405) - Record Patterns (Preview)
+* [422](https://openjdk.java.net/jeps/422) - Linux/RISC-V Port
+* [424](https://openjdk.java.net/jeps/424) - Foreign Function & Memory API (Preview)
+* [425](https://openjdk.java.net/jeps/425) - Virtual Threads (Preview)
+* [426](https://openjdk.java.net/jeps/426) - Vector API (Fourth Incubator)
+* [427](https://openjdk.java.net/jeps/427) - Pattern Matching for switch (Third Preview)
+* [428](https://openjdk.java.net/jeps/428) - Structured Concurrency (Incubator)
+
 ## Features
 
 ### Language
@@ -96,17 +106,6 @@ To run each example use: `java --enable-preview --source 19 <FileName.java>`
     * shutdown causes the threads of all forks that are still active in the scope to be interrupted
     * when calling `close`, it propagates the the state of the unit of work (either awaits all subtasks to finish or cancel each one of them)
   * [output from the structured concurrency example](structured-concurrency-example.md):
-
-
-## JEPs
-
-* [405](https://openjdk.java.net/jeps/405) - Record Patterns (Preview)
-* [422](https://openjdk.java.net/jeps/422) - Linux/RISC-V Port
-* [424](https://openjdk.java.net/jeps/424) - Foreign Function & Memory API (Preview)
-* [425](https://openjdk.java.net/jeps/425) - Virtual Threads (Preview)
-* [426](https://openjdk.java.net/jeps/426) - Vector API (Fourth Incubator)
-* [427](https://openjdk.java.net/jeps/427) - Pattern Matching for switch (Third Preview)
-* [428](https://openjdk.java.net/jeps/428) - Structured Concurrency (Incubator)
 
 ## Links
 

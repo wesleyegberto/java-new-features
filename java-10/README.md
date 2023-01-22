@@ -5,19 +5,6 @@ sh build.sh
 java -cp bin <ClassName>
 ```
 
-## Features
-
-### Language
-
-* `var` keyword to declare variables
-  * `var universeAnswer = 42`
-* Process API improvements
-* Collections API improvements
-
-### JVM
-
-* Application Class-Data Sharing
-
 ## JEPs
 
 * [286](https://openjdk.java.net/jeps/286) - Local-Variable Type Inference
@@ -32,6 +19,19 @@ java -cp bin <ClassName>
 * [317](https://openjdk.java.net/jeps/317) - Experimental Java-Based JIT Compiler
 * [319](https://openjdk.java.net/jeps/319) - Root Certificates
 * [322](https://openjdk.java.net/jeps/322) - Time-Based Release Versioning
+
+## Features
+
+### Language
+
+* `var` keyword to declare variables
+  * `var universeAnswer = 42`
+* Process API improvements
+* Collections API improvements
+
+### JVM
+
+* Application Class-Data Sharing
 
 ## Links
 
