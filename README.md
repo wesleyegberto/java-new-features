@@ -117,6 +117,37 @@ A project to explore more about the new features of Java 8, 9, ...
   * Project Lambda
   * Repeating annotations
 
+## Maven
+
+* Maven: 3.5.0
+  * compiler plugin: 3.8.0
+  * surefire and failsafe: 2.22.0
+  * plugins using ASM (e.g. the shade plugin) will likely need to be updated as well
+
+  To run the examples with Maven use:
+
+```xml
+<plugin>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+        <release>${java.version}</release>
+        <compilerArgs>--enable-preview</compilerArgs>
+    </configuration>
+</plugin>
+<plugin>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <configuration>
+        <argLine>--enable-preview</argLine>
+    </configuration>
+</plugin>
+<plugin>
+    <artifactId>maven-failsafe-plugin</artifactId>
+    <configuration>
+        <argLine>--enable-preview</argLine>
+    </configuration>
+</plugin>
+```
+
 ## Helpful Links
 
 * [Dev.java - tutorials, news and more](https://dev.java/)

@@ -36,37 +36,6 @@ To run each example use: `java --enable-preview --source 12 <FileName.java>`
   * Shenandoah: Red Hat low-pause-time GC, experimental;
   * G1: improvements and promptly returns unused memory SO;
 
-## Warnings
-
-Tools:
-
-* Maven: 3.5.0
-  * compiler plugin: 3.8.0
-  * surefire and failsafe: 2.22.0
-
-```xml
-<plugin>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <configuration>
-        <compilerArgs>
-            --enable-preview
-        </compilerArgs>
-    </configuration>
-</plugin>
-<plugin>
-    <artifactId>maven-surefire-plugin</artifactId>
-    <configuration>
-        <argLine>--enable-preview</argLine>
-    </configuration>
-</plugin>
-```
-
-Libs which manipulate bytecode that will need update:
-
-* Spring
-* Hibernate
-* Mockito
-
 ## Links
 
 * [Java 12 Documentation](https://docs.oracle.com/en/java/javase/12/index.html)

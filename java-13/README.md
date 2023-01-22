@@ -35,38 +35,6 @@ To run each example use: `java --enable-preview --source 13 <FileName.java>`
   * `-XX:ZUncommitDelay=<seconds>` to set the delay in seconds
   * `-XX:SoftMaxHeapSize`: soft (won't generate OutOfMemoryError - will request more) limit to avoid the JVM to grow in memory
 
-## Warnings
-
-* Tools
-  * Maven: 3.5.0
-    * compiler plugin: 3.8.0
-    * surefire and failsafe: 2.22.0
-    * plugins using ASM (e.g. the shade plugin) will likely need to be updated as well
-
-```xml
-<plugin>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <configuration>
-        <release>13</release>
-        <compilerArgs>
-            --enable-preview
-        </compilerArgs>
-    </configuration>
-</plugin>
-<plugin>
-    <artifactId>maven-surefire-plugin</artifactId>
-    <configuration>
-        <argLine>--enable-preview</argLine>
-    </configuration>
-</plugin>
-<plugin>
-    <artifactId>maven-failsafe-plugin</artifactId>
-    <configuration>
-        <argLine>--enable-preview</argLine>
-    </configuration>
-</plugin>
-```
-
 ## Links
 
 * [Java 13 Documentation](https://docs.oracle.com/en/java/javase/13/index.html)
