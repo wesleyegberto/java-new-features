@@ -32,7 +32,7 @@ JEPs proposed to target:
     * `Future.resultNow()`
     * `Future.exceptionNow()`
     * `Future.state()`
-    * `ExecutorSerevice` extends `AutoClosable`
+    * `ExecutorService` extends `AutoClosable`
 * Scoped values (incubator)
   * enable the sharing of immutable data within and across threads
   * it were inspired by the way that Lipst dialects provide support for dyanamically scoped free variables
@@ -47,7 +47,7 @@ JEPs proposed to target:
     * unbounded lifetime: it is stored until the thread is destroyed, if is used in a pool it can take a long time
     * expensive inheritance: a child thread must allocate memory for every variable stored in the parent thread
   * a scoped value allows data to be safely and efficiently shared between components
-  * we use an attribute of type `ScopedValue` declared as final static
+  * we use an attribute of type [`ScopedValue`](https://download.java.net/java/early_access/loom/docs/api/jdk.incubator.concurrent/jdk/incubator/concurrent/ScopedValue.html) declared as final static
     * scoped value has multiple incarnations, one per thread
     * once the value is written to scoped value it becomes immutable and is available only for a bounded period during execution of a thread
   * we can create nested scope when inside a scope we use another variable to create a scope
