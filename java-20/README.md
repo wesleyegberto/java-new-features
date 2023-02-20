@@ -18,7 +18,7 @@ JEPs proposed to target:
 * Record patterns (second preview)
   * added support for inference of type arguments of generic record patterns;
     * now it generic type can be inferred
-    * given `record Decorator<T>(T t) {}` and variable `Decorator<Decorator<String>> wr`, thee record pattern generic type can be inferred in `w insteaceof Decorator(Decorator(var s))`
+    * given `record Decorator<T>(T t) {}` and variable `Decorator<Decorator<String>> wr`, the record pattern generic type can be inferred in `w insteaceof Decorator(Decorator(var s))`
   * added support for record patterns to appear in the headere of an enhanced for statement;
     * `for (Point(var x, var y) : shapePoints)`
   * remove support for named record pattner.
@@ -87,6 +87,9 @@ JEPs proposed to target:
        * the binding will remains until the child thread are finished and we can use `StructuredTaskScoped.join` to ensure
        that the child threads will terminate before `run`/`call`
      * when we try to access a scoped value not shared with current thread an exception `NoSuchElementException` will be thrown
+* Structured concurrency (second incubator)
+  * no changes in API since JDK 19
+  * added support to inheritance of scoped values
 
 ## Links
 

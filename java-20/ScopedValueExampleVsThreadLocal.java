@@ -66,7 +66,7 @@ class UserWorker implements Runnable {
 			System.out.printf("Users from ScopedValue and ThreadLocal aren't the same%n", user);
 			return;
 		}
-		// the first difference is the in ThreadLocal we can change the value any time
+		// the first difference, in ThreadLocal we can change the value at any time
 		ScopedValueExampleVsThreadLocal.USER_LOCAL.set(userLocal + " -- was changed");
 
 		System.out.printf("User %s - calculating...%n", user);
