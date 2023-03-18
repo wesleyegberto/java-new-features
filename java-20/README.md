@@ -12,6 +12,7 @@ JEPs proposed to target:
 * [434](https://openjdk.java.net/jeps/434) - Foreign Function & Memory API (Second Preview)
 * [436](https://openjdk.java.net/jeps/436) - Virtual Threads (Second Preview)
 * [437](https://openjdk.java.net/jeps/437) - Structured Concurrency (Second Incubator)
+* [438](https://openjdk.java.net/jeps/438) - Vector API (Fifth Incubator)
 
 ## Features
 
