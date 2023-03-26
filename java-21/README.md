@@ -1,6 +1,6 @@
 # Java 21
 
-To run each example use: `java --enable-preview --source 20 <FileName.java>`
+To run each example use: `java --enable-preview --source 21 <FileName.java>`
 
 ## JEPs
 

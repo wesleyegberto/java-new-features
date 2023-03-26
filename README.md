@@ -1,6 +1,6 @@
 # Java New Features
 
-A project to explore more about the new features of Java 8, 9, ...
+A project to explore more about the new features from Java 8 through Java 21.
 
 [JDK Release Notes](https://www.oracle.com/java/technologies/javase/jdk-relnotes-index.html)
 
