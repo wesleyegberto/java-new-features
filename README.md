@@ -11,7 +11,10 @@ A project to explore more about the new features of Java 8, 9, ...
 
 ## Resume by Version
 
-* [Java 20](java-20/)
+* [Java 21](java-21/)
+  * Sequenced collections
+
+* [Java 20](java-20/) (Mar, 2023)
   * Scoped values (incubator)
   * Record pattern (preview 2)
   * Pattern matching for `switch` (preview 4)
@@ -158,4 +161,5 @@ A project to explore more about the new features of Java 8, 9, ...
 * [Place to get early releases from Oracle's JDK](https://jdk.java.net/)
 * [OpenJDK Projects](https://openjdk.java.net/projects/)
 * [JDK Update Releases](https://openjdk.org/projects/jdk-updates/)
+* [Oracle - Java Archive](https://www.oracle.com/java/technologies/downloads/archive/#JavaSE)
 
