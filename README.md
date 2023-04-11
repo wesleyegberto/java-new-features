@@ -13,6 +13,7 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 * [Java 21](java-21/)
   * Sequenced collections
+  * Virtual Threads (standard) :rocket:
 
 * [Java 20](java-20/) (Mar, 2023)
   * Scoped values (incubator)
@@ -23,7 +24,7 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Structured concurrency (second incubator)
 
 * [Java 19](java-19/) (Sep, 2022)
-  * Virtual Thread :rocket:
+  * Virtual Thread (preview) :rocket:
   * Pattern matching for `switch` (preview 3)
   * Vector API (fourth incubator)
   * Record pattern (preview)

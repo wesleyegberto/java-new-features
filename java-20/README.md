@@ -4,8 +4,6 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
 
 ## JEPs
 
-JEPs proposed to target:
-
 * [429](https://openjdk.java.net/jeps/429) - Scoped Values (Incubator)
 * [432](https://openjdk.java.net/jeps/432) - Record Patterns (Second Preview)
 * [433](https://openjdk.java.net/jeps/433) - Pattern Matching for switch (Fourth Preview)

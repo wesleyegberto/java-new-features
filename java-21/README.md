@@ -4,12 +4,14 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 
 ## JEPs
 
-JEPs proposed to target:
-
 * [431](https://openjdk.java.net/jeps/431) - Sequenced Collections
+* [444](https://openjdk.org/jeps/444) - Virtual Threads
 
 ## Features
 
+* Virtual threads
+  * changed to make virtual threads always support thread-local
+    * in preview releases was possible to create a virtual thread without thread-local support
 * Sequenced Collections
   * new interfaces to define a common way to iterate throught sequenced collections (list, sets and maps)
   * [collections type hierarchy with new interfaces](https://cr.openjdk.org/~smarks/collections/SequencedCollectionDiagram20220216.png)
