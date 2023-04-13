@@ -12,6 +12,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 * Virtual threads
   * changed to make virtual threads always support thread-local
     * in preview releases was possible to create a virtual thread without thread-local support
+  * flag `jdk.traceVirtualThreadLocals` to show the strack trace when a virtual threads sets a value in thread-local variable
 * Sequenced Collections
   * new interfaces to define a common way to iterate throught sequenced collections (list, sets and maps)
   * [collections type hierarchy with new interfaces](https://cr.openjdk.org/~smarks/collections/SequencedCollectionDiagram20220216.png)
@@ -53,4 +54,6 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 ## Links
 
 * [JDK 21 Jeps](https://openjdk.org/projects/jdk/21/)
+* [JDK 21 Early Access Docs](https://download.java.net/java/early_access/jdk21/docs/api/)
+* [JEP 444: Virtual Threads Arrive in JDK 21, Ushering a New Era of Concurrency](https://www.infoq.com/news/2023/04/virtual-threads-arrives-jdk21/)
 
