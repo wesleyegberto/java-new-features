@@ -12,8 +12,12 @@ A project to explore more about the new features from Java 8 through Java 21.
 ## Resume by Version
 
 * [Java 21](java-21/)
-  * Sequenced collections
   * Virtual Threads (standard) :rocket:
+  * Record Pattern (standard) :rocket:
+  * Pattern Matching for `switch` (standard) :rocket:
+  * Sequenced Collections
+  * Srting Templates (preview)
+  * Foreign Function & memory API (preview 3)
 
 * [Java 20](java-20/) (Mar, 2023)
   * Scoped values (incubator)
@@ -163,4 +167,8 @@ A project to explore more about the new features from Java 8 through Java 21.
 * [OpenJDK Projects](https://openjdk.java.net/projects/)
 * [JDK Update Releases](https://openjdk.org/projects/jdk-updates/)
 * [Oracle - Java Archive](https://www.oracle.com/java/technologies/downloads/archive/#JavaSE)
+* Migration tools:
+  * [Migrating From JDK 8 to Later JDK Releases](https://docs.oracle.com/en/java/javase/17/migrate/migrating-jdk-8-later-jdk-releases.html#GUID-7744EF96-5899-4FB2-B34E-86D49B2E89B6)
+  * [Eclipse Migration Toolkit for Java (EMT4J) Simplifies Upgrading Java Applications](https://www.infoq.com/news/2022/12/eclipse-migration-toolkit-java/)
+  * [Rewrite - Migrate to Java 17](https://docs.openrewrite.org/running-recipes/popular-recipe-guides/migrate-to-java-17)
 
