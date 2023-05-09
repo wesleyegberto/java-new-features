@@ -4,13 +4,17 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 
 ## JEPs
 
+* [404](https://openjdk.java.net/jeps/404) - Generational Shenandoah (Experimental)
 * [430](https://openjdk.java.net/jeps/430) - String Templates (Preview)
 * [431](https://openjdk.java.net/jeps/431) - Sequenced Collections
 * [439](https://openjdk.java.net/jeps/439) - Generational ZGC
 * [440](https://openjdk.java.net/jeps/440) - Record Patterns
 * [441](https://openjdk.java.net/jeps/441) - Pattern Matching for switch
 * [442](https://openjdk.org/jeps/442) - Foreign Function & Memory API (Third Preview)
+* [443](https://openjdk.org/jeps/443) - Unnamed Patterns and Variables (Preview)
 * [444](https://openjdk.org/jeps/444) - Virtual Threads
+* [445](https://openjdk.org/jeps/445) - Unnamed Classes and Instance Main Methods (Preview)
+* [448](https://openjdk.org/jeps/448) - Vector API (Sixth Incubator)
 
 ## Features
 
