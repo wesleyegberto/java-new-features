@@ -16,8 +16,9 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Record Pattern (standard) :rocket:
   * Pattern Matching for `switch` (standard) :rocket:
   * Sequenced Collections
-  * Srting Templates (preview)
+  * String Templates (preview)
   * Foreign Function & memory API (preview 3)
+  * Unnamed Classes and Instance Main Methods (preview)
 
 * [Java 20](java-20/) (Mar, 2023)
   * Scoped values (incubator)

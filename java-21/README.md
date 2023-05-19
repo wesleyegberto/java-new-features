@@ -15,6 +15,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 * [444](https://openjdk.org/jeps/444) - Virtual Threads
 * [445](https://openjdk.org/jeps/445) - Unnamed Classes and Instance Main Methods (Preview)
 * [448](https://openjdk.org/jeps/448) - Vector API (Sixth Incubator)
+* [449](https://openjdk.org/jeps/449) - Deprecate the Windows 32-bit x86 Port for Removal
 
 ## Features
 
@@ -22,6 +23,45 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
   * changed to make virtual threads always support thread-local
     * in preview releases was possible to create a virtual thread without thread-local support
   * flag `jdk.traceVirtualThreadLocals` to show the strack trace when a virtual threads sets a value in thread-local variable
+* String templates:
+  * improve the string with embedded expressions and template processors
+  * goals:
+    * simply the creation and expression of string with computed computed
+    * improve the security to work with strings provided by users with validations and transformations
+    * enable the cration of non-string values computed from literal text and embedded expressions without having to use a intermediate string representation
+  * string templates introduces the string interpolatins in Java and also provides a mechanism to validate/transform the string to avoid security issues
+  * template expressions are a new kind of expressions that performs string interpolation and also provides a way to programmatically validate or transform the interpolation result
+    * `String greetings = STR."Hello \{name}"`
+    * template expression is composed by:
+      * a template processor (`STR`)
+      * dot character (`.`)
+      * template (`"My name is \{name}"`) which contains an embedded expresion (`\{name}`)
+    * the template literal can be defined with single or multi-line (using `"""` like text blocks)
+      ```
+      STR."""
+      Hello from multi-line template expression.
+      """
+      ```
+    * the template expressions is evaluated at run time, the template processor combines the literal text with the values of the embedded expressions to produce a result
+    * the result of the template processor is often a string, but it could be transform to any other value
+  * embedded expression
+    * an embedded expression can perform any Java expression (access variable, arithmetic operation, call method and fields, another template expression)
+    * the embedded expressions are evaluated from left to right
+    * double-quote character doesn't need to be espaced inside an embedded expression
+      * `STR."The file exists: \{file.exists() ? "yes" : "no"}"`
+    * the embedded expression can be spread over multiples lines without introducing newlines
+      * the expression is interpolated in the same line from `\` character
+      ```java
+      String time = STR."The time is \{
+        DateTimeFormatter
+          .ofPattern("HH:mm:ss")
+          .format(LocalTime.now())
+      } right now"
+      ```
+  * `STR` template processor
+    * `STR` is a template processor provided by Java Platform, it performs the interpolation by replacing the embedded expresions with the stringified value othe expression
+    * `STR` is a public static final field that is automatically imported into every Java source file
+    * 
 * Sequenced Collections
   * new interfaces to define a common way to iterate throught sequenced collections (list, sets and maps)
   * [collections type hierarchy with new interfaces](https://cr.openjdk.org/~smarks/collections/SequencedCollectionDiagram20220216.png)
@@ -58,6 +98,9 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
     * `unmodifiableSequencedCollection`
     * `unmodifiableSequencedSet`
     * `unmodifiableSequencedMap`
+  * APIs:
+    * improve `Thread.sleep(millis, nanos)` to actually perform sleep with sub-millisecond time
+    * [`java.net.http.HttpClient` is now `AutoCloseable`](https://jdk.java.net/21/release-notes#JDK-8267140) and new methods were added to close/shutdown the connection pool.
 
 
 ## Links
