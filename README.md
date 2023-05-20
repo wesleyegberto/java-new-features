@@ -126,7 +126,27 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Project Lambda
   * Repeating annotations
 
-## Maven
+## Running
+
+### Java and Javac
+
+You will need to provide the flag to enable preview and the number of Java version:
+
+```bash
+java --enable-preview --source # SourceCode.java
+
+javac --enable-preview --source # SourceCode.java
+```
+
+### JShell
+
+To use JShell you can use the following flag:
+
+```bash
+jshell --enable-preview
+```
+
+### Maven
 
 * Maven: 3.5.0
   * compiler plugin: 3.8.0
