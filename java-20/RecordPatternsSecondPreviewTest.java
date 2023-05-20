@@ -1,9 +1,16 @@
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * To run: `java --enable-preview --source 20 RecordsPatternSecondPreviewTest.java`
  */
 public class RecordPatternsSecondPreviewTest {
 	public static void main(String[] args) {
 		enhancedForLoop();
+
+		genericInferrenceTest();
+
+		recordPatternInEnhancedForLoopHeader();
 	}
 
 	public static void enhancedForLoop() {
@@ -17,7 +24,7 @@ public class RecordPatternsSecondPreviewTest {
 
 		// we can now deconstruct a record type in the enhanced for loop
 		for (Point(int x, int y) : points) {
-			System.out.print("Drawing at x=%d and y=%d", x, y);
+			System.out.printf("Drawing at x=%d and y=%d%n", x, y);
 		}
 	}
 
@@ -28,17 +35,17 @@ public class RecordPatternsSecondPreviewTest {
 
 		// here we don't need to use `Decorator<Decorator<ColoredPoint>>(Decorator<ColoredPoint>(ColoredPoint cp))` like in JDK 19
 		if (anotherDecorated instanceof Decorator(Decorator(ColoredPoint(Point(int x, int y), String color)))) {
-			System.out.println("Aren't you using too much decorator?");
-			System.out.printf("x=%d, y=%d; color=%s", x, y, color);
+			System.out.println("\nAren't you using too much decorator?");
+			System.out.printf("x=%d, y=%d; color=%s%n%n", x, y, color);
 		}
 	}
 
-	static void invalidGenericEnhancedForLoop() {
-		var items = new Decorator<Object>[] { new Object() };
+	static void recordPatternInEnhancedForLoopHeader() {
+		var items = new ColoredPoint[] { new ColoredPoint(new Point(42, 42), "red") };
 
-		// the pattern is not exhaustive (should be Decorator<Object>)
-		// for (Decorator<String> d : items) {
-		// }
+		for (ColoredPoint(Point(var x, var y), String color) : items) {
+			System.out.printf("Point [%d, %d] has color %s", x, y, color);
+		}
 	}
 }
 
