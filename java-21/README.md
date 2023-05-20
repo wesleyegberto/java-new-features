@@ -23,6 +23,14 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
   * changed to make virtual threads always support thread-local
     * in preview releases was possible to create a virtual thread without thread-local support
   * flag `jdk.traceVirtualThreadLocals` to show the strack trace when a virtual threads sets a value in thread-local variable
+* Record patterns
+  * the main change is remove the support for record pattern in header of an enhanced for loop
+* Pattern matching for `switch`
+  * main changes from last JEPs:
+    * removed parenthesized patterns (`switch int i when (i > 0)`)
+    * allow qualified enum constants as case constants
+    * exhaustiveness and compatibility:
+      * compiler will only require exhaustiveness if the switch uses any pattern, null label or if selector expression isn't from a legacy type (char, byte, short, int, Character, Byte, Short, Integer, String or a enum)
 * String templates:
   * improve the string with embedded expressions and template processors
   * goals:

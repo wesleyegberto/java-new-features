@@ -3,11 +3,13 @@ import java.util.*;
 /**
  * Java Doc:
  * https://cr.openjdk.org/~smarks/collections/specdiff-sequenced-20230327/java.base/java/util/SequencedCollection.html
+ * To run: `java SequencedCollectionExample.java`
  */
 public class SequencedCollectionExample {
 	public static void main(String[] args) {
 		testCollections();
 		testSets();
+		testMaps();
 	}
 
 	public static void testCollections() {
@@ -86,8 +88,46 @@ public class SequencedCollectionExample {
 		descendingIterator = sequenced.reversed().iterator();
 	}
 
-	public static void print(Collection<?> collection, Collection<?> newCollection) {
-		System.out.printf("%s: %s%n", collection.getClass().getSimpleName(), collection);
-		System.out.printf("%s: %s%n", newCollection.getClass().getSimpleName(), newCollection);
+	public static void testMaps() {
+		System.out.println("=== Map ===");
+		Map<String, String> map = new LinkedHashMap<>();
+		SequencedMap<String, String> sequenced = new LinkedHashMap<>();
+
+		map.put("elem", "v1");
+		sequenced.put("elem", "v1");
+		print(map, sequenced);
+
+		// put first
+		map.put("first", "v2");
+		sequenced.putFirst("first", "v2");
+		print(map, sequenced);
+
+		// get first
+		var entry = map.entrySet().iterator().next();
+		entry = sequenced.firstEntry();
+
+		// put last
+		map.put("last", "v2");
+		sequenced.putLast("last", "v2");
+		print(map, sequenced);
+
+		// get last
+		var iterator = map.entrySet().iterator();
+		while (iterator.hasNext())
+			entry = iterator.next();
+		entry = sequenced.lastEntry();
+
+		// reverse
+		var reversedIterator = sequenced.reversed().entrySet().iterator();
+	}
+
+	public static void print(Collection<?> collection, SequencedCollection<?> newCollection) {
+		System.out.printf("Collection: %s%n", collection);
+		System.out.printf("Sequenced: %s%n", newCollection);
+	}
+
+	public static void print(Map<?,?> collection, SequencedMap<?,?> newCollection) {
+		System.out.printf("Map: %s%n", collection);
+		System.out.printf("SequencedMap: %s%n", newCollection);
 	}
 }
