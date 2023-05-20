@@ -134,9 +134,9 @@ A project to explore more about the new features from Java 8 through Java 21.
 You will need to provide the flag to enable preview and the number of Java version:
 
 ```bash
-java --enable-preview --source # SourceCode.java
+java --enable-preview --source 21 SourceCode.java
 
-javac --enable-preview --source # SourceCode.java
+javac --enable-preview --source 21 SourceCode.java
 ```
 
 ### JShell
