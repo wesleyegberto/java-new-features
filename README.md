@@ -18,6 +18,7 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Sequenced Collections
   * String Templates (preview)
   * Foreign Function & memory API (preview 3)
+  * Unnamed Patterns and Variables (preview)
   * Unnamed Classes and Instance Main Methods (preview)
 
 * [Java 20](java-20/) (Mar, 2023)

@@ -69,7 +69,6 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
   * `STR` template processor
     * `STR` is a template processor provided by Java Platform, it performs the interpolation by replacing the embedded expresions with the stringified value othe expression
     * `STR` is a public static final field that is automatically imported into every Java source file
-    * 
 * Sequenced Collections
   * new interfaces to define a common way to iterate throught sequenced collections (list, sets and maps)
   * [collections type hierarchy with new interfaces](https://cr.openjdk.org/~smarks/collections/SequencedCollectionDiagram20220216.png)
