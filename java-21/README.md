@@ -27,7 +27,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
   * the main change is remove the support for record pattern in header of an enhanced for loop
 * Pattern matching for `switch`
   * main changes from last JEPs:
-    * removed parenthesized patterns (`switch int i when (i > 0)`)
+    * removed parenthesized patterns (`case int i when (i > 0)`)
     * allow qualified enum constants as case constants
     * exhaustiveness and compatibility:
       * compiler will only require exhaustiveness if the switch uses any pattern, null label or if selector expression isn't from a legacy type (char, byte, short, int, Character, Byte, Short, Integer, String or a enum)
@@ -105,9 +105,53 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
     * `unmodifiableSequencedCollection`
     * `unmodifiableSequencedSet`
     * `unmodifiableSequencedMap`
-  * APIs:
-    * improve `Thread.sleep(millis, nanos)` to actually perform sleep with sub-millisecond time
-    * [`java.net.http.HttpClient` is now `AutoCloseable`](https://jdk.java.net/21/release-notes#JDK-8267140) and new methods were added to close/shutdown the connection pool.
+* Unnamed classes and instance main methods
+  * facilitate the writing of first programm for students without needing to know another features designed for large programs
+  * unnamed class:
+    * any method declared in a source file without an enclosed class will be considered to be member of an unnamed top-level class
+    * the compiler requires an unnamed method to have a valid main method to be launched
+    * unnamed class is always final and cannot implement or extends any class other than `Object`
+      * is equivalent to the following usage of anonymous class declaration:
+      ```java
+      new Object() {
+          void main() {}
+      }.main();
+      ```
+    * as it doesn't have a name, so we can use its static methods like `ClassName.staticMethodName()`
+    * it still will have the impliticy `this` reference
+    * it can have:
+      * instance and static methods
+      * instance and static fields
+      * instance and static initializers
+      * the default modifers are the same (package access and instance membership)
+    * the main difference is will only have an impliticy default zero-paramater constructor
+    * `Class.isSynthetic` method returns true
+  * this JEPs introduces changes to how Java programs are launched:
+    * instance main method:
+      * the class must have a non-private zero-paramater constructor
+      * the main method doesn't need to be static, public nor have parameter
+      * example:
+      ```java
+      class HelloWord {
+          void main() {
+              System.out.println("Hello World!");
+          }
+      }
+      ```
+    * allowing unnamed class:
+    ```java
+    void main() {
+        System.out.println("Hello World!");
+    }
+    ```
+  * order to select a main method (all must be non-private and it prioritize the methods in current class before the superclass):
+    * `static void main(String[])`
+    * `static void main()`
+    * `void main(String[])`
+    * `void main()`
+* APIs:
+  * improve `Thread.sleep(millis, nanos)` to actually perform sleep with sub-millisecond time
+  * [`java.net.http.Http Client` is now `AutoCloseable`](https://jdk.java.net/21/release-notes#JDK-8267140) and new methods were added to close/shutdown the connection pool.
 
 
 ## Links
