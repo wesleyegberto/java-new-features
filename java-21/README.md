@@ -20,17 +20,28 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 ## Features
 
 * Virtual threads
+  * promotion to standard
   * changed to make virtual threads always support thread-local
     * in preview releases was possible to create a virtual thread without thread-local support
   * flag `jdk.traceVirtualThreadLocals` to show the strack trace when a virtual threads sets a value in thread-local variable
 * Record patterns
+  * promotion to standard
   * the main change is remove the support for record pattern in header of an enhanced for loop
 * Pattern matching for `switch`
+  * promotion to standard
   * main changes from last JEPs:
     * removed parenthesized patterns (`case int i when (i > 0)`)
-    * allow qualified enum constants as case constants
+    * allow qualified enum constants as case constants (`case MyEnum.ITEM`)
     * exhaustiveness and compatibility:
       * compiler will only require exhaustiveness if the switch uses any pattern, null label or if selector expression isn't from a legacy type (char, byte, short, int, Character, Byte, Short, Integer, String or a enum)
+  * improved switch to support pattern matching for types (like `instanceof`)
+  * support for `null` case
+  * support for guards where we can use a boolean expression (`case String s when s.length > 10`)
+  * scope for pattern variable:
+    * the scope of pattern variable in visible only in the guard clause and the case body (expression, block or throw)
+    * fall through:
+      * `switch` with type pattern doesn't support falling through
+      * if using case label with `:`, we must end the block with `break` or `yield` (`case String s: ...; break;`, `case String s: ...; yield s.length();`)
 * String templates:
   * improve the string with embedded expressions and template processors
   * goals:
@@ -106,6 +117,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
     * `unmodifiableSequencedSet`
     * `unmodifiableSequencedMap`
 * Unnamed classes and instance main methods
+  * a.k.a. relaxed launch protocol
   * facilitate the writing of first programm for students without needing to know another features designed for large programs
   * unnamed class:
     * any method declared in a source file without an enclosed class will be considered to be member of an unnamed top-level class
@@ -149,6 +161,32 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
     * `static void main()`
     * `void main(String[])`
     * `void main()`
+* Unnamed patterns and variables
+  * goals:
+    * improve the readability of record patterns by ediling unnecessary nested patterns
+    * improve the maintanability of code by identifying variables that must be declared but will not be used
+  * unnamed pattern is denoted by `_`
+  * it is a shorthand for the type pattern `var _`
+  * it will facilitate the pattern matching where we are interested in the data types or structure
+  * unnamed variables:
+    * it never shadows another variable, can be used many times
+    * it can be used when:
+      * declaring a local variable (`int _ = q.remove()`)
+      * resource specification of a try-with-resources (`try (_ = ScopedContxt.acquire())`)
+      * exception parameter in a catch clause (`catch (NumberFormatException _)`)
+      * header of an enhanced for loop (`for (int i = 0; _ = sideEffect(); i++)`)
+      * header of an enhanced for loop (`for (Order _ : orders)`)
+      * lambda parameter (`(int x, int _) -> x + x`, `_ -> "lambda with single parameter"`)
+  * unnamed patterns:
+    * unnamed pattern is an unconditional pattern which binds nothing
+    * we can use it in a nested position of a type pattern or a record pattern
+      * `p instanceof Point(_, int y)`
+      * `case Point(int x, _)`
+      * `p instanceof ColoredPoint(Point _, Color c)`
+  * unnamed pattern variables:
+    * we can use it in any type pattern
+      * `p instanceof Point _`
+      * `case Point _`
 * APIs:
   * improve `Thread.sleep(millis, nanos)` to actually perform sleep with sub-millisecond time
   * [`java.net.http.Http Client` is now `AutoCloseable`](https://jdk.java.net/21/release-notes#JDK-8267140) and new methods were added to close/shutdown the connection pool.

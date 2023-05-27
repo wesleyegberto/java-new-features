@@ -4,6 +4,7 @@ public class PatternMatchingForSwitchTest {
 	public static void main(String[] args) {
 		switchExhaustivenessAndCompatibility();
 		switchExpressionWithPatternMatching();
+		switchScopeWithPatternMatching();
 		switchEnhancedTypeChecking();
 		switchWithGuardedCaseLabel();
 		switchWithEnumConstants();
@@ -26,6 +27,17 @@ public class PatternMatchingForSwitchTest {
 		}
 
 		var shape = Shape.TRIANGLE;
+		// default case way
+		switch (shape) {
+			case TRIANGLE:
+				System.out.println("Is a triangle");
+				break;
+			case CIRCLE:
+				System.out.println("Is a circle");
+				break;
+		}
+
+		// lambda expression way
 		switch (shape) {
 			case TRIANGLE -> System.out.println("Is a triangle");
 			case CIRCLE -> System.out.println("Is a circle");
@@ -49,6 +61,48 @@ public class PatternMatchingForSwitchTest {
 			// null, default -> obj.toString();
 		};
 		System.out.println(message);
+	}
+
+	static void switchScopeWithPatternMatching() {
+		Number number = 42;
+
+		String message = null;
+
+		switch (number) {
+			case Integer i when i == 0:
+				System.out.println("zero =0");
+				// doesn't allow fall-through (must have the break or yield when using `:` in a switch statement or expression)
+				// error: illegal fall-through to a pattern
+				break;
+
+			case Integer x when x < 0:
+				message = "zero or lower";
+				break;
+			case Integer n when n == 21:
+				message = "half of the answer";
+				break;
+			case Integer n when n == 42:
+				message = "answer";
+				break;
+			default:
+				message = "unhandled";
+		}
+		System.out.println("switch statement: " + message);
+
+		message = switch (number) {
+			case Integer i when i == 0:
+				System.out.println("zero =0");
+				yield "zero =0";
+			case Integer x when x < 0:
+				yield "zero or lower";
+			case Integer n when n == 21:
+				yield "half of the answer";
+			case Integer n when n == 42:
+				yield "answer";
+			default:
+				yield "unhandled";
+		};
+		System.out.println("switch expression: " + message);
 	}
 
 	static void switchEnhancedTypeChecking() {
@@ -102,6 +156,7 @@ public class PatternMatchingForSwitchTest {
 			case Shape.CIRCLE -> "Circle";
 			case Shape.RECTANGLE -> "Rectangle";
 			case Shape.TRIANGLE -> "Triangle";
+			default -> "other type";
 		};
 		System.out.println(shapeName);
 	}
