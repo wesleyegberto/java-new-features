@@ -11,7 +11,7 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 ## Resume by Version
 
-* [Java 21](java-21/)
+* [Java 21](java-21/) (LTS)
   * Virtual Threads (standard) :rocket:
   * Record Pattern (standard) :rocket:
   * Pattern Matching for `switch` (standard) :rocket:
@@ -20,6 +20,8 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Foreign Function & memory API (preview 3)
   * Unnamed Patterns and Variables (preview)
   * Unnamed Classes and Instance Main Methods (preview)
+  * Prepare to Disallow the Dynamic Loading of Agents
+  * KEM API
 
 * [Java 20](java-20/) (Mar, 2023)
   * Scoped values (incubator)
@@ -43,7 +45,7 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Pattern matching for `switch` (preview 2)
   * Deprecated method `finalize`
 
-* [Java 17](java-17/) (Sep, 2021)
+* [Java 17](java-17/) (LTS; Sep, 2021)
   * Sealed classes (standard)
   * Pattern matching for `switch` (preview)
   * Enhanced Pseudo-Random Number Generator
@@ -97,7 +99,7 @@ A project to explore more about the new features from Java 8 through Java 21.
   * CDS enable by default
   * New GC and improvements
 
-* [Java 11](java-11/) (Sep, 2018)
+* [Java 11](java-11/) (LTS; Sep, 2018)
   * Removal of Java EE Modules, JavaFX and deprecated API
   * Http Client (incubator)
   * var in lambda expressions

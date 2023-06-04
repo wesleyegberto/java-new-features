@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * To run: `java RecordsPatternSecondPreviewTest.java`
+ * To run: `java RecordPatternTest.java`
  */
 public class RecordPatternTest {
 	public static void main(String[] args) {

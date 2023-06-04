@@ -1,3 +1,7 @@
+/**
+ * To run: `java --enable-preview --source 21 UnnamedClassWithAllowedMembers.java`
+ */
+
 static String staticField = "can have static field";
 static String privateStaticField = "can have private static field";
 

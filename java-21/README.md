@@ -16,6 +16,8 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 * [445](https://openjdk.org/jeps/445) - Unnamed Classes and Instance Main Methods (Preview)
 * [448](https://openjdk.org/jeps/448) - Vector API (Sixth Incubator)
 * [449](https://openjdk.org/jeps/449) - Deprecate the Windows 32-bit x86 Port for Removal
+* [451](https://openjdk.org/jeps/451) - Prepare to Disallow the Dynamic Loading of Agents
+* [452](https://openjdk.org/jeps/452) - Key Encapsulation Mechanism API
 
 ## Features
 

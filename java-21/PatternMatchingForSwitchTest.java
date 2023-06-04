@@ -1,5 +1,8 @@
 import java.util.*;
 
+/**
+ * To run: `java PatternMatchingForSwitchTest.java`
+ */
 public class PatternMatchingForSwitchTest {
 	public static void main(String[] args) {
 		switchExhaustivenessAndCompatibility();

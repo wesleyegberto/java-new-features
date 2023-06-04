@@ -1,3 +1,7 @@
+/**
+ * To run: `java --enable-preview --source 21 UnnamedClassWithInitializers.java`
+ */
+
 static {
 	System.out.println("static initializer");
 }
