@@ -52,3 +52,5 @@ To run each example use: `java --enable-preview --source 15 <FileName.java>`
 * [Doc about record and sealed types](https://cr.openjdk.java.net/~briangoetz/amber/datum.html)
 * [ZGC | What's new in JDK 15](https://malloc.se/blog/zgc-jdk15)
 * [Inside Java 15 JEPs in Five Buckets](https://blogs.oracle.com/javamagazine/inside-java-15-fourteen-jeps-in-five-buckets)
+* [Programmer's Guide to Text Blocks](https://openjdk.org/projects/amber/guides/text-blocks-guide)
+
