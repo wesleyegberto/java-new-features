@@ -34,7 +34,11 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 * Structured concurrency
   * promoted from incubated to preview feature
   * moved from pacote `jdk.incubator.concurrent` to `java.util.concurrent`
-  * changed method `StructuredTaskScope.fork` to return a `Subtask` instanceof of a `Future`
+  * changes from JDK 19 and 20:
+    * changed method `StructuredTaskScope::fork` to return a `Subtask` instanceof of a `Future`
+    * the sealed interface `Subtask` extends `Supplier<T>`
+    * the method `Subtask::get` behaves exaclty like `Future::resultNow`
+    * calling the method `Subtask::get` never blocks, it throws an `IllegalStateException` whe calling before `join` or when the subtask has not completed successfully
 * Record patterns
   * promotion to standard
   * the main change is remove the support for record pattern in header of an enhanced for loop

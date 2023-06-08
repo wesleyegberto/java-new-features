@@ -98,12 +98,15 @@ To run each example use: `java --enable-preview --source 19 <FileName.java>`
       * any subtask or the scope owner can call `shutdown` to request cancelation of all remaining subtasks;
     * scope's owner joins the scope:
       * blocks until all subtasks either complete (sucessfully or not) or any call shutdown;
-    * after joining, handle any errors and process theirs results;
+    * after joining, handle any errors and process theirs results:
+      * we should only query the subtasks results after `join` returns (when all subtasks are known to be completed or canceled)
     * close the scope (implicity when using try-with-resources).
   * characteristics:
     * each fork creates its own thread (by default is a virtual thread)
     * allow nested scope (when creating a scope in a subtask)
     * shutdown causes the threads of all forks that are still active in the scope to be interrupted
+      * causes `join`/`joinUntil` methods to return
+      * all subtasks should be written to be responsive to interruption
     * when calling `close`, it propagates the the state of the unit of work (either awaits all subtasks to finish or cancel each one of them)
   * [output from the structured concurrency example](structured-concurrency-example.md):
 
