@@ -1,4 +1,6 @@
 /**
+ * Using JDK manually built from main branch.
+ *
  * To run: `java --enable-preview --source 21 UnnamedClassWithAllowedMembers.java`
  */
 
@@ -19,7 +21,6 @@ private static void privateStaticMethod() {
 static void instanceMethod() {
 	System.out.println("can have any instance method");
 }
-
 
 void main() {
 	System.out.println("must always have a valid main method to launch");

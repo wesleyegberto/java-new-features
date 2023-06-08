@@ -4,20 +4,22 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 
 ## JEPs
 
-* [404](https://openjdk.java.net/jeps/404) - Generational Shenandoah (Experimental)
-* [430](https://openjdk.java.net/jeps/430) - String Templates (Preview)
-* [431](https://openjdk.java.net/jeps/431) - Sequenced Collections
-* [439](https://openjdk.java.net/jeps/439) - Generational ZGC
-* [440](https://openjdk.java.net/jeps/440) - Record Patterns
-* [441](https://openjdk.java.net/jeps/441) - Pattern Matching for switch
+* [404](https://openjdk.org/jeps/404) - Generational Shenandoah (Experimental; Target to drop)
+* [430](https://openjdk.org/jeps/430) - String Templates (Preview)
+* [431](https://openjdk.org/jeps/431) - Sequenced Collections
+* [439](https://openjdk.org/jeps/439) - Generational ZGC
+* [440](https://openjdk.org/jeps/440) - Record Patterns
+* [441](https://openjdk.org/jeps/441) - Pattern Matching for switch
 * [442](https://openjdk.org/jeps/442) - Foreign Function & Memory API (Third Preview)
 * [443](https://openjdk.org/jeps/443) - Unnamed Patterns and Variables (Preview)
 * [444](https://openjdk.org/jeps/444) - Virtual Threads
 * [445](https://openjdk.org/jeps/445) - Unnamed Classes and Instance Main Methods (Preview)
+* [446](https://openjdk.org/jeps/446) - Scoped Values (Preview)
 * [448](https://openjdk.org/jeps/448) - Vector API (Sixth Incubator)
 * [449](https://openjdk.org/jeps/449) - Deprecate the Windows 32-bit x86 Port for Removal
 * [451](https://openjdk.org/jeps/451) - Prepare to Disallow the Dynamic Loading of Agents
 * [452](https://openjdk.org/jeps/452) - Key Encapsulation Mechanism API
+* [453](https://openjdk.org/jeps/453) - Structured Concurrency (Preview)
 
 ## Features
 
@@ -26,6 +28,13 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
   * changed to make virtual threads always support thread-local
     * in preview releases was possible to create a virtual thread without thread-local support
   * flag `jdk.traceVirtualThreadLocals` to show the strack trace when a virtual threads sets a value in thread-local variable
+* Scoped values
+  * promoted from incubated to preview feature
+  * moved from pacote `jdk.incubator.concurrent` to `java.util.concurrent`
+* Structured concurrency
+  * promoted from incubated to preview feature
+  * moved from pacote `jdk.incubator.concurrent` to `java.util.concurrent`
+  * changed method `StructuredTaskScope.fork` to return a `Subtask` instanceof of a `Future`
 * Record patterns
   * promotion to standard
   * the main change is remove the support for record pattern in header of an enhanced for loop
@@ -124,6 +133,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
   * unnamed class:
     * any method declared in a source file without an enclosed class will be considered to be member of an unnamed top-level class
     * the compiler requires an unnamed method to have a valid main method to be launched
+    * we cannot use javadoc tool to generate documation from a unnamed class (doesn't have a accessible API from other class)
     * unnamed class is always final and cannot implement or extends any class other than `Object`
       * is equivalent to the following usage of anonymous class declaration:
       ```java

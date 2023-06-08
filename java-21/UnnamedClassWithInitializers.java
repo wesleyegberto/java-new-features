@@ -1,4 +1,7 @@
 /**
+ * Using JDK manually built from main branch.
+ * This code is not working with the JDK main branch.
+ *
  * To run: `java --enable-preview --source 21 UnnamedClassWithInitializers.java`
  */
 
