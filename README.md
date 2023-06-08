@@ -182,6 +182,7 @@ jshell --enable-preview
 
 ## Helpful Links
 
+* [The Java Version Almanac](https://javaalmanac.io/)
 * [Dev.java - tutorials, news and more](https://dev.java/)
   * [Java Platform Evolution](https://dev.java/evolution/)
 * [Inside.java - Sip of Java](https://inside.java/2021/10/21/sip24/)
