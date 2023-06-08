@@ -4,7 +4,6 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 
 ## JEPs
 
-* [404](https://openjdk.org/jeps/404) - Generational Shenandoah (Experimental; Target to drop)
 * [430](https://openjdk.org/jeps/430) - String Templates (Preview)
 * [431](https://openjdk.org/jeps/431) - Sequenced Collections
 * [439](https://openjdk.org/jeps/439) - Generational ZGC
