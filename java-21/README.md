@@ -149,9 +149,8 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
     * it can have:
       * instance and static methods
       * instance and static fields
-      * instance and static initializers
       * the default modifers are the same (package access and instance membership)
-    * the main difference is will only have an impliticy default zero-paramater constructor
+    * the main difference is will only have an impliticy default zero-paramater constructor and cannot have initializers (static nor instance)
     * `Class.isSynthetic` method returns true
   * this JEPs introduces changes to how Java programs are launched:
     * instance main method:
