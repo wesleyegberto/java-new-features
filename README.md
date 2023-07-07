@@ -182,18 +182,20 @@ jshell --enable-preview
 
 ## Helpful Links
 
+* [OpenJDK Projects](https://openjdk.java.net/projects/)
+* [JDK Update Releases](https://openjdk.org/projects/jdk-updates/)
 * [The Java Version Almanac](https://javaalmanac.io/)
 * [Dev.java - tutorials, news and more](https://dev.java/)
   * [Java Platform Evolution](https://dev.java/evolution/)
 * [Inside.java - Sip of Java](https://inside.java/2021/10/21/sip24/)
-* [Considerations Bumping Java EE](https://vorozco.com/blog/2020/2020-08-21-considerations-bumping-javaee.html)
 * [The Role of Preview Features in Java and Beyond](https://blogs.oracle.com/javamagazine/the-role-of-previews-in-java-14-java-15-java-16-and-beyond)
 * [Place to get early releases from Oracle's JDK](https://jdk.java.net/)
-* [OpenJDK Projects](https://openjdk.java.net/projects/)
-* [JDK Update Releases](https://openjdk.org/projects/jdk-updates/)
 * [Oracle - Java Archive](https://www.oracle.com/java/technologies/downloads/archive/#JavaSE)
+* [Considerations Bumping Java EE](https://vorozco.com/blog/2020/2020-08-21-considerations-bumping-javaee.html)
 * Migration tools:
   * [Migrating From JDK 8 to Later JDK Releases](https://docs.oracle.com/en/java/javase/17/migrate/migrating-jdk-8-later-jdk-releases.html#GUID-7744EF96-5899-4FB2-B34E-86D49B2E89B6)
   * [Eclipse Migration Toolkit for Java (EMT4J) Simplifies Upgrading Java Applications](https://www.infoq.com/news/2022/12/eclipse-migration-toolkit-java/)
   * [Rewrite - Migrate to Java 17](https://docs.openrewrite.org/running-recipes/popular-recipe-guides/migrate-to-java-17)
+* Presentations:
+  * [The Amazing Features of Modern Java - Venkat Subramaniam](https://youtu.be/nlZe-y2XvQY)
 
