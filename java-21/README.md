@@ -70,9 +70,9 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
       * dot character (`.`)
       * template (`"My name is \{name}"`) which contains an embedded expresion (`\{name}`)
     * the template literal can be defined with single or multi-line (using `"""` like text blocks)
-      ```
+      ```java
       STR."""
-      Hello from multi-line template expression.
+      Hello \{name} from multi-line template expression.
       """
       ```
     * the template expressions is evaluated at run time, the template processor combines the literal text with the values of the embedded expressions to produce a result
@@ -80,7 +80,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
   * embedded expression
     * an embedded expression can perform any Java expression (access variable, arithmetic operation, call method and fields, another template expression)
     * the embedded expressions are evaluated from left to right
-    * double-quote character doesn't need to be espaced inside an embedded expression
+    * double-quote character doesn't need to be escaped inside an embedded expression
       * `STR."The file exists: \{file.exists() ? "yes" : "no"}"`
     * the embedded expression can be spread over multiples lines without introducing newlines
       * the expression is interpolated in the same line from `\` character
@@ -91,9 +91,69 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
           .format(LocalTime.now())
       } right now"
       ```
-  * `STR` template processor
-    * `STR` is a template processor provided by Java Platform, it performs the interpolation by replacing the embedded expresions with the stringified value othe expression
-    * `STR` is a public static final field that is automatically imported into every Java source file
+  * template processors:
+    * `STR` template processor:
+      * `STR` is a template processor provided by Java Platform, it performs the interpolation by replacing the embedded expressions with the stringified value of the expression
+      * `STR` is a public static final field `StringTemplate.STR` that is automatically imported into every Java source file
+    * `FMT` template processor:
+      * `FMT` is another template processor provided by Java Platform, it behaves like `STR` but allows value formatting like those in `Formatter`
+      * is a static final field of type `java.util.FormatProcessor` and must be explicity referenced with `java.util.FormatProcessor.FMT`
+      * it uses the default locale
+        * we can create a custom template processor with another locale:
+        ```java
+        Locale locale = Locale.forLanguageTag("pt-BR"):
+        FormatProcessor FMT_BR = FormatProcessor.create(locale);
+        FMT_BR."Total: R$ %1.2f{42.42}";
+        ```
+      * ex.:
+      ```java
+      StringTemplate.Processor.FMT."Total price: $%5.2f\{120.50}";
+      ```
+    * `RAW` template processor:
+      * is the standard template processor thar produces a unprocessed `StringTemplate` object
+      * must be explicity referenced with `StringTemplate.RAW.""`
+      * the `STR` template processor is just a lambda wrapper that calls `RAW` and return the `StringTemplate` processed
+        * ex.:
+        ```java
+        StringTemplate st = StringTemplate.RAW."My name is \{"Neo"}";
+        String message = STR.process(st);
+        ```
+    * user-defined template processor:
+      * template processor is an object of the functional interface `StringTemplate.Processor` that receives a `StringTemplate` and returns an object
+      * `StringTemplate` has the following attributes:
+        * `List<String> fragments`: list of the text fragments coming before and after the embedded expressions
+        * `List<Object> values`: list of the values produced by evaluating the embedded expressions in the order they appear
+      * to create a template processor we can just class that implements `StringTemplate.Processor`, a lambda expression or use static factory method:
+        * ex:
+        ```java
+        // both are the same
+        StringTemplate.Processor<String, RuntimeException> STR_NULL_SANITIZER = (StringTemplate st) -> { /* code */ };
+        // here we use `StringTemplate.Processor::of` so the `var` is inferred correctly to `StringTemplate.Processor<String, RuntimeException>`
+        var STR_NULL_SANITIZER = StringTemplate.Processor.of((StringTemplate st) -> {
+            var sb = new StringBuilder();
+            var fragments = st.fragments().iterator();
+            for (Object value : st.values()) {
+              sb.append(fragments.next());
+              if (value == null) {
+                sb.append("<NULL>");
+              } else {
+                sb.append(value);
+              }
+            }
+            sb.append(fragments.next());
+            return sb.toString();
+        });
+        ```
+      * we can use normally:
+        * ex:
+        ```java
+        var message = STR_NULL_SANITIZER."Test: \{null}":
+
+        // is equivalent to
+        StringTemplate st = StringTemplate.RAW."Test: \{null}";
+        var message = STR_NULL_SANITIZER.process(st);
+        ```
+      
 * Sequenced Collections
   * new interfaces to define a common way to iterate throught sequenced collections (list, sets and maps)
   * [collections type hierarchy with new interfaces](https://cr.openjdk.org/~smarks/collections/SequencedCollectionDiagram20220216.png)
