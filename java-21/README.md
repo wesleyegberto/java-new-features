@@ -271,6 +271,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 * [JDK 21 Jeps](https://openjdk.org/projects/jdk/21/)
 * [JDK 21 Early Access Docs](https://download.java.net/java/early_access/jdk21/docs/api/)
 * [JEP 444: Virtual Threads Arrive in JDK 21, Ushering a New Era of Concurrency](https://www.infoq.com/news/2023/04/virtual-threads-arrives-jdk21/)
+* [Upgrading from Java 17 to 21](https://www.youtube.com/watch?v=5jIkRqBuSBs)
 * Presentations:
   * [Java Virtual Threads - Oracle DevLive Level Up](https://www.youtube.com/watch?v=MOgynY7VIJI)
   * [The Challenges of Indroducing Virtual Threads to the Java Platform](https://www.youtube.com/watch?v=WsCJYQDPrrE)

@@ -188,9 +188,11 @@ jshell --enable-preview
 * [Dev.java - tutorials, news and more](https://dev.java/)
   * [Java Platform Evolution](https://dev.java/evolution/)
 * [Inside.java - Sip of Java](https://inside.java/2021/10/21/sip24/)
-* [The Role of Preview Features in Java and Beyond](https://blogs.oracle.com/javamagazine/the-role-of-previews-in-java-14-java-15-java-16-and-beyond)
-* [Place to get early releases from Oracle's JDK](https://jdk.java.net/)
-* [Oracle - Java Archive](https://www.oracle.com/java/technologies/downloads/archive/#JavaSE)
+* Download Java versions:
+  * [The Role of Preview Features in Java and Beyond](https://blogs.oracle.com/javamagazine/the-role-of-previews-in-java-14-java-15-java-16-and-beyond)
+  * [Place to get early releases from Oracle's JDK](https://jdk.java.net/)
+  * [Oracle - Java Binaries Archive](https://www.oracle.com/java/technologies/downloads/archive/#JavaSE)
+  * [Archived OpenJDK General-Availability Releases](https://jdk.java.net/archive/)
 * [Considerations Bumping Java EE](https://vorozco.com/blog/2020/2020-08-21-considerations-bumping-javaee.html)
 * Migration tools:
   * [Migrating From JDK 8 to Later JDK Releases](https://docs.oracle.com/en/java/javase/17/migrate/migrating-jdk-8-later-jdk-releases.html#GUID-7744EF96-5899-4FB2-B34E-86D49B2E89B6)

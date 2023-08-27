@@ -50,7 +50,11 @@ To run each example use: `java --enable-preview --source 17 <FileName.java>`
 * Strongly encapsulate JDK internals
   * make illegal access internal API flag obsolate (was `--illegal-access=deny` in Java 16)
   * only `sun.misc` and `sun.reflect` will be allowed to be access through `jdk.unsupported` module
+* Disable SHA-1 XML Signatures
+  * can be enable with `jdk.xml.dsig.secureValidationPolicy`
 
 ## Links
 
 * [JDK 17 Jeps](https://openjdk.java.net/projects/jdk/17/)
+* [Consolidated JDK 17 Release Notes](https://www.oracle.com/java/technologies/javase/17all-relnotes.html)
+
