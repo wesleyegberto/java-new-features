@@ -275,4 +275,5 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 * Presentations:
   * [Java Virtual Threads - Oracle DevLive Level Up](https://www.youtube.com/watch?v=MOgynY7VIJI)
   * [The Challenges of Indroducing Virtual Threads to the Java Platform](https://www.youtube.com/watch?v=WsCJYQDPrrE)
+  * [Java 21 new feature: Virtual Threads](https://www.youtube.com/watch?v=5E0LU85EnTI)
 
