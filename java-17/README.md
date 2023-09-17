@@ -21,14 +21,12 @@ To run each example use: `java --enable-preview --source 17 <FileName.java>`
 
 ## Features
 
-### Language
-
-* Sealed classes (standard)
-* Pattern matching for switch (preview)
+* **Sealed Classes (standard)**
+* **Pattern Matching for `switch` (preview)**
   * improved switch to support pattern matching for types (like `instanceof`)
   * support for `null` case
   * support for guards where we can use a boolean expression like `case String s && s.length > 10:`
-* Pseudo-Random Number Generators (PRNG)
+* **Pseudo-Random Number Generators (PRNG)**
   * created new classes to generate number
   * two groups of PRNG algorithms:
     * splittable (LXM family):

@@ -14,15 +14,13 @@ To run each example use: `java --enable-preview --source 19 <FileName.java>`
 
 ## Features
 
-### Language
-
-* Pattern matching for `switch`
+* **Pattern Matching for `switch` (third preview)**
   * minor improvements from JDK 18:
     * changed guarded pattern from `&&` to `when` keyword
     * definition: guard is the boolean expression, guarded pattern is the case with guard
       * guarded pattern: `case Hero h when h.getCity() == Cities.NEW_YORK`
       * guard: `h.getCity() == Cities.NEW_YORK`
-* Record patterns
+* **Record Patterns (preview)**
   * added suport to deconstruct record values in pattern matcher
     * record pattern: `Point(int x, int y)`
     * the variable `int x` is initialized with the result of accessor method `Point.x()`, not directly from the field `x`
@@ -31,7 +29,7 @@ To run each example use: `java --enable-preview --source 19 <FileName.java>`
   * now we can use type pattern and record pattern together
   * we can check the type and extract the record components using `instanceof` operator
     * `o instanceOf Point(int x, int y)`
-* Virtual Threads:
+* **Virtual Threads (preview)**
   * also called user-mode threads or [fiber](https://en.wikipedia.org/wiki/Fiber_(computer_science))
   * more notes about Project Loom [here](../projects/loom/)
   * `Virtual threads are lightweight threads that dramatically reduce the effort of writing, maintaining, and observing high-throughput concurrent applications`
@@ -86,7 +84,7 @@ To run each example use: `java --enable-preview --source 19 <FileName.java>`
     * `Thread.ofPlatform().start(() -> {})`;
     * **do not use** any cached method from `Executors`.
   * [here](platform-thread-vs-virtual-thread.md) is some details about the Platform Thread vs Virtual Thread examples
-* Structured Concurrency
+* **Structured Concurrency (preview)**
   * goal is simplify multithreaded programming;
   * treats multiple tasks running in different threads as a single unit of work:
     * streamlining error handling and cancellation

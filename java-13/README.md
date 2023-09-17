@@ -12,19 +12,20 @@ To run each example use: `java --enable-preview --source 13 <FileName.java>`
 
 ## Features
 
-### Language
-
-* Switch expressions improvements
+* **Switch Expressions (second preview)**
   * Changed `break` from Java 12 to `yield`
-* Text blocks
+* **Text Blocks (preview)**
   * flag to compile: `-Xlint:text-blocks`
-* API improvements
-  * String methods:
-    * `stripIdent`: same operation done by the compiler to strip incidental identation from text block';
-    * `translateEscapes`: same operation done by the compiler to translate escapes in strings;
-    * `formatted`: shortcut to String.format '`"%s years old".formatted(42)`)
-  * NIO improvements
-* Socket and ServerSocket reimplementation (alignment to [Project Loom](https://openjdk.java.net/projects/loom/))
+* **Reimplement Legacy Socket API**
+  * `Socket` and `ServerSocket` reimplementation (alignment to [Project Loom](https://openjdk.java.net/projects/loom/))
+
+### API
+
+* String methods:
+  * `stripIdent`: same operation done by the compiler to strip incidental identation from text block';
+  * `translateEscapes`: same operation done by the compiler to translate escapes in strings;
+  * `formatted`: shortcut to String.format '`"%s years old".formatted(42)`)
+* NIO improvements
 
 ### JVM
 

@@ -16,17 +16,15 @@ To run each example use: `java --enable-preview --source 12 <FileName.java>`
 
 ## Features
 
-### Language
-
-* Switch expression
-* Collectors.teeing
+* Switch Expression (preview)
+* Compact Number Format
+* `Collectors.teeing`
 * More Versatile Error Recovery With CompletableFuture
   * `exceptionallyAsync(Function<Throwable, ? extends T> f)`
   * `exceptionallyAsync(Function<Throwable, ? extends T> f, Executor e)`
   * `exceptionallyCompose(Function<Throwable, ? extends CompletionStage<T>> f)`
   * `exceptionallyComposeAsync(Function<Throwable, ? extends CompletionStage<T>> f)`
   * `exceptionallyComposeAsync(Function<Throwable, ? extends CompletionStage<T>> f, Executor e)`
-* Compact Number Format
 
 ### JVM
 

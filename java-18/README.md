@@ -16,9 +16,7 @@ To run each example use: `java --enable-preview --source 18 <FileName.java>`
 
 ## Features
 
-### Language
-
-* chartset UTF-8 will be default for all O.S.
+* **Chartset UTF-8 by Default**
   * to see which is default: `java -XshowSettings:properties -version 2>&1 | grep file.encoding`
   * we can change the chartset with property: `-Dfile.encoding=UTF-8`
   * affected classes:
@@ -28,11 +26,11 @@ To run each example use: `java --enable-preview --source 18 <FileName.java>`
     * `URLEncoder` and `URLDecoder`
   * the `System.out` and `System.err` will use the same charset from the terminal
       * we can see with: `Console.charset()`
-* Pattern matching for `switch`
+* **Pattern Matching for `switch` (second preview)**
   * Minor improvements from JDK 17:
     * refined to use dominance checking that will force constant case label to appear before a guarded pattern of the same type;
     * exhaustiveness checking is now more precise with sealed hierarchies.
-* Code snippet in Java Doc
+* **Code snippet in Java Doc**
   * was introduced the `@snippet` tag to help write code fragments in Java docs
   * the goals is to provide a way to get this fragments (so it can be validated by other tool), enable syntax highlighting and provide better IDE support
   * code snippet suports:

@@ -24,21 +24,19 @@ To run each example use: `java --enable-preview --source 16 <FileName.java>`
 
 ## Features
 
-### Language
-
-* Pattern matching for `instanceof` (standard)
-* Record
+* **Pattern Matching for `instanceof` (standard)**
+* **Records**
   * now we can declare static class or a record in an inner class
-* Warnings for [Value-Based Classes](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/doc-files/ValueBased.html)
+* **Warnings for [Value-Based Classes](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/doc-files/ValueBased.html)**
   * starting the preparatives for Project Valhalla (can't wait for it to be fully implemented)
   * warning the using value-based classes in synchronization and flag to force an error (1) or log (2)
     * flag: `-XX:DiagnoseSyncOnValueBasedClasses=1|2`
   * starting with primitive wrappers (but soon might be expanded)
-* Foreign-Memory Access API
+* **Foreign-Memory Access API (third incubator)**
   * change in the API
-* Sealed classes (second preview)
+* **Sealed Classes (second preview)**
   * `sealed`, `non-sealed` and `permits` became contextual keywords (we can use it as var name or method name)
-* Unix-Domain Socket Channels
+* **Unix-Domain Socket Channels**
 
 ### JVM
 

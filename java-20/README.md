@@ -14,16 +14,16 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
 
 ## Features
 
-* Record patterns (second preview)
+* **Record Patterns (second preview)**
   * added support for inference of type arguments of generic record patterns;
     * now it generic type can be inferred
     * given `record Decorator<T>(T t) {}` and variable `Decorator<Decorator<String>> wr`, the record pattern generic type can be inferred in `w insteaceof Decorator(Decorator(var s))`
   * added support for record patterns to appear in the headere of an enhanced for statement;
     * `for (Point(var x, var y) : shapePoints)`
   * remove support for named record pattner.
-* Patteren matching for `switch` (fourth preview)
+* **Patteren Matching for `switch` (fourth preview)**
   * added support for inference of type arguments for generic record patterns
-* Virtual threads (second preview)
+* **Virtual Threads (second preview)**
   * small numbeer of API changes described by JEP 425 were made permanent in JDK 19 and are not proporsed to preview:
     * `Thread.join(Durantion)`
     * `Thread.sleep(Duration)`
@@ -32,7 +32,7 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
     * `Future.exceptionNow()`
     * `Future.state()`
     * `ExecutorService` extends `AutoClosable`
-* Scoped values (incubator)
+* **Scoped Values (incubator)**
   * enable the sharing of immutable data within and across threads
   * it were inspired by the way that Lipst dialects provide support for dyanamically scoped free variables
   * they are preferred to thread-local variables (specially using virtual threads)
@@ -86,7 +86,7 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
        * the binding will remains until the child thread are finished and we can use `StructuredTaskScoped.join` to ensure
        that the child threads will terminate before `run`/`call`
      * when we try to access a scoped value not shared with current thread an exception `NoSuchElementException` will be thrown
-* Structured concurrency (second incubator)
+* **Structured Concurrency (second incubator)**
   * no changes in API since JDK 19
   * added support to inheritance of scoped values
 

@@ -23,15 +23,13 @@ To run each example use: `java --enable-preview --source 14 <FileName.java>`
 
 ## Features
 
-### Language
-
-* Switch expressions
+* **Switch Expressions**
   * Promotion to standard
-* Text blocks improvements (preview)
+* **Text Blocks (second preview)**
   * added new flags
-* Pattern matching for `instanceof`
+* **Pattern Matching for `instanceof` (preview)**
   * added as Preview
-* Records
+* **Records (preview)**
   * added as Preview
   * Notes:
     * Does not have a `extends` clause, only extends `java.lang.Record`;
@@ -40,7 +38,7 @@ To run each example use: `java --enable-preview --source 14 <FileName.java>`
     * Its components are final and cannot be updated via reflection (throw `IllegalAccessException`);
     * Cannot declare native methods;
     * Local records is always static (local class and enum as never static).
-* JFR Event Streaming
+* **JFR Event Streaming**
   * [Here](https://github.com/flight-recorder/health-report) is a great example of a tool built
 
 ### JVM

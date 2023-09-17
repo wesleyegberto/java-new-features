@@ -22,8 +22,6 @@ java -cp bin <ClassName>
 
 ## Features
 
-### Language
-
 * `var` keyword to declare variables
   * `var universeAnswer = 42`
 * Process API improvements

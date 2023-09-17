@@ -21,9 +21,7 @@ To run each example use: `java --enable-preview --source 15 <FileName.java>`
 
 ## Features
 
-### Language
-
-* Sealed types
+* **Sealed Types**
   * Restrict which types can extend/implement a type
   * Constraints:
     * The sealed class and its permitted subclasses must belong to the same module, and, if declared in an unnamed module, the same package.
@@ -32,9 +30,9 @@ To run each example use: `java --enable-preview --source 15 <FileName.java>`
       * `final`
       * `sealed`
       * `non-sealed` (back to a normal class open to extensibility)
-* Pattern matching for `instanceof` (second preview - no changes)
-* Text blocks (standard)
-* Records (second preview)
+* **Pattern Matching for `instanceof` (second preview - no changes)**
+* **Text Blocks (standard)**
+* **Records (second preview)**
   * Integration with sealed types in interfaces
     * The combination of record and sealed types is referred as algebraic data types.
 
