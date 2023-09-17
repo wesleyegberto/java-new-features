@@ -200,4 +200,6 @@ jshell --enable-preview
   * [Rewrite - Migrate to Java 17](https://docs.openrewrite.org/running-recipes/popular-recipe-guides/migrate-to-java-17)
 * Presentations:
   * [The Amazing Features of Modern Java - Venkat Subramaniam](https://youtu.be/nlZe-y2XvQY)
+* Java Projects:
+  * [Project Leyden - Capturing Lightning in a Bottle](https://www.youtube.com/watch?v=lnth19Kf-x0&ab_channel=Java)
 

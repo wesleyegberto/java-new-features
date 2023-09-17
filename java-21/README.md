@@ -22,32 +22,32 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 
 ## Features
 
-* Virtual threads
+* **Virtual Threads**
   * promotion to standard
   * changed to make virtual threads always support thread-local
     * in preview releases was possible to create a virtual thread without thread-local support
   * flag `jdk.traceVirtualThreadLocals` to show the strack trace when a virtual threads sets a value in thread-local variable
-* Scoped values
+* **Scoped Values**
   * promoted from incubated to preview feature
   * moved from pacote `jdk.incubator.concurrent` to `java.util.concurrent`
-* Structured concurrency
+* **Structured Concurrency**
   * promoted from incubated to preview feature
   * moved from pacote `jdk.incubator.concurrent` to `java.util.concurrent`
   * changes from JDK 19 and 20:
     * changed method `StructuredTaskScope::fork` to return a `Subtask` instanceof of a `Future`
     * the sealed interface `Subtask` extends `Supplier<T>`
     * the method `Subtask::get` behaves exaclty like `Future::resultNow`
-    * calling the method `Subtask::get` never blocks, it throws an `IllegalStateException` whe calling before `join` or when the subtask has not completed successfully
-* Record patterns
+    * calling the method `Subtask::get` never blocks, it throws an `IllegalStateException` when calling before `join` or when the subtask has not completed successfully
+* **Record Patterns**
   * promotion to standard
   * the main change is remove the support for record pattern in header of an enhanced for loop
-* Pattern matching for `switch`
+* **Pattern Matching for `switch`**
   * promotion to standard
   * main changes from last JEPs:
     * removed parenthesized patterns (`case int i when (i > 0)`)
     * allow qualified enum constants as case constants (`case MyEnum.ITEM`)
     * exhaustiveness and compatibility:
-      * compiler will only require exhaustiveness if the switch uses any pattern, null label or if selector expression isn't from a legacy type (char, byte, short, int, Character, Byte, Short, Integer, String or a enum)
+      * compiler will only require exhaustiveness if the `switch` uses any pattern, `null` label or if selector expression isn't from a legacy type (`char`, `byte`, `short`, `int`, `Character`, `Byte`, `Short`, `Integer`, `String` or a enum)
   * improved switch to support pattern matching for types (like `instanceof`)
   * support for `null` case
   * support for guards where we can use a boolean expression (`case String s when s.length > 10`)
@@ -56,7 +56,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
     * fall through:
       * `switch` with type pattern doesn't support falling through
       * if using case label with `:`, we must end the block with `break` or `yield` (`case String s: ...; break;`, `case String s: ...; yield s.length();`)
-* String templates:
+* **String Templates**
   * improve the string with embedded expressions and template processors
   * goals:
     * simply the creation and expression of string with computed computed
@@ -153,8 +153,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
         StringTemplate st = StringTemplate.RAW."Test: \{null}";
         var message = STR_NULL_SANITIZER.process(st);
         ```
-      
-* Sequenced Collections
+* **Sequenced Collections**
   * new interfaces to define a common way to iterate throught sequenced collections (list, sets and maps)
   * [collections type hierarchy with new interfaces](https://cr.openjdk.org/~smarks/collections/SequencedCollectionDiagram20220216.png)
   * sequenced collection:
@@ -190,7 +189,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
     * `unmodifiableSequencedCollection`
     * `unmodifiableSequencedSet`
     * `unmodifiableSequencedMap`
-* Unnamed classes and instance main methods
+* **Unnamed Classes and Instance Main Methods**
   * a.k.a. relaxed launch protocol
   * facilitate the writing of first programm for students without needing to know another features designed for large programs
   * unnamed class:
@@ -235,7 +234,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
     * `static void main()`
     * `void main(String[])`
     * `void main()`
-* Unnamed patterns and variables
+* **Unnamed Patterns and Variables**
   * goals:
     * improve the readability of record patterns by ediling unnecessary nested patterns
     * improve the maintanability of code by identifying variables that must be declared but will not be used
@@ -246,7 +245,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
     * it never shadows another variable, can be used many times
     * it can be used when:
       * declaring a local variable (`int _ = q.remove()`)
-      * resource specification of a try-with-resources (`try (_ = ScopedContxt.acquire())`)
+      * resource specification of a try-with-resources (`try (var _ = ScopedContxt.acquire())`)
       * exception parameter in a catch clause (`catch (NumberFormatException _)`)
       * header of an enhanced for loop (`for (int i = 0; _ = sideEffect(); i++)`)
       * header of an enhanced for loop (`for (Order _ : orders)`)
@@ -261,19 +260,60 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
     * we can use it in any type pattern
       * `p instanceof Point _`
       * `case Point _`
-* APIs:
-  * improve `Thread.sleep(millis, nanos)` to actually perform sleep with sub-millisecond time
-  * [`java.net.http.Http Client` is now `AutoCloseable`](https://jdk.java.net/21/release-notes#JDK-8267140) and new methods were added to close/shutdown the connection pool.
 
+### API
+
+* changes in `Thread` class:
+  * improve `Thread::sleep(millis, nanos)` to actually perform sleep with sub-millisecond time
+  * added method `Thread::sleep(Durantion)`, `Thread::join(Durantion)` and `Thread::isVirtual`
+* added methos in `Future` that doesn't declare any checked exception (but will throw a `IllegalStateException` if is not completed):
+  * `T resultNow()`
+  * `Throwable exceptionNow()`
+  * `State state()`: returns the current state of the task (values: `RUNNING`, `SUCCESS`, `FAILED`, `CANCELLED`)
+* added method `String::indexOf(String substr, int startIndex, int endIndex)` to find substring withing a index range
+* added method `StringBuilder::repeat(String str, int numberOfTimes)` to repeat a string # times
+* new methods to create collection with initial capacity:
+  * `HashMap::newHashMap(int)`
+  * `HashSet::newHashSet(int)`
+  * `LinkedHashMap::newLinkedHashMap(int)`
+  * `LinkedHashSet::newLinkedHashSet(int)`
+* added method `InputStream::transferTo(OutputStream)` to read the stream and send to the received output stream
+* [`java.net.http.Http Client` is now `AutoCloseable`](https://jdk.java.net/21/release-notes#JDK-8267140) and new methods were added to close/shutdown the connection pool.
+* classes `ExecutorService` and `ForkJoinPool` changed to implement `AutoCloseable`
+* added methods to `Math` class:
+  * `int ceilDiv(int, int)`
+  * `long ceilDiv(long, int)`
+  * `long ceilDiv(long, long)`
+  * `int ceilDivExact(int, int)`
+  * `long ceilDivExact(long, long)`
+  * `int ceilMod(int, int)`
+  * `long ceilMod(long, int)`
+  * `long ceilMod(long, long)`
+  * division that throws `ArithmeticException` in case of overflow:
+    * `int divideExact(int, int)`
+    * `long divideExact(long, long)`
+    * `int floorDivExact(int, int)`
+    * `long floorDivExact(long, long)`
+  * methods to clamp a value in a range for each type `int`, `long`, `float` and `double`:
+    * `clamp(value, min, max)`
+* added method `BigInteger::parallelMultiply(BigInteger)`
+
+Deprecations:
+
+* `Object::finalize`
+* constructors in `Integer` class: `Integer(int)` and `Integer(String)`
+  * should use `Integer::valueOf(int)` and `Integer::valueOf(String)`
 
 ## Links
 
-* [JDK 21 Jeps](https://openjdk.org/projects/jdk/21/)
+* [JDK 21 JEPs](https://openjdk.org/projects/jdk/21/)
 * [JDK 21 Early Access Docs](https://download.java.net/java/early_access/jdk21/docs/api/)
 * [JEP 444: Virtual Threads Arrive in JDK 21, Ushering a New Era of Concurrency](https://www.infoq.com/news/2023/04/virtual-threads-arrives-jdk21/)
 * [Upgrading from Java 17 to 21](https://www.youtube.com/watch?v=5jIkRqBuSBs)
 * Presentations:
   * [Java Virtual Threads - Oracle DevLive Level Up](https://www.youtube.com/watch?v=MOgynY7VIJI)
   * [The Challenges of Indroducing Virtual Threads to the Java Platform](https://www.youtube.com/watch?v=WsCJYQDPrrE)
-  * [Java 21 new feature: Virtual Threads](https://www.youtube.com/watch?v=5E0LU85EnTI)
+  * [Java 21 New Feature: Virtual Threads](https://www.youtube.com/watch?v=5E0LU85EnTI)
+  * [Java 21 API New Features](https://www.youtube.com/watch?v=4mPd2eL0wYQ)
+  * [Java 21 Brings Full Pattern Matching](https://www.youtube.com/watch?v=QrwFrm1R8OY)
 
