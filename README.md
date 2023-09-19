@@ -202,4 +202,6 @@ jshell --enable-preview
   * [The Amazing Features of Modern Java - Venkat Subramaniam](https://youtu.be/nlZe-y2XvQY)
 * Java Projects:
   * [Project Leyden - Capturing Lightning in a Bottle](https://www.youtube.com/watch?v=lnth19Kf-x0&ab_channel=Java)
+* Blogs:
+  * [JDK Security Enhancements - Sean Mullan](https://seanjmullan.org/blog/)
 
