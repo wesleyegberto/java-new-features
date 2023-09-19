@@ -11,7 +11,7 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 ## Resume by Version
 
-* [Java 21](java-21/) (LTS)
+* [Java 21](java-21/) (LTS; Sep, 2023)
   * Virtual Threads (standard) :rocket:
   * Record Pattern (standard) :rocket:
   * Pattern Matching for `switch` (standard) :rocket:
