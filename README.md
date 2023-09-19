@@ -187,6 +187,7 @@ jshell --enable-preview
 * [The Java Version Almanac](https://javaalmanac.io/)
 * [Dev.java - tutorials, news and more](https://dev.java/)
   * [Java Platform Evolution](https://dev.java/evolution/)
+  * [Java Playground](https://dev.java/playground/)
 * [Inside.java - Sip of Java](https://inside.java/2021/10/21/sip24/)
 * Download Java versions:
   * [The Role of Preview Features in Java and Beyond](https://blogs.oracle.com/javamagazine/the-role-of-previews-in-java-14-java-15-java-16-and-beyond)
