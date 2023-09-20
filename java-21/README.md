@@ -306,6 +306,7 @@ Deprecations:
 
 ## Links
 
+* [The Arrival of Java 21](https://inside.java/2023/09/19/the-arrival-of-java-21/)
 * [JDK 21 JEPs](https://openjdk.org/projects/jdk/21/)
 * [JDK 21 Early Access Docs](https://download.java.net/java/early_access/jdk21/docs/api/)
 * [JEP 444: Virtual Threads Arrive in JDK 21, Ushering a New Era of Concurrency](https://www.infoq.com/news/2023/04/virtual-threads-arrives-jdk21/)
