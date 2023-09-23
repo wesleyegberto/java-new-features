@@ -260,6 +260,15 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
     * we can use it in any type pattern
       * `p instanceof Point _`
       * `case Point _`
+* **Generational ZGC**
+  * improve application performance by extending the Z Garbage Collection (ZGC) to maintain separate generations for young and old objects
+  * ZGC will be able to collect young objects more often
+  * possible gains:
+    * lower risk of allowcations stalls
+    * lower required heap memory overhead
+    * lower garbage collection CPU overhead
+  * JVM flags:
+    * `java -XX:+UseZGC -XX:+ZGenerational`
 
 ### API
 
@@ -312,6 +321,7 @@ Deprecations:
 * [JEP 444: Virtual Threads Arrive in JDK 21, Ushering a New Era of Concurrency](https://www.infoq.com/news/2023/04/virtual-threads-arrives-jdk21/)
 * [Upgrading from Java 17 to 21](https://www.youtube.com/watch?v=5jIkRqBuSBs)
 * Presentations:
+  * [JDK 21 Release Notes - Inside Java Newscast #55](https://www.youtube.com/watch?v=h13oIb9L1Fw)
   * [Java Virtual Threads - Oracle DevLive Level Up](https://www.youtube.com/watch?v=MOgynY7VIJI)
   * [The Challenges of Indroducing Virtual Threads to the Java Platform](https://www.youtube.com/watch?v=WsCJYQDPrrE)
   * [Java 21 New Feature: Virtual Threads](https://www.youtube.com/watch?v=5E0LU85EnTI)
