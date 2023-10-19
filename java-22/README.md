@@ -5,6 +5,7 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
 ## JEPs
 
 * [454](https://openjdk.org/jeps/454) - Foreign Function & Memory API
+* [456](https://openjdk.org/jeps/456) - Unnamed Variables & Patterns
 
 ## Features
 
@@ -23,7 +24,8 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
     * control the allocation and deallocation of foreign memory: `MemorySegment`, `Arena`, `SegmentAllocator`;
     * manipulate and access structured foreign memory: `MemoryLayout`, `VarHandle`;
     * call foreign functions: `Linker`, `SymbolLookup`, `FunctionDescriptor`, `MethodHandle`.
-
+* **Unnamed Variables and Patterns**
+  * promotion to standard
 
 ## Links
 
