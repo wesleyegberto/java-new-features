@@ -4,8 +4,15 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
 
 ## JEPs
 
+* [423](https://openjdk.org/jeps/423) - Region Pinning for G1
+* [447](https://openjdk.org/jeps/447) - Statements before `super()` (Preview)
 * [454](https://openjdk.org/jeps/454) - Foreign Function & Memory API
 * [456](https://openjdk.org/jeps/456) - Unnamed Variables & Patterns
+* [457](https://openjdk.org/jeps/457) - Class-File API (Preview)
+* [459](https://openjdk.org/jeps/459) - String Templates (Second Preview)
+* [460](https://openjdk.org/jeps/460) - Vector API (Seventh Incubator)
+* [461](https://openjdk.org/jeps/461) - Stream Gatherers (Preview)
+* [463](https://openjdk.org/jeps/463) - Implicity Declared Classes and Instance Main Methods (Second Preview)
 
 ## Features
 
@@ -26,6 +33,12 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
     * call foreign functions: `Linker`, `SymbolLookup`, `FunctionDescriptor`, `MethodHandle`.
 * **Unnamed Variables and Patterns**
   * promotion to standard
+* **Implicity Declared Classes and Instance Main Methods**
+  * changed the concept name from unnamed class to implicity declared class
+    * "source file without an enclosing class declaration is said to implicitly declare a class with a name chosen by the host system"
+  * changed the procedure for selecting a main method to invoke
+  * first it looks for a method `main(String[])`, if not found then it looks for a method `main()`
+
 
 ## Links
 
