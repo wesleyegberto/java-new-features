@@ -16,6 +16,9 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
 
 ## Features
 
+* **Region Pinning for G1**
+  * goal: "reduce latency by implementing region pinning in G1, so that garbage collection need not be disable during JNI critial regions"
+  * avoid worst case cenarios where the application is stoped for minutes, unnecessary out-of-memory conditions due to thread starvation, premature VM shutdown.
 * **Foreign Function & Memory API**
   * promotion to standard
   * API to allow Java to interoperate with code and data outside of JVM;
@@ -33,7 +36,13 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
     * call foreign functions: `Linker`, `SymbolLookup`, `FunctionDescriptor`, `MethodHandle`.
 * **Unnamed Variables and Patterns**
   * promotion to standard
+* **Class-File API**
+  * provide standard API for parsing, generating and transforming Java class files
+* **String Templates**
+  * minor change from JDK 21
+  * changed the type of template expressions
 * **Implicity Declared Classes and Instance Main Methods**
+  * minor change from JDK 21
   * changed the concept name from unnamed class to implicity declared class
     * "source file without an enclosing class declaration is said to implicitly declare a class with a name chosen by the host system"
   * changed the procedure for selecting a main method to invoke
