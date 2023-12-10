@@ -19,8 +19,18 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
 * **Region Pinning for G1**
   * goal: "reduce latency by implementing region pinning in G1, so that garbage collection need not be disable during JNI critial regions"
   * avoid worst case cenarios where the application is stoped for minutes, unnecessary out-of-memory conditions due to thread starvation, premature VM shutdown.
+* **Statements before `super()`**
+  * allow statements that do not reference the instance being created to appear before an explicit constructor invocation
+  * will allow to use statements that use, transform or verify values before call `super`
+  * the code before the `super` statement lives in pre-construction context:
+    * can perform any statements that don't use any member of the instance being created (or its hierarchy or outter/inner classes that depends on the instance)
+  * statements:
+    * cannot access any instance member of the class or its parent class
+    * can access static members
+    * if the class is an inner class, it can access members of its enclosing class (like `Outer.this.field++`)
+      * the outer class instance already exists
 * **Foreign Function & Memory API**
-  * promotion to standard
+  * promotion to standar
   * API to allow Java to interoperate with code and data outside of JVM;
   * will replace JNI, allowing efficiently invoking foreign functions and safely accessing foreign memory;
   * goals:
@@ -37,7 +47,7 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
 * **Unnamed Variables and Patterns**
   * promotion to standard
 * **Class-File API**
-  * provide standard API for parsing, generating and transforming Java class files
+  * provide standard API for parsing, generating and transforming Java class fil
 * **String Templates**
   * minor change from JDK 21
   * changed the type of template expressions
