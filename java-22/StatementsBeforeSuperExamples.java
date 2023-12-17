@@ -15,6 +15,7 @@ class BaseClass {
 	protected int value;
 
 	BaseClass(int value) {
+		System.out.println("BaseClass constructor: " + value);
 		this.value = value;
 	}
 }
@@ -33,6 +34,7 @@ class SimpleExample extends BaseClass {
 
 	SimpleExample() {
 		// now we can call static method
+		System.out.println("Randomizing");
 		int v = (int) (Math.random() * 1000);
 		super(v);
 		System.out.println("Initialized with random value: " + v);
@@ -46,6 +48,7 @@ class SimpleExample extends BaseClass {
 	}
 
 	static int parseValue(String value) {
+		System.out.println("Parsing");
 		return Integer.parseInt(value);
 	}
 }
