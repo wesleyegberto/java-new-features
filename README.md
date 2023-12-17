@@ -11,6 +11,16 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 ## Resume by Version
 
+* [Java 22](java-22/)
+  * Statements before `super` (preview)
+  * FFM API (standard)
+  * Unnamed Variable & Patterns
+  * Launch Multi-File Source-Code Programs
+  * String Templates (preview 2)
+  * Stream Gatherers (prewview)
+  * Structured Concurrency (preview 2)
+  * Scoped Value (preview 2)
+
 * [Java 21](java-21/) (LTS; Sep, 2023)
   * Virtual Threads (standard) :rocket:
   * Record Pattern (standard) :rocket:
@@ -22,6 +32,8 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Unnamed Classes and Instance Main Methods (preview)
   * Prepare to Disallow the Dynamic Loading of Agents
   * KEM API
+  * Structured Concurrency (preview)
+  * Scoped Value (preview)
 
 * [Java 20](java-20/) (Mar, 2023)
   * Scoped values (incubator)
