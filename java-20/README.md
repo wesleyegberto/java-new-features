@@ -92,12 +92,12 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
 
 ### API
 
-- default timeout in `HttpClient` changed to 30 seconds.
-- fixed `IdentityHashMap` methods `remove` and `replace` to be conformed with its specification (using object identity, `==`).
+* default timeout in `HttpClient` changed to 30 seconds.
+* fixed `IdentityHashMap` methods `remove` and `replace` to be conformed with its specification (using object identity, `==`).
 
 Removed:
 
-- `Thread` methods `suspend`, `resume` and `stop` changed to throw `UnsupportedOperationException`.
+* `Thread` methods `suspend`, `resume` and `stop` changed to throw `UnsupportedOperationException`.
 
 ## Links
 
@@ -105,4 +105,5 @@ Removed:
 * [Consolidated JDK 20 Release Notes](https://www.oracle.com/java/technologies/javase/20all-relnotes.html)
 * [JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=21004)
 * [JDK 20 EA Builds](https://jdk.java.net/20/)
+* [Java Scoped Values: Better ThreadLocals](https://realjenius.com/2023/11/10/scoped-values/)
 

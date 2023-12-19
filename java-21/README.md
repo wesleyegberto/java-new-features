@@ -29,7 +29,8 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
   * flag `jdk.traceVirtualThreadLocals` to show the strack trace when a virtual threads sets a value in thread-local variable
 * **Scoped Values**
   * promoted from incubated to preview feature
-  * moved from pacote `jdk.incubator.concurrent` to `java.util.concurrent`
+  * minor change from JDK 19
+    * moved package from `jdk.incubator.concurrent` to `java.util.concurrent`
 * **Structured Concurrency**
   * promoted from incubated to preview feature
   * moved from pacote `jdk.incubator.concurrent` to `java.util.concurrent`
@@ -320,6 +321,7 @@ Deprecations:
 * [JDK 21 Early Access Docs](https://download.java.net/java/early_access/jdk21/docs/api/)
 * [JEP 444: Virtual Threads Arrive in JDK 21, Ushering a New Era of Concurrency](https://www.infoq.com/news/2023/04/virtual-threads-arrives-jdk21/)
 * [Upgrading from Java 17 to 21](https://www.youtube.com/watch?v=5jIkRqBuSBs)
+* [Java SE - Virtual Threads](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html)
 * Presentations:
   * [JDK 21 Release Notes - Inside Java Newscast #55](https://www.youtube.com/watch?v=h13oIb9L1Fw)
   * [Java Virtual Threads - Oracle DevLive Level Up](https://www.youtube.com/watch?v=MOgynY7VIJI)

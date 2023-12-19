@@ -61,9 +61,12 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
     * "source file without an enclosing class declaration is said to implicitly declare a class with a name chosen by the host system"
   * changed the procedure for selecting a main method to invoke
   * first it looks for a method `main(String[])`, if not found then it looks for a method `main()`
+* Scoped Values**
+  * no change from JDK 20/21
+  * re-preview for additional feedback
 
 
 ## Links
 
-- [JDK 22 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=21900)
+* [JDK 22 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=21900)
 
