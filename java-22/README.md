@@ -33,7 +33,7 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
     * if the class is an inner class, it can access members of its enclosing class (like `Outer.this.field++`)
       * the outer class instance already exists
 * **Foreign Function & Memory API**
-  * promotion to standar
+  * promotion to standard
   * API to allow Java to interoperate with code and data outside of JVM;
   * will replace JNI, allowing efficiently invoking foreign functions and safely accessing foreign memory;
   * goals:
@@ -51,7 +51,18 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
   * promotion to standard
   * no change from JDK 21
 * **Class-File API**
-  * provide standard API for parsing, generating and transforming Java class fil
+  * provide standard API for parsing, generating and transforming Java class file
+* **Launch Multi-File Source-Code Programs**
+  * enhance the Java launcher's source-file mode to be able to run a program made by multiple Java files
+  * the launcher will compile the given Java file and any other Java file that is referenced by the program
+  * the referenced class will only be compiled in memory when the class is used
+    * any compiler error in the referenced class will be thrown after the program started the execution
+  * we can also used pre-compiled classes or module path:
+    * `java --class-path '*' MyProgram.java`
+    * `java -p . MyProgram.java`
+  * limitations:
+    * annotation processing is disabled (`--proc:none`)
+    * is not possible to run a source-code program whose Java files span multiple modules
 * **String Templates**
   * minor change from JDK 21
   * changed the type of template expressions
