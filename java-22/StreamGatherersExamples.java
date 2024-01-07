@@ -69,11 +69,12 @@ public class StreamGatherersExamples {
 			},
 			// finisher: only pushes if has at least five even numbers
 			(state, downstream) -> {
-				if (state.size() > 5) {
-					state.forEach(i -> {
-						downstream.push(i);
-					});
+				if (state.size() < 5) {
+					return;
 				}
+				state.forEach(i -> {
+					downstream.push(i);
+				});
 			}
 		);
 	}
