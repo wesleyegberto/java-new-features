@@ -66,13 +66,47 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
 * **String Templates**
   * minor change from JDK 21
   * changed the type of template expressions
+* **Structured Concurrency**
+  * no change from JDK 20/21
+  * re-preview for additional feedback
+* **Stream Gatherers**
+  * enhance the Stream API to support custom intermediate operations
+  * will allow stream pipelines to transform data more easily than the existing built-in intermediate operations
+  * some built-in intermediate operations: mapping, filtering, reduction, sorting
+  * the goal is to provide an extension point (like the one implemented in `Stream::collect(Collector)`)
+  * [`Stream::gather(Gatherer)`](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherer.html) is an intermediate stream operation 
+    * it processes the elements of a stream by applying a user-defined entity called a gatherer
+    * a gatherer represents a transform of the elements of a stream
+    * can transform elements: one-to-one, one-to-many- many-to-one, many-to-many
+    * it can keep track previously seen elements in order to compute some transformation of later elements
+    * a gatherer will only be evaluated in parallel if it provides a combiner function
+  * gatherer is defined by four functions:
+    * initializer (optional): an object that maintains private state while processing the stream, the type is `Supplier`.
+    * integrator: integrates a new element from the input stream, also can inspect the private state object, emit elements to the output stream, terminate the processing (by returning false) and so on.
+    * combiner (optional): used to evaluate the gatherer in parallel or sequentially (when the operation cannot be parallelized).
+    * finisher: invoked when there are no more input elements to consume, can inspect private state object, emit additional output elements.
+  * `Stream::gather` performs the equivalent of the following steps:
+    * create a `java.util.stream.Gatherer.Downstream` object passes the result (object of gatherer's output type) to the next stage in the pipeline;
+    * obtain the gatherer's private state object from initializer method `get()`;
+    * obtain the gatherer's integrator to process the stream by invoking the method `integrator()`;
+    * while there are more inputs elements, invoke the integrator method `integrate` passing state object, next element and downstream object, terminate if returned false;
+    * obtain the gatherer's finisher and invoke it passing the state and downstream object.
+  * there are built-in gatherers provided in [`java.util.stream.Gatherers`](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherers.html):
+    * `fold`: stateful many-to-one gatherer;
+    * `mapConcurrent`: stateful one-to-one gatherer which invokes a supplied function for each element concurrently;
+    * `scan`: stateful one-to-one gatherer which applies a supplied function to the current state and the current element to produce the next element to downstream;
+    * `windowFixed`: stateful many-to-many gatherer which groups elements into lists of a supplied size and emit the window to downstream;
+    * `windowSliding`: like the `windowFixed` but applying sliding in the stream elements (drop the first element from the previous window and added the current elemenet).
+    * `peek`: stateless one-to-one gatherer which applies a function to each element in the stream;
+  * is possible to composing gatherers with `andThen(Gatherer)`:
+    * `stream.gather(a).gather(b).collect(toList())` is equivalent to `stream.gather(a.andThen(b)).collect(toList())`
 * **Implicity Declared Classes and Instance Main Methods**
   * minor change from JDK 21
   * changed the concept name from unnamed class to implicity declared class
     * "source file without an enclosing class declaration is said to implicitly declare a class with a name chosen by the host system"
   * changed the procedure for selecting a main method to invoke
-  * first it looks for a method `main(String[])`, if not found then it looks for a method `main()`
-* Scoped Values**
+    * first it looks for a method `main(String[])`, if not found then it looks for a method `main()`
+* **Scoped Values**
   * no change from JDK 20/21
   * re-preview for additional feedback
 
@@ -80,4 +114,5 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
 ## Links
 
 * [JDK 22 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=21900)
+* [Gathering the Streams](https://cr.openjdk.org/~vklang/Gatherers.html)
 
