@@ -47,6 +47,91 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
     * control the allocation and deallocation of foreign memory: `MemorySegment`, `Arena`, `SegmentAllocator`;
     * manipulate and access structured foreign memory: `MemoryLayout`, `VarHandle`;
     * call foreign functions: `Linker`, `SymbolLookup`, `FunctionDescriptor`, `MethodHandle`.
+  * Memory segments and arenas:
+    * memory segment is a abstraction backed by a contiguous region of memoery (off or on-heap);
+    * can be:
+      * native segment allocated from a off-heap memory;
+      * mapped segment wrapped around a region of mapped off-heap memory;
+      * array of buffer segment wrapped around a region of on-heap memory.
+    * memory segment has spatial em temporal bounds:
+      * spatial bound: guarantee that an access beyond the memory size won't be allowed;
+      * temporal bound: guarantee that an access won't be allowed to a memory segment that its backing region was already deallocated.
+    * arenas:
+      * memory segment is created from an arena
+      * arena controls the lifecycle of native memory segments
+      * every memory segment allocated from the same arena will have the same temporal bounds
+      * types:
+        * [global arena](https://cr.openjdk.org/~mcimadamore/jdk/FFM_22_PR/javadoc/java.base/java/lang/foreign/Arena.html#global()):
+          * arena with unbounded lifetime, it is always alive
+          * `MemorySegment data = Arena.global().allocate(100); // allocates 100 bytes`
+        * [automatic arena](https://cr.openjdk.org/~mcimadamore/jdk/FFM_22_PR/javadoc/java.base/java/lang/foreign/Arena.html#ofAuto()):
+          * provides a bounded lifetime with non-deterministic lifetime
+          * a segment allocated by a automatic arena can be accessed until JVM's GC detects that the memory segment is unreachable, then it is deallocated
+          * `MemorySegment data = Arena.ofAuto().allocate(100); // allocates 100 bytes`
+          * if it is allocated in a block, after that block the memory will be deallocated:
+            * ```java
+              void processData() {
+                MemorySegment data = Arena.ofAuto().allocate(1000);
+                // process data in memory
+              } // from here the allocated memory will be released (as long as there isn't a memory leak)
+              ```
+          * it's lifetime is non-deterministic because the JVM will deallocate at some point
+        * [confined arena](https://cr.openjdk.org/~mcimadamore/jdk/FFM_22_PR/javadoc/java.base/java/lang/foreign/Arena.html#ofConfined()):
+          * provides a bounded lifetime with deterministic lifetime
+          * can be explicity closed by the code
+          * can only be accessed by one thread
+          * we can use in a try-with-resources:
+            * ```java
+              try (Arena confinedArena = Arena.ofConfined()) {
+                MemorySegment input = confinedArena.allocate(100);
+                MemorySegment output = confinedArena.allocate(100);
+              } // will be deallocated from here
+              ```
+        * [shared arena](https://cr.openjdk.org/~mcimadamore/jdk/FFM_23_PR/javadoc/java.base/java/lang/foreign/Arena.html#ofShared()):
+          * is a confined arena for multi-threading
+          * any thread can access and close the memory segment
+  * Memory layout:
+    * [Value layout](https://cr.openjdk.org/~mcimadamore/jdk/FFM_22_PR/javadoc/java.base/java/lang/foreign/ValueLayout.html):
+      * abstraction to facilitate the memory value layout usage
+      * eg.: to work with int, we can use `ValueLayout.JAVA_INT` to read 4 bytes using the platform endianess to correctly extract an int from a memory segment
+      * memory segments have simple dereference methods to read values from and write values to memory segments, these methods accept a value layout
+      * example how to write value from 1 to 10 in a memory segment:
+        * ```java
+          MemorySegment segment = Arena.ofAuto().allocate(
+            ValueLayout.JAVA_INT.byteSize() * 10, // memory size
+            ValueLayout.JAVA_INT.byteAlignment() // memory alignment
+          );
+          for (int i = 0; i < 10; i++) {
+            int value = i + 1;
+            // the memory offset is calculated from: value layout byte size * index
+            segment.setAtIndex(ValueLayout.JAVA_INT, i, value);
+          }
+          ```
+    * Structured access:
+      * the API provides ways to declare any memory layout and also factory method to help calculate the memory size for us
+      * eg.: declare a C struct in Java:
+        * C code to declare an array of 10 points:
+        ```c
+        struct Point { int x; int y } pts[10];
+        ```
+        * we can manually declare the memory layout:
+        ```java
+        MemorySegment segment = Arena.ofAuto().allocate(
+          2 * ValueLayout.JAVA_INT.byteSize() * 10,
+          ValueLayout.JAVA_INT.byteAlignment()
+        );
+        ```
+        * we can use memory layout to describe the content of a memory segment and use `VarHandle` to write the values in the struct:
+        ```java
+        SequenceLayout ptsLayout = MemoryLayout.sequenceLayout(
+          10, // size
+          MemoryLayout.structLayout( // declare a C struct
+            ValueLayout.JAVA_INT.withName("x"),
+            ValueLayout.JAVA_INT.withName("y")
+          )
+        );
+        MemorySegment segment = Arena.ofAuto().allocate(ptsLayout);
+        ```
 * **Unnamed Variables and Patterns**
   * promotion to standard
   * no change from JDK 21
@@ -66,9 +151,6 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
 * **String Templates**
   * minor change from JDK 21
   * changed the type of template expressions
-* **Structured Concurrency**
-  * no change from JDK 20/21
-  * re-preview for additional feedback
 * **Stream Gatherers**
   * enhance the Stream API to support custom intermediate operations
   * will allow stream pipelines to transform data more easily than the existing built-in intermediate operations
@@ -100,6 +182,9 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
     * `peek`: stateless one-to-one gatherer which applies a function to each element in the stream;
   * is possible to composing gatherers with `andThen(Gatherer)`:
     * `stream.gather(a).gather(b).collect(toList())` is equivalent to `stream.gather(a.andThen(b)).collect(toList())`
+* **Structured Concurrency**
+  * no change from JDK 20/21
+  * re-preview for additional feedback
 * **Implicity Declared Classes and Instance Main Methods**
   * minor change from JDK 21
   * changed the concept name from unnamed class to implicity declared class

@@ -30,8 +30,8 @@ public class StreamGatherersExamples {
 			// integrator: only add if doesn't exists in the set
 			Gatherer.Integrator.ofGreedy((state, element, downstream) -> {
 				if (state.contains(element)) {
-					// ask for the next element
-					return true;
+					// ask for the next element if the downstream is on
+					return !downstream.isRejecting();
 				}
 				state.add(element);
 				// pushes downstream and ask for more if the downstream is on
