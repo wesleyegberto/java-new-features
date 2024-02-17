@@ -329,4 +329,5 @@ Deprecations:
   * [Java 21 New Feature: Virtual Threads](https://www.youtube.com/watch?v=5E0LU85EnTI)
   * [Java 21 API New Features](https://www.youtube.com/watch?v=4mPd2eL0wYQ)
   * [Java 21 Brings Full Pattern Matching](https://www.youtube.com/watch?v=QrwFrm1R8OY)
+  * [Java's Virtual Threads - Next Steps](https://www.youtube.com/watch?v=KBW4LbCoo6c)
 
