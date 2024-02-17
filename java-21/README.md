@@ -23,6 +23,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
 ## Features
 
 * **Virtual Threads**
+  * [notes about Virtual Threads](../java-19/README.md)
   * promotion to standard
   * changed to make virtual threads always support thread-local
     * in preview releases was possible to create a virtual thread without thread-local support
