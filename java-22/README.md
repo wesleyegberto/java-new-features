@@ -83,28 +83,44 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
           * we can use in a try-with-resources:
             * ```java
               try (Arena confinedArena = Arena.ofConfined()) {
-                MemorySegment input = confinedArena.allocate(100);
-                MemorySegment output = confinedArena.allocate(100);
+                  MemorySegment input = confinedArena.allocate(100);
+                  MemorySegment output = confinedArena.allocate(100);
               } // will be deallocated from here
               ```
         * [shared arena](https://cr.openjdk.org/~mcimadamore/jdk/FFM_23_PR/javadoc/java.base/java/lang/foreign/Arena.html#ofShared()):
           * is a confined arena for multi-threading
           * any thread can access and close the memory segment
+    * allocators:
+      * is an abstraction to define operations to allocate and initialize memory segments
+      * memory allocation can be bottleneck when using off-heap memory, allocators help to minimize this
+      * we can allocate a large memory and then use allocator to distribute through the application
+      * we can create an allocator using an already allocated memory segment
+        * the segments allocated by the allocator will have the same bounded lifetime
+      * ```java
+        MemorySegment segment = Arena.ofAuto().allocate(1024 * 1024 * 1024); // 1 GB
+        SegmentAllocator allocator = SegmentAllocator.slicingAllocator(segment);
+        for (int i = 0; i < 10; i++) {
+            MemorySegment msi = allocator.allocateFrom(ValueLayout.JAVA_INT, i);
+        }
+        ```
   * Memory layout:
     * [Value layout](https://cr.openjdk.org/~mcimadamore/jdk/FFM_22_PR/javadoc/java.base/java/lang/foreign/ValueLayout.html):
       * abstraction to facilitate the memory value layout usage
-      * eg.: to work with int, we can use `ValueLayout.JAVA_INT` to read 4 bytes using the platform endianess to correctly extract an int from a memory segment
+        * eg.: to work with int, we can use `ValueLayout.JAVA_INT` to read 4 bytes using the platform endianness to correctly extract an int from a memory segment
+        * `MemorySegment int = Arena.global().allocateFrom(ValueLayout.JAVA_INT, 42)`
+        * `MemorySegment intArray = Arena.global().allocateFrom(ValueLayout.JAVA_INT, 0, 1, 2, 3, 4, 5)`
+        * `MemorySegment text = Arena.global().allocateFrom("Hello World!")`
       * memory segments have simple dereference methods to read values from and write values to memory segments, these methods accept a value layout
       * example how to write value from 1 to 10 in a memory segment:
         * ```java
           MemorySegment segment = Arena.ofAuto().allocate(
-            ValueLayout.JAVA_INT.byteSize() * 10, // memory size
-            ValueLayout.JAVA_INT.byteAlignment() // memory alignment
+              ValueLayout.JAVA_INT.byteSize() * 10, // memory size
+              ValueLayout.JAVA_INT.byteAlignment() // memory alignment
           );
           for (int i = 0; i < 10; i++) {
-            int value = i + 1;
-            // the memory offset is calculated from: value layout byte size * index
-            segment.setAtIndex(ValueLayout.JAVA_INT, i, value);
+              int value = i + 1;
+              // the memory offset is calculated from: value layout byte size * index
+              segment.setAtIndex(ValueLayout.JAVA_INT, i, value);
           }
           ```
     * Structured access:
@@ -117,24 +133,67 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
         * we can manually declare the memory layout:
         ```java
         MemorySegment segment = Arena.ofAuto().allocate(
-          2 * ValueLayout.JAVA_INT.byteSize() * 10,
-          ValueLayout.JAVA_INT.byteAlignment()
+            2 * ValueLayout.JAVA_INT.byteSize() * 10,
+            ValueLayout.JAVA_INT.byteAlignment()
         );
         ```
         * we can use memory layout to describe the content of a memory segment and use `VarHandle` to write the values in the struct:
         ```java
         SequenceLayout ptsLayout = MemoryLayout.sequenceLayout(
-          10, // size
-          MemoryLayout.structLayout( // declare a C struct
-            ValueLayout.JAVA_INT.withName("x"),
-            ValueLayout.JAVA_INT.withName("y")
-          )
+            10, // size
+            MemoryLayout.structLayout( // declare a C struct
+                ValueLayout.JAVA_INT.withName("x"),
+                ValueLayout.JAVA_INT.withName("y")
+            )
         );
         MemorySegment segment = Arena.ofAuto().allocate(ptsLayout);
         ```
+  * Foreign functions:
+    * native library loaded from a lookup doesn'n belong to any class loader (unlike JNI), allowing the native library to be reloaded by any other class
+      * JNI requires the native library to be loaded by only one class loader
+    * FFM API doesn't provides any function for native code to access the Java environment (unlike JNI)
+      * but we can pass a Java code as function pointer to native function
+    * FFM API uses `MethodHandle` to interoperate between Java code and native function
+    * steps need to call a foreign function:
+      * find the address of a given symbol in a loaded native library
+      * link the Java code to a foreign function
+    * Symbol lookup:
+      * we can use `SymbolLookup` to lookup a function address:
+        * `SymbolLookup::libraryLookup(String, Arena)`: creates a library lookup, loads the libreary and associates with the given Arena object;
+        * `SymbolLookup::loaderLookup()`: creates a loader lookup that locates all the symbols in all the native libraries that have been loaded by classes in the current class loader (`System::loadLibrary` and `System::load`);
+        * `Linker::defaultLookup()`: creates a default lookup that locates all the symbols that are commonly used in the native platform (OS).
+      * we can use `SymbolLookup::find(String)` to find a function by its name
+        * if it is present then a memory segment, which points to funtion's entry point, is returned
+    * Linking Java code to foreign function:
+      * interface `Linker` is the main point to allow Java code to interoperate with native code
+      * calls:
+        * downcall: call from Java code to native code;
+        * upcall: call from native code back to Java code (linker a function pointer).
+      * the native linker conforms to the Application Binary Interface (BNI) of the native platform
+        * ABNI specifies the calling convension, the size, alignment, endianness of scalar types and others details
+        * `Linker linker = Linker.nativeLinker()`
+      * downcall:
+        * we use `Linker::downcallHandle` to link Java code to a foreign function
+        * `Linker::downcallHandle(MemorySegment, FunctionDescriptor)` returns a `MethodHandle` to be used to invoke the native function
+          * we must provide a `FunctionDescriptor` to define the native function signature (return type and the parameters types)
+            * we can create one using `FunctionDescriptor.of` or `FunctionDescriptor.ofVoid` passing the memory layout to define the signature
+            * developer must be aware of the current native platform that will be used (size of scalar types used in C functions)
+              * eg.: on Linux and macOS, a long is JAVA_LONG; on Windows, a long is JAVA_INT
+            * we can use `Linker::canonicalLayouts()` to see the association between scalar C types and Java's ValueLayout
+          * JVM guarantee that the functions arguments used in `MethodHandle` will match the `FunctionDescriptor` used to downcall the function
+          * this way our types will be verified in the Java level
+        * if the native function returns a by-value struct, we must provide an additional `SegmentAllocator` argument that will be used to allocate the memory to hold the struct returned
+        * if the native function allocates a memory and returns a pointer to it, a zero-length memory segment is return to Java code
+          * because the JVM cannot guarantee the allocated memory size off-heap
+          * the client must call `MemorySegment::reinterpret` to tell the JVM the memory's size (the user may not know)
+          * this is an unsafe operation (could crash the JVM or leave the memory in a corruption stat)
+      * upcall:
+        * we can pass Java code as a function pointer to be called by the foreign function
+        * we use `Linker::upcallStub` to "externalize" a Java code
+          * we must provide a `MethodHandle` that points to the Java method, a `FunctionDescriptor` with the method signature
 * **Unnamed Variables and Patterns**
   * promotion to standard
-  * no change from JDK 21
+  * no change from JDK 2
 * **Class-File API**
   * provide standard API for parsing, generating and transforming Java class file
 * **Launch Multi-File Source-Code Programs**
@@ -200,4 +259,6 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
 
 * [JDK 22 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=21900)
 * [Gathering the Streams](https://cr.openjdk.org/~vklang/Gatherers.html)
+* Presentations:
+  * [Foreign Function & Memory API - A (Quick) Peek Under the Hood](https://www.youtube.com/watch?v=iwmVbeiA42E)
 

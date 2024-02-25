@@ -4,13 +4,14 @@ import java.lang.invoke.*;
 import java.util.*;
 
 /**
- * To run: `java --enable-preview --source 22 ForeignFunctionAndMemoryApiAllocationTest.java`
+ * To run: `java --source 22 ForeignFunctionAndMemoryApiAllocationTest.java`
  */
 public class ForeignFunctionAndMemoryApiAllocationTest {
 	public static void main(String[] args) {
 		memorySegmentAllocationExample();
 		memorySegmentStructManualAllocation();
 		memorySegmentStructAutoAllocation();
+		memorySegmentUsingSegmentAllocator();
 	}
 
 	static void memorySegmentAllocationExample() {
@@ -80,6 +81,17 @@ public class ForeignFunctionAndMemoryApiAllocationTest {
 			// here we don't need to handle the offset for x and y, only the array index
 			xHandle.set(segment, 0L, i, value);
 			yHandle.set(segment, 0L, i, value);
+		}
+	}
+
+	static void memorySegmentUsingSegmentAllocator() {
+		try (Arena arena = Arena.ofConfined()) {
+			MemorySegment segment = arena.allocate(1024 * 1024); // 1 MB
+			SegmentAllocator allocator = SegmentAllocator.slicingAllocator(segment);
+			for (int i = 0; i < 10; i++) {
+				MemorySegment msi = allocator.allocateFrom(ValueLayout.JAVA_INT, i);
+			}
+			System.out.println("Memory allocated to use with allocator: " + segment);
 		}
 	}
 }
