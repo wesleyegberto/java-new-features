@@ -11,13 +11,16 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 ## Resume by Version
 
-* [Java 22](java-22/)
+* [Java 23](java-23/)
+  * Primitive Types in Patterns, `instanceof` and `switch` (preview)
+
+* [Java 22](java-22/) (Mar, 2024)
   * Statements before `super` (preview)
   * FFM API (standard)
   * Unnamed Variable & Patterns
   * Launch Multi-File Source-Code Programs
   * String Templates (preview 2)
-  * Stream Gatherers (prewview)
+  * Stream Gatherers (preview)
   * Structured Concurrency (preview 2)
   * Scoped Value (preview 2)
 
