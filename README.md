@@ -13,6 +13,8 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 * [Java 23](java-23/)
   * Primitive Types in Patterns, `instanceof` and `switch` (preview)
+  * Class-File API (preview 2)
+  * Stream Gatherers (preview 2)
 
 * [Java 22](java-22/) (Mar, 2024)
   * Statements before `super` (preview)
@@ -23,6 +25,7 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Stream Gatherers (preview)
   * Structured Concurrency (preview 2)
   * Scoped Value (preview 2)
+  * Class-File API (preview)
 
 * [Java 21](java-21/) (LTS; Sep, 2023)
   * Virtual Threads (standard) :rocket:

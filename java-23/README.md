@@ -6,6 +6,8 @@ To run each example use: `java --enable-preview --source 23 <FileName.java>`
 
 * [455](https://openjdk.org/jeps/455) - Primitive Types in Patterns, instanceof, and switch (Preview)
 * [466](https://openjdk.org/jeps/466) - Class-File API (Second Preview)
+* [469](https://openjdk.org/jeps/469) - Vector API (Eighth Incubator)
+* [473](https://openjdk.org/jeps/473) - Stream Gatherers (Second Preview)
 
 ## Features
 
@@ -28,6 +30,8 @@ To run each example use: `java --enable-preview --source 23 <FileName.java>`
                 * if the switch's selector expression is a float then any case constants must be a floating-point literals
                 * floating-point literal in case labels is defined in terms of [representation equivalence](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Double.html#repEquivalence)
                     * a label `case 1.0f` is considered the same as `case 0.99999999f`, will throw a duplicate label error
+* **Stream Gatherers**
+    * re-preview without change
 
 ## Links
 
