@@ -15,6 +15,8 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Primitive Types in Patterns, `instanceof` and `switch` (preview)
   * Class-File API (preview 2)
   * Stream Gatherers (preview 2)
+  * Marketdown documentation comments
+  * Module import declarations (preview)
 
 * [Java 22](java-22/) (Mar, 2024)
   * Statements before `super` (preview)
