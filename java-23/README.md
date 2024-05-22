@@ -11,6 +11,7 @@ To run each example use: `java --enable-preview --source 23 <FileName.java>`
 * [473](https://openjdk.org/jeps/473) - Stream Gatherers (Second Preview)
 * [474](https://openjdk.org/jeps/474) - ZGC: Generational Mode by Default
 * [476](https://openjdk.org/jeps/476) - Module Import Declarations (Preview)
+* [477](https://openjdk.org/jeps/477) - Implicitly Declared Classes and Instance Main Methods (Third Preview)
 
 ## Features
 
@@ -52,12 +53,20 @@ To run each example use: `java --enable-preview --source 23 <FileName.java>`
     * ambiguous import:
         * in case of two module exporting the same class name, we will have to import the class directly
         * ```java
-          import module java.base;
-          import module java.sql;
+          import module java.base; // java.util.Date
+          import module java.sql; // java.sql.Date
           import java.sql.Date;
           ```
+* **Implicitly Declared Classes and Instance Main Methods**
+    * major change from JDK 21 and 22
+    * implicitly import methods from a new class `java.io.IO`
+        * new class created for convenience IO
+        * provides methods: `print(Object)`, `println(Object)` and `readln(String)`
+        * this class uses return from `System.console()` to print and read from the default input and output streams
+    * implicitly class will automatically import all of the public top-level classes and interfaces from module `java.base`
 
 ## Links
 
 * [JDK 23 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=22205)
+* [JDK 32 JEPs](https://openjdk.org/projects/jdk/23/)
 

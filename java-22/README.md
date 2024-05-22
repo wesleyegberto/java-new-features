@@ -246,7 +246,7 @@ To run each example use: `java --enable-preview --source 22 <FileName.java>`
   * re-preview for additional feedback
 * **Implicity Declared Classes and Instance Main Methods**
   * minor change from JDK 21
-  * changed the concept name from unnamed class to implicity declared class
+  * changed the concept name from unnamed class to implicitly declared class
     * "source file without an enclosing class declaration is said to implicitly declare a class with a name chosen by the host system"
   * changed the procedure for selecting a main method to invoke
     * first it looks for a method `main(String[])`, if not found then it looks for a method `main()`
