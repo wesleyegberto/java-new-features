@@ -8,10 +8,14 @@ To run each example use: `java --enable-preview --source 23 <FileName.java>`
 * [466](https://openjdk.org/jeps/466) - Class-File API (Second Preview)
 * [467](https://openjdk.org/jeps/467) - Markdown Documentation Comments
 * [469](https://openjdk.org/jeps/469) - Vector API (Eighth Incubator)
+* [471](https://openjdk.org/jeps/471) - Deprecate the Memory-Access Methods in sun.misc.Unsafe for Removal
 * [473](https://openjdk.org/jeps/473) - Stream Gatherers (Second Preview)
 * [474](https://openjdk.org/jeps/474) - ZGC: Generational Mode by Default
 * [476](https://openjdk.org/jeps/476) - Module Import Declarations (Preview)
 * [477](https://openjdk.org/jeps/477) - Implicitly Declared Classes and Instance Main Methods (Third Preview)
+* [480](https://openjdk.org/jeps/480) - Structured Concurrency (Third Preview)
+* [481](https://openjdk.org/jeps/481) - Scoped Values (Third Preview)
+* [482](https://openjdk.org/jeps/482) - Flexible Constructor Bodies (Second Preview)
 
 ## Features
 
