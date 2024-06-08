@@ -38,8 +38,54 @@ To run each example use: `java --enable-preview --source 23 <FileName.java>`
                 * if the switch's selector expression is a float then any case constants must be a floating-point literals
                 * floating-point literal in case labels is defined in terms of [representation equivalence](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Double.html#repEquivalence)
                     * a label `case 1.0f` is considered the same as `case 0.99999999f`, will throw a duplicate label error
+* **Markdown Documentation Comments**
+    * allow JavaDoc to be written using Markdown
+    * will be easy to write and read in text editors
+    * support to HTML elements and JavaDoc tags will still be provided
+    * Java Compiler API will support links and code analysis inside Markdown
+    * to use Markdown comments we need to use `///` in each line instead of block comment `/** */`
+    * `///` were used because `/*` has some limitations:
+        * `*/` cannot be used in comments
+        * the use of ` *` in each line inside the block is optional, could conflict with Markdown item listing `*`
+    * syntax supported is a Markdown variation called [CommonMark](https://spec.commonmark.org/0.30/)
+    * usage:
+        * we can link using `[]` with the Java reference inside:
+            * module: `[java.base/]`
+            * package: `[java.util]`
+            * class: `[String]`
+            * field: `[String#CASE_INSENSITIVE_ORDER]`
+            * method: `[String#chars()]`
+            * alternative text: `[String method chars][String#chars()]`
+        * table syntax in the same as Github Markdown
+        * we can use JavaDoc tags normally (like `@param`, `@return`, `@throws`, `@inheritDoc`)
+    * we can add scripts in `javadoc` to enable syntax highlighting and mermeid diagramas
+    * example:
+        * code:
+        ```java
+        /// Code to generate **Universe** _answer_:
+        ///
+        /// Restrictions:
+        ///
+        /// - can take as long as Universe life
+        /// - can use [java.util.Random]
+        /// - requires only [base module][java.base/]
+        ///
+        /// `return (int) (new java.util.Random().randomInt().nextDouble() * 42);`
+        ///
+        /// @return int with the answer
+        /// @throws IllegalStateException if the Universe has ended
+        public int calculateAnswer() {
+            return (int) (new java.util.Random().nextDouble() * 42);
+        }
+        ```
+        * renderization:
+        ![](img/javadoc-markdown-example.png)
 * **Stream Gatherers**
     * re-preview without change
+* **Deprecate the Memory-Access Methods in `Unsafe` for Removal**
+    * deprecated for future removal
+    * we should use VarHandle API and FFM API
+    * we can use command line option `--sun-misc-unsafe-memory-access` with `allow`, `warn` or `deny` to customize th JVM behavior
 * **ZGC: Generational Mode by Default**
     * switch the default mode of ZGC to use generational mode
     * deprecate the non-generational mode to be removed in the future
@@ -68,9 +114,23 @@ To run each example use: `java --enable-preview --source 23 <FileName.java>`
         * provides methods: `print(Object)`, `println(Object)` and `readln(String)`
         * this class uses return from `System.console()` to print and read from the default input and output streams
     * implicitly class will automatically import all of the public top-level classes and interfaces from module `java.base`
+* **Structured Concurrency**
+    * re-preview without change
+* **Scoped Values**
+    * re-preview with one change from JDK 22
+    * the type of the parameter of the `ScopedValue.callWhere` method is now a new functional interface
+        * functional interface: `ScopedValue.CallableOp<T, X extends Throwable>`
+    * this will allow Java compiler to infer whether a checked exception might be thrown
+    * the method `ScopedValue.getWhere` is no longer needed and is removed
+    * this will simplify the usage where exception can also be thrown
+* **Flexible Constructor Bodies**
+    * new name after JEP 447: Statements before `super` (preview)
+    * changed from JDK 22 to allow initialize fields in the same class before explicitly invoking a constructor
+    * this will allow a superclass never executes code with use subclass values with their default value (`0`, `false` or `null`)
 
 ## Links
 
 * [JDK 23 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=22205)
 * [JDK 32 JEPs](https://openjdk.org/projects/jdk/23/)
+* [All Java 23 Features - Inside Java Newcast](https://www.youtube.com/watch?v=kzjGp7LmW0I)
 

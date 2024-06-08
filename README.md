@@ -15,8 +15,12 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Primitive Types in Patterns, `instanceof` and `switch` (preview)
   * Class-File API (preview 2)
   * Stream Gatherers (preview 2)
-  * Marketdown documentation comments
-  * Module import declarations (preview)
+  * Markdown Documentation Comments
+  * Module Import Declarations (preview)
+  * Implicity Declared Classes and Instance Main Methods (preview 3)
+  * Structured Concurrency (preview 3)
+  * Scoped Value (preview 3)
+  * Flexible Constructor Bodies (preview 2)
 
 * [Java 22](java-22/) (Mar, 2024)
   * Statements before `super` (preview)
@@ -28,6 +32,7 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Structured Concurrency (preview 2)
   * Scoped Value (preview 2)
   * Class-File API (preview)
+  * Implicity Declared Classes and Instance Main Methods (preview 2)
 
 * [Java 21](java-21/) (LTS; Sep, 2023)
   * Virtual Threads (standard) :rocket:
