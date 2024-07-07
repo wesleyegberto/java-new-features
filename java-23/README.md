@@ -131,6 +131,6 @@ To run each example use: `java --enable-preview --source 23 <FileName.java>`
 ## Links
 
 * [JDK 23 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=22205)
-* [JDK 32 JEPs](https://openjdk.org/projects/jdk/23/)
+* [JDK 23 JEPs](https://openjdk.org/projects/jdk/23/)
 * [All Java 23 Features - Inside Java Newcast](https://www.youtube.com/watch?v=kzjGp7LmW0I)
 
