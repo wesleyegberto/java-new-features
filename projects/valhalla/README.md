@@ -246,4 +246,5 @@ arr[1] = null;
 * [JEP draft - Value Objects](https://openjdk.org/jeps/8277163)
 * [JEP 401 - Primitive Classes](https://openjdk.org/jeps/401)
 * [Java Value Objects in Action with Valhalla](https://www.youtube.com/watch?v=ViZkEgshiXI)
+* [Valhalla - Where Are We?](https://www.youtube.com/watch?v=IF9l8fYfSnI)
 
