@@ -13,6 +13,7 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 * [Java 24](java-24/)
   * Prepare to Restrict the Use of JNI
+  * Class-File API
 
 * [Java 23](java-23/) (Sep, 2024)
   * Primitive Types in Patterns, `instanceof` and `switch` (preview)
