@@ -28,6 +28,10 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
   * changed to make virtual threads always support thread-local
     * in preview releases was possible to create a virtual thread without thread-local support
   * flag `jdk.traceVirtualThreadLocals` to show the strack trace when a virtual threads sets a value in thread-local variable
+  * continuations:
+    * can be viewed as representation of the current state of the program
+    * used internally by the JVM to wrap the work by virtual threads
+    * there isn't a public API available, only internal
 * **Scoped Values**
   * promoted from incubated to preview feature
   * minor change from JDK 19
@@ -331,4 +335,5 @@ Deprecations:
   * [Java 21 API New Features](https://www.youtube.com/watch?v=4mPd2eL0wYQ)
   * [Java 21 Brings Full Pattern Matching](https://www.youtube.com/watch?v=QrwFrm1R8OY)
   * [Java's Virtual Threads - Next Steps](https://www.youtube.com/watch?v=KBW4LbCoo6c)
+  * [Continuations: The magic behind virtual threads in Java by Balkrishna Rawool @ Spring I/O 2024](https://www.youtube.com/watch?v=pwLtYvRK334)
 

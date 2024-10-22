@@ -7,6 +7,9 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
 * [472](https://openjdk.org/jeps/472) - Prepare to Restrict the Use of JNI
 * [475](https://openjdk.org/jeps/475) - Late Barrier Expansion for G1
 * [484](https://openjdk.org/jeps/484) - Class-File API
+* [485](https://openjdk.org/jeps/485) - Steam Gatherers
+* [489](https://openjdk.org/jeps/489) - Vector API (Ninth Incubator)
+* [490](https://openjdk.org/jeps/490) - ZGC Remove the Non-Generational Mode
 
 ## Features
 

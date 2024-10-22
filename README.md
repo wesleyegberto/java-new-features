@@ -13,7 +13,11 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 * [Java 24](java-24/)
   * Prepare to Restrict the Use of JNI
-  * Class-File API
+  * Late Barrier Expansion for G1
+  * Class-File API (standard)
+  * Steam Gatherers (standard)
+  * Vector API (incubator)
+  * ZGC Remove the Non-Generational Mode
 
 * [Java 23](java-23/) (Sep, 2024)
   * Primitive Types in Patterns, `instanceof` and `switch` (preview)
