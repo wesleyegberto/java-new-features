@@ -12,12 +12,17 @@ A project to explore more about the new features from Java 8 through Java 21.
 ## Resume by Version
 
 * [Java 24](java-24/)
+  * Generational Shenandoah (experimental)
   * Prepare to Restrict the Use of JNI
   * Late Barrier Expansion for G1
+  * Key Derivation Function API (preview)
   * Class-File API (standard)
   * Steam Gatherers (standard)
+  * Scoped Values (preview 4)
+  * Primitive Types in Patterns, instanceof, and switch (preview 2)
   * Vector API (incubator)
   * ZGC Remove the Non-Generational Mode
+  * Linking Run-Time Images without JMODs
 
 * [Java 23](java-23/) (Sep, 2024)
   * Primitive Types in Patterns, `instanceof` and `switch` (preview)

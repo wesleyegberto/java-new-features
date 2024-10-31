@@ -4,12 +4,17 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
 
 ## JEPs
 
+* [404](https://openjdk.org/jeps/404) - Generational Shenandoah (Experimental)
 * [472](https://openjdk.org/jeps/472) - Prepare to Restrict the Use of JNI
 * [475](https://openjdk.org/jeps/475) - Late Barrier Expansion for G1
+* [478](https://openjdk.org/jeps/478) - Key Derivation Function API (Preview)
 * [484](https://openjdk.org/jeps/484) - Class-File API
 * [485](https://openjdk.org/jeps/485) - Steam Gatherers
+* [487](https://openjdk.org/jeps/487) - Scoped Values (Fourth Preview)
+* [488](https://openjdk.org/jeps/488) - Primitive Types in Patterns, instanceof, and switch (Second Preview)
 * [489](https://openjdk.org/jeps/489) - Vector API (Ninth Incubator)
 * [490](https://openjdk.org/jeps/490) - ZGC Remove the Non-Generational Mode
+* [493](https://openjdk.org/jeps/493) - Linking Run-Time Images without JMODs
 
 ## Features
 
@@ -65,6 +70,14 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
             System.out.println("Method " + mm.methodName().stringValue());
         }
         ```
+* **Scoped Values**
+    * re-preview with API changes
+    * removed methods `callWhere` and `runWhere` to make API more fluent
+    * `ScopedValue.where(SCOPE, "my-value").run(() -> {});` instead of `ScopedValue.callWhere(SCOPE, "my-value", () -> {})`
+    * we can bind multiples values
+        * `ScopedValue.where(SCOPE_A, "my-value").where(SCOPE_B, "other-value").run(() -> {})`
+* **Primitive Types in Patterns, instanceof, and switch**
+    * re-preview without change
 
 ## Links
 
