@@ -22,6 +22,7 @@ To run each example use: `java --enable-preview --source 17 <FileName.java>`
 ## Features
 
 * **Sealed Classes (standard)**
+  * promotion to standard without change
 * **Pattern Matching for `switch` (preview)**
   * improved switch to support pattern matching for types (like `instanceof`)
   * support for `null` case

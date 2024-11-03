@@ -13,6 +13,7 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 * [Java 24](java-24/)
   * Generational Shenandoah (experimental)
+  * Compact Object Headers (experimental)
   * Prepare to Restrict the Use of JNI
   * Late Barrier Expansion for G1
   * Key Derivation Function API (preview)
@@ -27,8 +28,11 @@ A project to explore more about the new features from Java 8 through Java 21.
 * [Java 23](java-23/) (Sep, 2024)
   * Primitive Types in Patterns, `instanceof` and `switch` (preview)
   * Class-File API (preview 2)
-  * Stream Gatherers (preview 2)
   * Markdown Documentation Comments
+  * Vector API (incubator)
+  * Stream Gatherers (preview 2)
+  * Deprecate the Memory-Access Methods in Unsafe for Removal
+  * ZGC Generational Mode by Default
   * Module Import Declarations (preview)
   * Implicity Declared Classes and Instance Main Methods (preview 3)
   * Structured Concurrency (preview 3)
@@ -36,30 +40,35 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Flexible Constructor Bodies (preview 2)
 
 * [Java 22](java-22/) (Mar, 2024)
+  * Region Pinning for G1
   * Statements before `super` (preview)
   * FFM API (standard)
   * Unnamed Variable & Patterns
+  * Class-File API (preview)
   * Launch Multi-File Source-Code Programs
   * String Templates (preview 2)
+  * Vector API (incubator)
   * Stream Gatherers (preview)
   * Structured Concurrency (preview 2)
   * Scoped Value (preview 2)
-  * Class-File API (preview)
   * Implicity Declared Classes and Instance Main Methods (preview 2)
 
 * [Java 21](java-21/) (LTS; Sep, 2023)
-  * Virtual Threads (standard) :rocket:
+  * String Templates (preview)
+  * Sequenced Collections
+  * Generational ZGC
   * Record Pattern (standard) :rocket:
   * Pattern Matching for `switch` (standard) :rocket:
-  * Sequenced Collections
-  * String Templates (preview)
   * Foreign Function & memory API (preview 3)
   * Unnamed Patterns and Variables (preview)
+  * Virtual Threads (standard) :rocket:
   * Unnamed Classes and Instance Main Methods (preview)
+  * Scoped Value (preview)
+  * Vector API (incubator)
+  * Deprecate the Windows 32-bit x86 Port for Removal
   * Prepare to Disallow the Dynamic Loading of Agents
   * KEM API
   * Structured Concurrency (preview)
-  * Scoped Value (preview)
 
 * [Java 20](java-20/) (Mar, 2023)
   * Scoped values (incubator)
@@ -68,6 +77,7 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Foreign Function & memory API (preview 2)
   * Virtual Threads (preview 2)
   * Structured concurrency (second incubator)
+  * Vector API (incubator)
 
 * [Java 19](java-19/) (Sep, 2022)
   * Virtual Thread (preview) :rocket:
@@ -84,12 +94,20 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Deprecated method `finalize`
 
 * [Java 17](java-17/) (LTS; Sep, 2021)
-  * Sealed classes (standard)
-  * Pattern matching for `switch` (preview)
+  * Restore Always-Strict Floating-Point Semantics
   * Enhanced Pseudo-Random Number Generator
-  * Deprecate the Applet API for Removal
   * New macOS rendering for Java 2D API
+  * macOS/AArch64 Port
+  * Deprecate the Applet API for Removal
+  * Strongly Encapsulate JDK Internals
+  * Pattern matching for `switch` (preview)
+  * Remove RMI Activation
+  * Sealed Classes (standard)
   * Remove the experimental AOT and JIT compiler
+  * Deprecate the Security Manager for Removal
+  * Foreign Function & Memory API (incubator)
+  * Vector API (fourth incubator)
+  * Context-Specific Deserialization Filters
 
 * [Java 16](java-16/) (Mar, 2021)
   * Records (standard)

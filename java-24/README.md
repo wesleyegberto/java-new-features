@@ -5,6 +5,7 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
 ## JEPs
 
 * [404](https://openjdk.org/jeps/404) - Generational Shenandoah (Experimental)
+* [450](https://openjdk.org/jeps/450) - Compact Object Headers (Experimental)
 * [472](https://openjdk.org/jeps/472) - Prepare to Restrict the Use of JNI
 * [475](https://openjdk.org/jeps/475) - Late Barrier Expansion for G1
 * [478](https://openjdk.org/jeps/478) - Key Derivation Function API (Preview)
@@ -70,6 +71,8 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
             System.out.println("Method " + mm.methodName().stringValue());
         }
         ```
+* **Steam Gatherers**
+    * promotion to standard without change
 * **Scoped Values**
     * re-preview with API changes
     * removed methods `callWhere` and `runWhere` to make API more fluent
@@ -78,6 +81,12 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
         * `ScopedValue.where(SCOPE_A, "my-value").where(SCOPE_B, "other-value").run(() -> {})`
 * **Primitive Types in Patterns, instanceof, and switch**
     * re-preview without change
+* **ZGC - Remove the Non-Generational Mode**
+    * remove non-generational mode of the ZGC to reduce maintenance cost
+    * changes in command-line options:
+        * `-XX:+UseZGC`: will use generational ZGC
+        * `-XX:+UseZGC -XX:+ZGenerational`: will use generational ZGC and print a warning about obsolete option
+        * `-XX:+UseZGC -XX:-ZGenerational`: will use generational ZGC and print a warning about obsolete option
 
 ## Links
 
