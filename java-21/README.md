@@ -32,6 +32,10 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
     * can be viewed as representation of the current state of the program
     * used internally by the JVM to wrap the work by virtual threads
     * there isn't a public API available, only internal
+    * possible uses:
+      * virtual threads
+      * coroutines
+      * generators
 * **Scoped Values**
   * promoted from incubated to preview feature
   * minor change from JDK 19

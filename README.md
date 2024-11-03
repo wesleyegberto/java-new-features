@@ -243,6 +243,7 @@ jshell --enable-preview
 * [The Java Version Almanac](https://javaalmanac.io/)
 * [Dev.java - tutorials, news and more](https://dev.java/)
   * [Java Platform Evolution](https://dev.java/evolution/)
+  * [Learn Java](https://dev.java/learn/)
   * [Java Playground](https://dev.java/playground/)
 * [Inside.java - Sip of Java](https://inside.java/2021/10/21/sip24/)
 * Download Java versions:
