@@ -11,11 +11,15 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
 * [478](https://openjdk.org/jeps/478) - Key Derivation Function API (Preview)
 * [484](https://openjdk.org/jeps/484) - Class-File API
 * [485](https://openjdk.org/jeps/485) - Steam Gatherers
+* [486](https://openjdk.org/jeps/486) - Permanently Disable the Security Manager
 * [487](https://openjdk.org/jeps/487) - Scoped Values (Fourth Preview)
 * [488](https://openjdk.org/jeps/488) - Primitive Types in Patterns, instanceof, and switch (Second Preview)
 * [489](https://openjdk.org/jeps/489) - Vector API (Ninth Incubator)
 * [490](https://openjdk.org/jeps/490) - ZGC Remove the Non-Generational Mode
+* [491](https://openjdk.org/jeps/491) - Synchronize Virtual Threads without Pinning
+* [491](https://openjdk.org/jeps/491) - Flexible Constructor Bodies (Third Preview)
 * [493](https://openjdk.org/jeps/493) - Linking Run-Time Images without JMODs
+* [494](https://openjdk.org/jeps/494) - Module Import Declarations (Second Preview)
 
 ## Features
 
@@ -87,6 +91,20 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
         * `-XX:+UseZGC`: will use generational ZGC
         * `-XX:+UseZGC -XX:+ZGenerational`: will use generational ZGC and print a warning about obsolete option
         * `-XX:+UseZGC -XX:-ZGenerational`: will use generational ZGC and print a warning about obsolete option
+* **Flexible Constructor Bodies**
+    * re-preview without change
+* **Module Import Declarations**
+    * re-preview with two changes
+    * import module `java.se` will import the entire Java SE API (`java.base`)
+    * allow any type-import-on-demand declarations to shadow module import declarations:
+        *
+        ```java
+        import module java.base;
+        import module java.sql;
+
+        import java.util.*; // every classe used will shadow the above module imports
+        import java.sql.Date; // will shadow all above imports
+        ```
 
 ## Links
 

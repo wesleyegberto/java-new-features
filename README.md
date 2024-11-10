@@ -19,11 +19,15 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Key Derivation Function API (preview)
   * Class-File API (standard)
   * Steam Gatherers (standard)
+  * Permanently Disable the Security Manager
   * Scoped Values (preview 4)
   * Primitive Types in Patterns, instanceof, and switch (preview 2)
   * Vector API (incubator)
   * ZGC Remove the Non-Generational Mode
+  * Synchronize Virtual Threads without Pinning :rocket:
+  * Flexible Constructor Bodies (preview 3)
   * Linking Run-Time Images without JMODs
+  * Module Import Declarations (preview 2)
 
 * [Java 23](java-23/) (Sep, 2024)
   * Primitive Types in Patterns, `instanceof` and `switch` (preview)
