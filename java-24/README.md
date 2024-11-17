@@ -9,6 +9,8 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
 * [472](https://openjdk.org/jeps/472) - Prepare to Restrict the Use of JNI
 * [475](https://openjdk.org/jeps/475) - Late Barrier Expansion for G1
 * [478](https://openjdk.org/jeps/478) - Key Derivation Function API (Preview)
+* [479](https://openjdk.org/jeps/479) - Remove the Windows 32-bit x86 Port
+* [483](https://openjdk.org/jeps/483) - Ahead-of-Time Class Loading & Linking
 * [484](https://openjdk.org/jeps/484) - Class-File API
 * [485](https://openjdk.org/jeps/485) - Steam Gatherers
 * [486](https://openjdk.org/jeps/486) - Permanently Disable the Security Manager
@@ -20,6 +22,7 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
 * [491](https://openjdk.org/jeps/491) - Flexible Constructor Bodies (Third Preview)
 * [493](https://openjdk.org/jeps/493) - Linking Run-Time Images without JMODs
 * [494](https://openjdk.org/jeps/494) - Module Import Declarations (Second Preview)
+* [495](https://openjdk.org/jeps/495) - Simple Source Files and Instance Main Mathods (Fourth Preview)
 
 ## Features
 
