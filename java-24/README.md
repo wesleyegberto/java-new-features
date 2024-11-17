@@ -105,9 +105,12 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
         import module java.base;
         import module java.sql;
 
-        import java.util.*; // every classe used will shadow the above module imports
+        import java.util.*; // every class used will shadow the class from module imports
         import java.sql.Date; // will shadow all above imports
         ```
+* **Simple Source Files and Instance Main Methods**
+    * re-preview with no change
+    * introduced new terminology "simple source file" to indicate a Java file with a implicitly declared class
 
 ## Links
 

@@ -41,7 +41,7 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Deprecate the Memory-Access Methods in Unsafe for Removal
   * ZGC Generational Mode by Default
   * Module Import Declarations (preview)
-  * Implicity Declared Classes and Instance Main Methods (preview 3)
+  * Implicitly Declared Classes and Instance Main Methods (preview 3)
   * Structured Concurrency (preview 3)
   * Scoped Value (preview 3)
   * Flexible Constructor Bodies (preview 2)
