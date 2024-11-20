@@ -19,10 +19,13 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
 * [489](https://openjdk.org/jeps/489) - Vector API (Ninth Incubator)
 * [490](https://openjdk.org/jeps/490) - ZGC Remove the Non-Generational Mode
 * [491](https://openjdk.org/jeps/491) - Synchronize Virtual Threads without Pinning
-* [491](https://openjdk.org/jeps/491) - Flexible Constructor Bodies (Third Preview)
+* [492](https://openjdk.org/jeps/492) - Flexible Constructor Bodies (Third Preview)
 * [493](https://openjdk.org/jeps/493) - Linking Run-Time Images without JMODs
 * [494](https://openjdk.org/jeps/494) - Module Import Declarations (Second Preview)
 * [495](https://openjdk.org/jeps/495) - Simple Source Files and Instance Main Mathods (Fourth Preview)
+* [498](https://openjdk.org/jeps/498) - Warn Upon Use of Memory-Access Methods in sun.misc.Unsafe
+* [499](https://openjdk.org/jeps/499) - Structured Concurrency (Fourth Preview)
+* [501](https://openjdk.org/jeps/501) - Deprecate the 32-bit x86 Port for Removal
 
 ## Features
 
@@ -35,9 +38,34 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
         * `--illegal-native-access=warn` is the default mode, in the future will be `deny`
         * this ways it will thrown an exception
     * added new JDK tool `jnativescan` to help identify the use of restricted methods and declarations of native methods
+* **Compact Object Headers**
+    * reduce the size of object headers in the HotSpot JVM from between 96 and 128 bits to 64 bits on 64-bit architecture
+    * goals:
+        * reduce object sizes and memory footprint on realistic workloads
+        * not introduce more than 5% throughput or latency overheads
+    * can be enable with:
+        * `-XX:+UnlockExperimentalVMOptions -XX:+UseCompactObjectHeaders`
 * **Late Barrier Expansion for G1**
     * reduce the overhead of C2 JIT compiler
     * reduce the execution time of C2 when using G1
+* **Ahead-of-Time Class Loading & Linkin**
+    * improve startup time by making the class instantly available, in a loaded and linked state, when JVM starts
+    * the application is monitored during a training run to store the loaded and linked classes in a cache
+    * only the classes loaded from the class path, the module path and JDK itself will be cached
+        * we must ensure that the class paths and module configurations are the same in all runs
+    * there are two steps:
+        * training run to record AOT configuration:
+            * `java -XX:AOTMode=record -XX:AOTConfiguration=app.aotconf -cp app.jar com.example.App`
+        * create cache from the AOT configuration:
+            * `java -XX:AOTMode=create -XX:AOTConfiguration=app.aotconf -XX:AOTCache=app.aot -cp app.jar`
+        * run the application with cache:
+            * `java -XX:AOTCache=app.aot -cp app.jar com.example.App`
+    * recommendations:
+        * try to do a training run with the application as close as possible to production run
+        * if external resources cannot be used during the training run, we could mock or disable them (it will be loaded just-in-time)
+        * we could use a smoke test to run enough scenarios used by the application, some testing classes will be cached (in the future a filter will be provided)
+        * we should avoid using complete large test suites (unit tests, corner cases, so on) because it will increase the size of the cache with useless classes (scenarios with fewer usage)
+        * the training run should do similiar things as production run, otherwise the cache will be less useful
 * **Class-File API**
     * provide standard API for parsing, generating and modifying Java class file
     * provide standard API that is up to date with the features from current JDK released
@@ -84,7 +112,7 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
     * re-preview with API changes
     * removed methods `callWhere` and `runWhere` to make API more fluent
     * `ScopedValue.where(SCOPE, "my-value").run(() -> {});` instead of `ScopedValue.callWhere(SCOPE, "my-value", () -> {})`
-    * we can bind multiples values
+    * we can bind multiples values:
         * `ScopedValue.where(SCOPE_A, "my-value").where(SCOPE_B, "other-value").run(() -> {})`
 * **Primitive Types in Patterns, instanceof, and switch**
     * re-preview without change
