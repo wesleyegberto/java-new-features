@@ -31,6 +31,8 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Linking Run-Time Images without JMODs
   * Module Import Declarations (preview 2)
   * Simple Source Files and Instance Main Mathods (preview 4)
+  * Quantum-Resistant Module-Lattice-Based Key Encapsulation Mechanism
+  * Quantum-Resistant Module-Lattice-Based Digital Signature Algorithm
   * Warn Upon Use of Memory-Access Methods in sun.misc.Unsafe
   * Structured Concurrency (preview 4)
   * Deprecate the 32-bit x86 Port for Removal

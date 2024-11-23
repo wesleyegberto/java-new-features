@@ -23,12 +23,21 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
 * [493](https://openjdk.org/jeps/493) - Linking Run-Time Images without JMODs
 * [494](https://openjdk.org/jeps/494) - Module Import Declarations (Second Preview)
 * [495](https://openjdk.org/jeps/495) - Simple Source Files and Instance Main Mathods (Fourth Preview)
+* [496](https://openjdk.org/jeps/496) - Quantum-Resistant Module-Lattice-Based Key Encapsulation Mechanism
+* [497](https://openjdk.org/jeps/497) - Quantum-Resistant Module-Lattice-Based Digital Signature Algorithm
 * [498](https://openjdk.org/jeps/498) - Warn Upon Use of Memory-Access Methods in sun.misc.Unsafe
 * [499](https://openjdk.org/jeps/499) - Structured Concurrency (Fourth Preview)
 * [501](https://openjdk.org/jeps/501) - Deprecate the 32-bit x86 Port for Removal
 
 ## Features
 
+* **Compact Object Headers**
+    * reduce the size of object headers in the HotSpot JVM from between 96 and 128 bits to 64 bits on 64-bit architecture
+    * goals:
+        * reduce object sizes and memory footprint on realistic workloads
+        * not introduce more than 5% throughput or latency overheads
+    * can be enable with:
+        * `-XX:+UnlockExperimentalVMOptions -XX:+UseCompactObjectHeaders`
 * **Prepare to Restrict the Use of JNI**
     * align the command-line options to be used equally between JNI and FFM API
     * align how FFM API restrict the native method usage with warning instead of throwing an exception
@@ -38,13 +47,6 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
         * `--illegal-native-access=warn` is the default mode, in the future will be `deny`
         * this ways it will thrown an exception
     * added new JDK tool `jnativescan` to help identify the use of restricted methods and declarations of native methods
-* **Compact Object Headers**
-    * reduce the size of object headers in the HotSpot JVM from between 96 and 128 bits to 64 bits on 64-bit architecture
-    * goals:
-        * reduce object sizes and memory footprint on realistic workloads
-        * not introduce more than 5% throughput or latency overheads
-    * can be enable with:
-        * `-XX:+UnlockExperimentalVMOptions -XX:+UseCompactObjectHeaders`
 * **Late Barrier Expansion for G1**
     * reduce the overhead of C2 JIT compiler
     * reduce the execution time of C2 when using G1
