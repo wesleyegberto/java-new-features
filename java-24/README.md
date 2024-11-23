@@ -126,6 +126,16 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
         * `-XX:+UseZGC -XX:-ZGenerational`: will use generational ZGC and print a warning about obsolete option
 * **Flexible Constructor Bodies**
     * re-preview without change
+* **Synchronize Virtual Threads without Pinning**
+    * change the virtual threads to release the platform threads when blocked by synchronized methods and statements
+    * eliminates nearly all cases of virtual threads being pinned to platform thread
+    * scenarios where the virtual threads can be pinned:
+        * when inside a synchronized block, if it tries to get another object's monitor, the virtual thread is blocked and pinned until it can adquire the monitor
+        * when it tries to invoke a synchronized method that is already locked by another thread, the virtual thread is pinned and blocked until it can adquire the monitor
+    * the system property `jdk.tracePinnedThreads` was removed
+    * recommendations:
+        * use synchronized where practical, since it is more convenient and less error prone
+        * use `ReentrantLock` and other APIs when more flexibility is required
 * **Module Import Declarations**
     * re-preview with two changes
     * import module `java.se` will import the entire Java SE API (`java.base`)
