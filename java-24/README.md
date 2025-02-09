@@ -113,7 +113,8 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
 * **Scoped Values**
     * re-preview with API changes
     * removed methods `callWhere` and `runWhere` to make API more fluent
-    * `ScopedValue.where(SCOPE, "my-value").run(() -> {});` instead of `ScopedValue.callWhere(SCOPE, "my-value", () -> {})`
+    * `ScopedValue.where(SCOPE, "my-value").run(() -> {});` instead of `ScopedValue.runWhere(SCOPE, "my-value", () -> {})`
+    * `ScopedValue.where(SCOPE, "my-value").call(() -> {});` instead of `ScopedValue.callWhere(SCOPE, "my-value", () -> {})`
     * we can bind multiples values:
         * `ScopedValue.where(SCOPE_A, "my-value").where(SCOPE_B, "other-value").run(() -> {})`
 * **Primitive Types in Patterns, instanceof, and switch**
@@ -151,6 +152,8 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
 * **Simple Source Files and Instance Main Methods**
     * re-preview with no change
     * introduced new terminology "simple source file" to indicate a Java file with a implicitly declared class
+* **Structured Concurrency**
+    * 
 
 ## Links
 
