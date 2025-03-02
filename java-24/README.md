@@ -92,9 +92,11 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
         ```java
         ClassModel cm = ClassFile.of().parse(bytes);
         for (ClassElement ce : cm) {
-            case FieldModel fm -> System.out.println("Field " + mm.methodName().stringValue());
-            case MethodModel mm -> System.out.println("Method " + mm.methodName().stringValue());
-            default -> System.out.println("Other " + ce);
+            switch (ce) {
+                case FieldModel fm -> System.out.println("Field " + fm.fieldName().stringValue());
+                case MethodModel mm -> System.out.println("Method " + mm.methodName().stringValue());
+                default -> System.out.println("Other " + ce);
+            }
         }
         ```
     * `ClassFile` also provides methods to access the elements we need (parsing only the part need to get the methods):
@@ -153,7 +155,7 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
     * re-preview with no change
     * introduced new terminology "simple source file" to indicate a Java file with a implicitly declared class
 * **Structured Concurrency**
-    * 
+    * re-preview with no change
 
 ## Links
 
