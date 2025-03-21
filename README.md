@@ -11,7 +11,7 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 ## Resume by Version
 
-* [Java 24](java-24/)
+* [Java 24](java-24/) (Mar, 2025)
   * Generational Shenandoah (experimental)
   * Compact Object Headers (experimental)
   * Prepare to Restrict the Use of JNI
@@ -258,6 +258,7 @@ jshell --enable-preview
   * [Learn Java](https://dev.java/learn/)
   * [Java Playground](https://dev.java/playground/)
 * [Inside.java - Sip of Java](https://inside.java/2021/10/21/sip24/)
+* [Learn.java](https://learn.java/)
 * Download Java versions:
   * [The Role of Preview Features in Java and Beyond](https://blogs.oracle.com/javamagazine/the-role-of-previews-in-java-14-java-15-java-16-and-beyond)
   * [Place to get early releases from Oracle's JDK](https://jdk.java.net/)

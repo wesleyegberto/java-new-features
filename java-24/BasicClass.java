@@ -1,8 +1,5 @@
 import java.io.Serializable;
 
-/**
- * BasicClass
- */
 public class BasicClass implements Serializable {
 	private String attribute;
 	private int timestamp;

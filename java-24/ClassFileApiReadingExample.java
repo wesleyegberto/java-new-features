@@ -10,14 +10,17 @@ import java.util.stream.Collectors;
  */
 public class ClassFileApiReadingExample {
 	public static void main(String[] args) throws Exception {
-		var classBytes = Files.readAllBytes(Paths.get("BasicClass.class"));
+		var className = "BasicClass.class";
+		// var className = "HelloWorldFromClassFile.class";
+
+		var classBytes = Files.readAllBytes(Paths.get(className));
 
 		// ClassModel is an immutable description of a class file
 		ClassModel cm = ClassFile.of().parse(classBytes);
 
-		// ClasModel is lazy, iterating over it parses the entire class
+		// ClassModel is lazy, iterating over it parses the entire class
 		for (ClassElement ce : cm) {
-			// possible values: https://download.java.net/java/early_access/jdk24/docs/api/java.base/java/lang/classfile/ClassElement.html
+			// possible values: https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/classfile/ClassElement.html
 			switch (ce) {
 				case Superclass cn -> System.out.println("Superclass: " + cn.superclassEntry().name().stringValue());
 

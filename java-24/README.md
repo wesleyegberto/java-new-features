@@ -50,7 +50,7 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
 * **Late Barrier Expansion for G1**
     * reduce the overhead of C2 JIT compiler
     * reduce the execution time of C2 when using G1
-* **Ahead-of-Time Class Loading & Linkin**
+* **Ahead-of-Time Class Loading & Linking**
     * improve startup time by making the class instantly available, in a loaded and linked state, when JVM starts
     * the application is monitored during a training run to store the loaded and linked classes in a cache
     * only the classes loaded from the class path, the module path and JDK itself will be cached
@@ -157,8 +157,30 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
 * **Structured Concurrency**
     * re-preview with no change
 
+### API
+
+* `NumberFormat` supports parsing numbers with correct suffix
+    * when the formats expects a suffix and `isParseIntegerOnly` is `true`
+    *
+    ```java
+    NumberFormat fmt = NumberFormat.getPercentInstance(Locale.US);
+    fmt.setParseIntegerOnly(true);
+    fmt.parse("500.55%"); // 5
+    fmt.parse("700.01%%asdasdada0"); // 7
+    ```
+* added new string reader `java.io.Reader.of(CharSequence)`
+    * expected to be more efficient than `StringReader` in some cases (without convert string and synchronization)
+    * can receive a `String`, `StringBuilder` and `StringBuffer`
+* support for Unicode 16.0
+* `Socket.connect` closes the socket if the connection cannot be established
+
 ## Links
 
 * [JDK 24 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=22701)
 * [JDK 24 JEPs](https://openjdk.org/projects/jdk/24/)
+* [JDK 24 Doc - Classfiles](https://docs.oracle.com/en/java/javase/24/docs/)
+* [JDK 24 Release Notes](https://jdk.java.net/24/release-notes)
+* Blogs:
+    * [A Basic Introduction to the Classfile API](https://ifesunmola.com/a-basic-introduction-to-the-classfile-api/#creating-the-personrunner-class)
+    * [Class File API: Not Your Everyday Java API](https://www.unlogged.io/post/class-file-api-not-your-everyday-java-api)
 
