@@ -183,4 +183,6 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
 * Blogs:
     * [A Basic Introduction to the Classfile API](https://ifesunmola.com/a-basic-introduction-to-the-classfile-api/#creating-the-personrunner-class)
     * [Class File API: Not Your Everyday Java API](https://www.unlogged.io/post/class-file-api-not-your-everyday-java-api)
+* Presentations:
+    * [Stream Gatherers - Deep Dive with the Expert](https://www.youtube.com/watch?v=v_5SKpfkI2U)
 
