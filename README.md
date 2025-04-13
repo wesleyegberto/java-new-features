@@ -11,6 +11,8 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 ## Resume by Version
 
+* [Java 25](java-25/)
+
 * [Java 24](java-24/) (Mar, 2025)
   * Generational Shenandoah (experimental)
   * Compact Object Headers (experimental)
@@ -246,6 +248,14 @@ jshell --enable-preview
         <argLine>--enable-preview</argLine>
     </configuration>
 </plugin>
+```
+
+## Migration Guide
+
+Checking deprecated APIs from a JDK version:
+
+```sh
+jdeprscan --release <Jdk_Version> -l --for-removal
 ```
 
 ## Helpful Links

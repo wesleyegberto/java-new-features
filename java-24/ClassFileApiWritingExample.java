@@ -5,6 +5,8 @@ import java.nio.file.Paths;
 import java.nio.file.OpenOption;
 
 /**
+ * CodeBuilder doc: https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/classfile/CodeBuilder.html
+ *
  * Run: `java ClassFileApiWritingExample.java`
  */
 public class ClassFileApiWritingExample {
