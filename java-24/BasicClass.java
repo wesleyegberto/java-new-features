@@ -1,5 +1,8 @@
 import java.io.Serializable;
 
+/**
+ * Used in Class File API examples.
+ */
 public class BasicClass implements Serializable {
 	private String attribute;
 	private int timestamp;

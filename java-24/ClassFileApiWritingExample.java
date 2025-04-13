@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 import java.nio.file.OpenOption;
 
 /**
- * Run: `java --source 24 --enable-preview ClassFileApiWritingExample.java`
+ * Run: `java ClassFileApiWritingExample.java`
  */
 public class ClassFileApiWritingExample {
 	public static void main(String[] args) {

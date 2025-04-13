@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
 /**
- * Run: `javac BasicClass.java && java --source 24 --enable-preview ClassFileApiReadingExample.java`
+ * Run: `javac BasicClass.java && java ClassFileApiReadingExample.java`
  */
 public class ClassFileApiReadingExample {
 	public static void main(String[] args) throws Exception {

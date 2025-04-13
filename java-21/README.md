@@ -340,4 +340,5 @@ Deprecations:
   * [Java 21 Brings Full Pattern Matching](https://www.youtube.com/watch?v=QrwFrm1R8OY)
   * [Java's Virtual Threads - Next Steps](https://www.youtube.com/watch?v=KBW4LbCoo6c)
   * [Continuations: The magic behind virtual threads in Java by Balkrishna Rawool @ Spring I/O 2024](https://www.youtube.com/watch?v=pwLtYvRK334)
+  * [Sequenced Collections - Deep Dive with the Expert](https://www.youtube.com/watch?v=6yuDqkkYTGU)
 
