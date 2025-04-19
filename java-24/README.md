@@ -121,6 +121,7 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
         * `ScopedValue.where(SCOPE_A, "my-value").where(SCOPE_B, "other-value").run(() -> {})`
 * **Primitive Types in Patterns, instanceof, and switch**
     * re-preview without change
+    * examples in [JDK 23](../java-23/)
 * **ZGC - Remove the Non-Generational Mode**
     * remove non-generational mode of the ZGC to reduce maintenance cost
     * changes in command-line options:
@@ -129,6 +130,7 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
         * `-XX:+UseZGC -XX:-ZGenerational`: will use generational ZGC and print a warning about obsolete option
 * **Flexible Constructor Bodies**
     * re-preview without change
+    * examples in [JDK 23](../java-23/)
 * **Synchronize Virtual Threads without Pinning**
     * change the virtual threads to release the platform threads when blocked by synchronized methods and statements
     * eliminates nearly all cases of virtual threads being pinned to platform thread
@@ -156,6 +158,7 @@ To run each example use: `java --enable-preview --source 24 <FileName.java>`
     * introduced new terminology "simple source file" to indicate a Java file with a implicitly declared class
 * **Structured Concurrency**
     * re-preview with no change
+    * examples in [JDK 21](../java-21/)
 
 ### API
 
