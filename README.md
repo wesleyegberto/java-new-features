@@ -12,6 +12,10 @@ A project to explore more about the new features from Java 8 through Java 21.
 ## Resume by Version
 
 * [Java 25](java-25/)
+  * Stable Values (Preview)
+  * Remove the 32-bit x86 Port
+  * Module Import Declarations
+  * Compact Source Files and Instance Main Methods
 
 * [Java 24](java-24/) (Mar, 2025)
   * Generational Shenandoah (experimental)

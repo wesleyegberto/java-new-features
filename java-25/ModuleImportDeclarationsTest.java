@@ -6,7 +6,7 @@ import java.util.*; // prioritize List
 import java.util.Date;
 
 /**
- * Run: `java --source 24 --enable-preview ModuleImportDeclarationsTest.java`
+ * Run: `java ModuleImportDeclarationsTest.java`
  */
 public class ModuleImportDeclarationsTest {
 	public static void main(String[] args) {
