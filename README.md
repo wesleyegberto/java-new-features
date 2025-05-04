@@ -16,6 +16,8 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Remove the 32-bit x86 Port
   * Module Import Declarations
   * Compact Source Files and Instance Main Methods
+  * Flexible Constructor Bodies
+  * Structured Concurrency (preview 5)
 
 * [Java 24](java-24/) (Mar, 2025)
   * Generational Shenandoah (experimental)

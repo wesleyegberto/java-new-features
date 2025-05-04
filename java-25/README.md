@@ -6,8 +6,10 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
 
 * [502](https://openjdk.org/jeps/502) - Stable Values (Preview)
 * [503](https://openjdk.org/jeps/503) - Remove the 32-bit x86 Port
+* [505](https://openjdk.org/jeps/505) - Structured Concurrency (Fifth Preview)
 * [511](https://openjdk.org/jeps/511) - Module Import Declarations
 * [512](https://openjdk.org/jeps/512) - Compact Source Files and Instance Main Methods
+* [513](https://openjdk.org/jeps/513) - Flexible Constructor Bodies
 
 ## Features
 
@@ -89,6 +91,28 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
         * provides methods: `print(Object)`, `println(Object)`, `println()`, `readln(String)` and `readln()`
         * this class uses return from `System.console()` to print and read from the default input and output streams
         * we can use with: `IO.println("Hello World")`
+* **Flexible Constructor Bodies**
+    * promotion to standard without change
+    * allow statements that do not reference the instance being created to appear before an explicit constructor invocation
+    * will allow to use statements that use, transform or verify values before call `super`
+    * the code before the `super` lives in pre-construction context:
+        * can perform any statements that don't use any member of the instance being created (or its hierarchy or outter/inner classes that depends on the instance)
+    * we can:
+        * can access static members
+        * initialize fields in the same class before explicitly invoking a constructor
+            * this will allow a superclass never executes code with use subclass values with their default value (`0`, `false` or `null`)
+        * if the class is an inner class, it can access members of its enclosing class (like `Outer.this.field++`)
+            * the outer class instance already exists
+    * inicialization flow:
+    ```
+    C prologue
+    --> B prologue
+        --> A prologue
+            --> Object constructor body
+        --> A epilogue
+    --> B epilogue
+    C epilogue
+    ```
 
 ## Links
 
