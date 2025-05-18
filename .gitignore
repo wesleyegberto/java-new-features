@@ -18,3 +18,5 @@ hs_err_pid*
 jdt.ls-java-project/
 *.dmg
 *.so
+*.aotconf
+*.aot

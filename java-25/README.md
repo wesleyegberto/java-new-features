@@ -7,12 +7,21 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
 * [502](https://openjdk.org/jeps/502) - Stable Values (Preview)
 * [503](https://openjdk.org/jeps/503) - Remove the 32-bit x86 Port
 * [505](https://openjdk.org/jeps/505) - Structured Concurrency (Fifth Preview)
+* [506](https://openjdk.org/jeps/506) - Scoped Values
+* [507](https://openjdk.org/jeps/507) - Primitive Types in Patterns, instanceof, and switch (Third Preview)
+* [508](https://openjdk.org/jeps/508) - Vector API (Tenth Incubator)
+* [510](https://openjdk.org/jeps/510) - Key Derivation Function API
 * [511](https://openjdk.org/jeps/511) - Module Import Declarations
 * [512](https://openjdk.org/jeps/512) - Compact Source Files and Instance Main Methods
 * [513](https://openjdk.org/jeps/513) - Flexible Constructor Bodies
+* [514](https://openjdk.org/jeps/514) - Ahead-of-Time Command-Line Ergonomics
+* [515](https://openjdk.org/jeps/515) - Ahead-of-Time Method Profiling
+* [519](https://openjdk.org/jeps/519) - Compact Object Headers
 
 ## Features
 
+* **Primitive Types in Patterns, instance of and switch**
+    * re-preview without change
 * **Module Import Declarations**
     * promotion to standard without change
     * allow import all packages exported by a module
@@ -41,7 +50,7 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
     * promotion to standard with minor changes
         * changed terminology from "simple source file" to "compact source file"
         * changed package of `IO` to `java.lang.IO`
-    * facilitate the writing of first programm for students without needing to know another features designed for large programs
+    * facilitate the writing of first program for students without needing to know another features designed for large programs
     * implicitly declared class:
         * any method declared in a source file without an enclosed class will be considered to be member of an implicitly declared class whose members are unenclosed fields and methods
         * implicitly declared class is always final and cannot implement or extends any class other than `Object`
@@ -104,15 +113,50 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
         * if the class is an inner class, it can access members of its enclosing class (like `Outer.this.field++`)
             * the outer class instance already exists
     * inicialization flow:
-    ```
-    C prologue
-    --> B prologue
-        --> A prologue
-            --> Object constructor body
-        --> A epilogue
-    --> B epilogue
-    C epilogue
-    ```
+        ```
+        C prologue
+        --> B prologue
+            --> A prologue
+                --> Object constructor body
+            --> A epilogue
+        --> B epilogue
+        C epilogue
+        ```
+* **Ahead-of-Time Command-Line Ergonomics**
+    * simplify the process to create ahead-of-time caches by introducing a new command-line option that will run the record (`AOTMode=record`) and create mode (`AOTMode=create`)
+    * introduced the command-line option `AOTCacheOutput` that receives the AOT cache output file
+        * this command-line will run each step (record and create mode) for us
+    * introduced new environment variable `JDK_AOT_VM_OPTIONS` that can be used to pass command-line options to run with create mode (won't pass to record mode)
+        * the syntax is the same as for `JAVA_TOOL_OPTIONS`
+    * two-step workflow:
+        * record mode:
+            ```bash
+            java -XX:AOTMode=record -XX:AOTConfiguration=app.aotconf -cp app.jar com.example.App
+            ```
+        * create mode:
+            ```bash
+            java -XX:AOTMode=create -XX:AOTConfiguration=app.aotconf -XX:AOTCache=app.aot
+            ```
+    * one-step workflow:
+        ```bash
+        java -XX:AOTCache=app.aot -cp app.jar com.example.App
+        ```
+* **Ahead-of-Time Method Profiling**
+    * improve warmup time by making method-execution profiles from a previous run
+    * this will enable the JIT compiler to generate native code immediately upon application startup, rather than having to wait for profiles to be collected
+    * the only way to really know what the application does is running it
+        * one reason for this uncertainly is that, in the absence of final or sealed modifiers, any class can be subclassed at any time
+        * another reason is that new classes can be loaded in response to external input
+    * [static analysis can always be defeated by program complexity](https://en.wikipedia.org/wiki/Rice's_theorem)
+    * AOT cache was extended to collect method profiles during training runs
+* **Compact Object Headers**
+    * promotion to standard without change
+    * reduce the size of object headers in the HotSpot JVM from between 96 and 128 bits to 64 bits on 64-bit architecture
+    * goals:
+        * reduce object sizes and memory footprint on realistic workloads
+        * not introduce more than 5% throughput or latency overheads
+    * can be enable with:
+        * `-XX:+UseCompactObjectHeaders`
 
 ## Links
 
