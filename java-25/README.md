@@ -4,6 +4,7 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
 
 ## JEPs
 
+* [470](https://openjdk.org/jeps/470) - PEM Encodings of Cryptographic Objects (Preview)
 * [502](https://openjdk.org/jeps/502) - Stable Values (Preview)
 * [503](https://openjdk.org/jeps/503) - Remove the 32-bit x86 Port
 * [505](https://openjdk.org/jeps/505) - Structured Concurrency (Fifth Preview)
@@ -16,7 +17,10 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
 * [513](https://openjdk.org/jeps/513) - Flexible Constructor Bodies
 * [514](https://openjdk.org/jeps/514) - Ahead-of-Time Command-Line Ergonomics
 * [515](https://openjdk.org/jeps/515) - Ahead-of-Time Method Profiling
+* [518](https://openjdk.org/jeps/518) - JFR Cooperative Sampling
 * [519](https://openjdk.org/jeps/519) - Compact Object Headers
+* [520](https://openjdk.org/jeps/520) - JFR Method Timing & Tracing
+* [521](https://openjdk.org/jeps/521) - Generational Shenandoah
 
 ## Features
 
@@ -157,6 +161,21 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
         * not introduce more than 5% throughput or latency overheads
     * can be enable with:
         * `-XX:+UseCompactObjectHeaders`
+* **Generational Shenandoah**
+    * promotion to standard without change
+    * Shenandoah is a low-pause-time garbage collector
+    * enhance the Shenandoah GC to use a generational approach to improve sustainable throughput, load-spike resilience, and memory utilization
+    * goals relative to non-generational Shenandoah:
+        * reduce sustained memory footprint without sacrificing low GC pauses
+        * reduce CPU and power usage
+        * decrease the risk of incurring degenerated and full collections during allocation spikes
+        * sustain high throughput
+        * continue to support compressed object pointers
+        * initially support x64 and AArch64
+    * command-line options to use generational Shenandoah:
+        ```bash
+        java -XX:+UseShenandoahGC -XX:ShenandoahGCMode=generational
+        ```
 
 ## Links
 
