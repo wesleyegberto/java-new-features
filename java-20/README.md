@@ -34,12 +34,12 @@ To run each example use: `java --enable-preview --source 20 <FileName.java>`
     * `ExecutorService` extends `AutoClosable`
 * **Scoped Values (incubator)**
   * enable the sharing of immutable data within and across threads
-  * it were inspired by the way that Lipst dialects provide support for dyanamically scoped free variables
+  * it were inspired by the way that Lisp dialects provide support for dyanamically scoped free variables
   * they are preferred to thread-local variables (specially using virtual threads)
   * goals:
     * provide a programming model to share data both within a thread and with child threads
     * make the lifetime of shared data visible from structure of code
-    * ensura that data sahred by a caller can be retrieved only by legitimate callees
+    * ensure that data shared by a caller can be retrieved only by legitimate callees
     * thread shared data as immuatable so as to allow sharing by a large number of threads and to enable runtime otimiziations
   * problems with thread-local variables:
     * mutability: any object can update the variable if it has access to it
