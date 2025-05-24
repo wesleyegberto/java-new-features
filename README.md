@@ -11,13 +11,22 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 ## Resume by Version
 
+`standard` shows the version in which a preview feature became stable and available for production use.
+
 * [Java 25](java-25/)
-  * Stable Values (Preview)
+  * Stable Values (preview)
   * Remove the 32-bit x86 Port
-  * Module Import Declarations
-  * Compact Source Files and Instance Main Methods
-  * Flexible Constructor Bodies
   * Structured Concurrency (preview 5)
+  * Scoped Values (standard) :rocket:
+  * Primitive Types in Patterns, instanceof, and switch (preview 3)
+  * Key Derivation Function API (standard)
+  * Module Import Declarations (standard)
+  * Compact Source Files and Instance Main Methods (standard) :rocket:
+  * Flexible Constructor Bodies (standard)
+  * Ahead-of-Time Command-Line Ergonomics
+  * Ahead-of-Time Method Profiling
+  * Compact Object Headers (standard) :rocket:
+  * Generational Shenandoah (standard)
 
 * [Java 24](java-24/) (Mar, 2025)
   * Generational Shenandoah (experimental)
@@ -27,20 +36,18 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Key Derivation Function API (preview)
   * Remove the Windows 32-bit x86 Port
   * Ahead-of-Time Class Loading & Linking
-  * Class-File API
-  * Steam Gatherers
+  * Class-File API (standard)
+  * Steam Gatherers (standard)
   * Permanently Disable the Security Manager
   * Scoped Values (preview 4)
   * Primitive Types in Patterns, instanceof, and switch (preview 2)
   * Vector API (incubator)
   * ZGC Remove the Non-Generational Mode
-  * Synchronize Virtual Threads without Pinning
+  * Synchronize Virtual Threads without Pinning :rocket:
   * Flexible Constructor Bodies (preview 3)
   * Linking Run-Time Images without JMODs
   * Module Import Declarations (preview 2)
   * Simple Source Files and Instance Main Mathods (preview 4)
-  * Quantum-Resistant Module-Lattice-Based Key Encapsulation Mechanism
-  * Quantum-Resistant Module-Lattice-Based Digital Signature Algorithm
   * Warn Upon Use of Memory-Access Methods in sun.misc.Unsafe
   * Structured Concurrency (preview 4)
   * Deprecate the 32-bit x86 Port for Removal
@@ -63,7 +70,7 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Region Pinning for G1
   * Statements before `super` (preview)
   * FFM API (standard)
-  * Unnamed Variable & Patterns
+  * Unnamed Variable & Patterns (standard)
   * Class-File API (preview)
   * Launch Multi-File Source-Code Programs
   * String Templates (preview 2)
@@ -122,7 +129,7 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Strongly Encapsulate JDK Internals
   * Pattern matching for `switch` (preview)
   * Remove RMI Activation
-  * Sealed Classes (standard)
+  * Sealed Classes (standard) :rocket:
   * Remove the experimental AOT and JIT compiler
   * Deprecate the Security Manager for Removal
   * Foreign Function & Memory API (incubator)
@@ -130,7 +137,7 @@ A project to explore more about the new features from Java 8 through Java 21.
   * Context-Specific Deserialization Filters
 
 * [Java 16](java-16/) (Mar, 2021)
-  * Records (standard)
+  * Records (standard) :rocket:
   * Pattern matching for `instanceof` (standard)
   * Sealed classes (preview 2)
   * Unix-Domain Socket Channels
