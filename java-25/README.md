@@ -29,21 +29,21 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
 * **Structured Concurrency**
     * re-preview with several API changes
     * previous changes in [JDK 19](../java-19/README.md) and [JDK 21](../java-21/README.md)
-    * Joiners
+    * Joiners:
         * introduce the concept of execution policy with `Joiner`
         * Joiner object handles subtask completion and produces the outcome for the `join()` method
         * depending on the joiner, the `join()` method may return a result, a stream of elements, or some other object
         * the result of `join()` is useful when we don't handle each subtask individually, rather we want to wait for all subtasks to finish and then process the results (first result or all)
         * a joiner instance should never be reused, always create a new instance
     * `StructuredTaskScope` is open using static factory methods:
-        * `StructuredTaskScope.open()`: creates a scope with joiner strategy default of `StructuredTaskScope.Joiner.allSuccessfulOrThrow()` but `join()` will return null
-        * `StructuredTaskScope.open(StructuredTaskScope.Joiner)`: creates a scope with the specified joiner strategy
-        * `StructuredTaskScope.open(StructuredTaskScope.Joiner, Function)`: creates a scope with the specified joiner strategy and a function to customize the default configuration of the execution (name, thread factory and timeout)
-    * the scope can now be configured with a instace of [`Config`](https://download.java.net/java/early_access/loom/docs/api/java.base/java/util/concurrent/StructuredTaskScope.Config.html)
+        * `open()`: creates a scope with joiner strategy default of `StructuredTaskScope.Joiner.allSuccessfulOrThrow()` but `join()` will return null
+        * `open(StructuredTaskScope.Joiner)`: creates a scope with the specified joiner strategy
+        * `open(StructuredTaskScope.Joiner, Function)`: creates a scope with the specified joiner strategy and a function to customize the default configuration of the execution (name, thread factory and timeout)
+    * the scope can now be configured with a instance of [`Config`](https://download.java.net/java/early_access/loom/docs/api/java.base/java/util/concurrent/StructuredTaskScope.Config.html):
         * `withName(String)`: sets the name of the scope to be monitored and managed
         * `withThreadFactory(ThreadFactory)`: sets the thread factory to use for each subtask
         * `withTimeout(Duration)`: sets the timeout for the scope, should use `Instant` to calculates the deadline (`Duration.between(Instant.now(), deadline)`)
-    * `Joiner` interface declares factory methods to create joiners for some common cases
+    * `Joiner` interface declares factory methods to create joiners for some common cases:
         * interface:
             ```java
             public interface Joiner<T, R> {
@@ -74,7 +74,7 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
                 * waits all subtasks are completed or the predicate is satisfied to cancel the scope
                 * `join()` returns stream of all subtasks in the order they were forked
                     * each subtask can have the following states: `SUCCESS`, `FAILURE` or `UNAVAILABLE` (if the scope has been cancelled before it were forked or completed)
-                * predicate is of type [`Predicate<StructuredTaskScope.Subtask<? extends T>>`](https://download.java.net/java/early_access/loom/docs/api/java.base/java/util/function/Predicate.html)
+                * predicate is an instance of [`Predicate<StructuredTaskScope.Subtask<? extends T>>`](https://download.java.net/java/early_access/loom/docs/api/java.base/java/util/function/Predicate.html)
                 * each subtask that is completed successfully or failed will be passed to the predicate
                     * if the predicate returns true, the scope will be cancelled
                     * if throws an exception, `Thread.UncaughtExceptionHandler.uncaughtException` will be called
@@ -126,32 +126,23 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
             * `NoSuchElementException` if the scoped value is not bounded
             * we can use `orElse` to set a default value if the scoped value is not bounded
                 * `SCOPE_KEY.getOrElse("default-value")`
-    * ex.:
-        * `run`:
-            ```java
-            public final static ScopedValue<String> PRINCIPAL = ScopedValue.newInstance();
-            ScopedValue.where(PRINCIPAL, "guest")
-                .run(() -> {
-                    var userRole = PRINCIPAL.get();
-                });
-            ```
-        * `call`:
-            ```java
-            public final static ScopedValue<String> PRINCIPAL = ScopedValue.newInstance();
-            var userRole = ScopedValue.where(PRINCIPAL, "guest")
-                .call(() -> {
-                    return "Value: " + PRINCIPAL.get();
-                });
-            ```
-    * ex.:
-        *
-        ```java
-        var universeAnswer = ScopedValue.where(SUBJECT, "Deep Thought")
-            .call(() -> {
-                // some magic
-                return 42;
-            });
-        ```
+        * ex.:
+            * `run`:
+                ```java
+                public final static ScopedValue<String> PRINCIPAL = ScopedValue.newInstance();
+                ScopedValue.where(PRINCIPAL, "guest")
+                    .run(() -> {
+                        var userRole = PRINCIPAL.get();
+                    });
+                ```
+            * `call`:
+                ```java
+                public final static ScopedValue<String> PRINCIPAL = ScopedValue.newInstance();
+                var userRole = ScopedValue.where(PRINCIPAL, "guest")
+                    .call(() -> {
+                        return "Value: " + PRINCIPAL.get();
+                    });
+                ```
     * virtual thread and cross-thread sharing
         * to share data between a thread and its child thread we need to make the scoped values inherited by child thread
             * we can use the Structured Concurrency API
