@@ -11,6 +11,7 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
 * [506](https://openjdk.org/jeps/506) - Scoped Values
 * [507](https://openjdk.org/jeps/507) - Primitive Types in Patterns, instanceof, and switch (Third Preview)
 * [508](https://openjdk.org/jeps/508) - Vector API (Tenth Incubator)
+* [509](https://openjdk.org/jeps/509) - JFR CPU-Time Profiling (Experimental)
 * [510](https://openjdk.org/jeps/510) - Key Derivation Function API
 * [511](https://openjdk.org/jeps/511) - Module Import Declarations
 * [512](https://openjdk.org/jeps/512) - Compact Source Files and Instance Main Methods
@@ -26,62 +27,6 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
 
 * **Primitive Types in Patterns, instance of and switch**
     * re-preview without change
-* **Structured Concurrency**
-    * re-preview with several API changes
-    * previous changes in [JDK 19](../java-19/README.md) and [JDK 21](../java-21/README.md)
-    * Joiners:
-        * introduce the concept of execution policy with `Joiner`
-        * Joiner object handles subtask completion and produces the outcome for the `join()` method
-        * depending on the joiner, the `join()` method may return a result, a stream of elements, or some other object
-        * the result of `join()` is useful when we don't handle each subtask individually, rather we want to wait for all subtasks to finish and then process the results (first result or all)
-        * a joiner instance should never be reused, always create a new instance
-    * `StructuredTaskScope` is open using static factory methods:
-        * `open()`: creates a scope with joiner strategy default of `StructuredTaskScope.Joiner.allSuccessfulOrThrow()` but `join()` will return null
-        * `open(StructuredTaskScope.Joiner)`: creates a scope with the specified joiner strategy
-        * `open(StructuredTaskScope.Joiner, Function)`: creates a scope with the specified joiner strategy and a function to customize the default configuration of the execution (name, thread factory and timeout)
-    * the scope can now be configured with a instance of [`Config`](https://download.java.net/java/early_access/loom/docs/api/java.base/java/util/concurrent/StructuredTaskScope.Config.html):
-        * `withName(String)`: sets the name of the scope to be monitored and managed
-        * `withThreadFactory(ThreadFactory)`: sets the thread factory to use for each subtask
-        * `withTimeout(Duration)`: sets the timeout for the scope, should use `Instant` to calculates the deadline (`Duration.between(Instant.now(), deadline)`)
-    * `Joiner` interface declares factory methods to create joiners for some common cases:
-        * interface:
-            ```java
-            public interface Joiner<T, R> {
-                public default boolean onFork(Subtask<? extends T> subtask);
-                public default boolean onComplete(Subtask<? extends T> subtask);
-                public R result() throws Throwable;
-            }
-            ```
-        * factory methods for default policies:
-            * `allSuccessfulOrThrow`:
-                * waits for all tasks to complete successfully or throws an exception if any subtask fails
-                * `join()` will return a stream of `Subtask` that yields the subtask results in the order they are completed
-                * useful when all subtasks return a result of same type and we want to process them all
-            * `anySuccessfulResultOrThrow`:
-                * waits for any subtask to complete successfully or throws an exception if all tasks fail
-                * `join()` will return the result of a successful subtask
-                * useful when we want to process the result of the first successful subtask
-            * `awaitAllSuccessfulOrThrow()`:
-                * waits for all tasks to complete successfully or throws an exception if any subtask fails
-                * `join()` returns `Void`
-                * useful when the subtasks return a result of different types and we process each subtask submitted with `fork` method individually
-            * `awaitAll`:
-                * waits for all tasks to complete, regardless of success or failure
-                * `join()` returns `Void`
-                * useful when the subtasks make use of side effects operations and don't return a result or exception
-                * each subtask will yield the result or exception of its execution
-            * `allUntil(Predicate)`
-                * waits all subtasks are completed or the predicate is satisfied to cancel the scope
-                * `join()` returns stream of all subtasks in the order they were forked
-                    * each subtask can have the following states: `SUCCESS`, `FAILURE` or `UNAVAILABLE` (if the scope has been cancelled before it were forked or completed)
-                * predicate is an instance of [`Predicate<StructuredTaskScope.Subtask<? extends T>>`](https://download.java.net/java/early_access/loom/docs/api/java.base/java/util/function/Predicate.html)
-                * each subtask that is completed successfully or failed will be passed to the predicate
-                    * if the predicate returns true, the scope will be cancelled
-                    * if throws an exception, `Thread.UncaughtExceptionHandler.uncaughtException` will be called
-    * we can implement our own joiner by implementing the interface `StructuredTaskScope.Joiner`
-        * we can implement the method `join` to return a result of type `R` and the method `onCompletion` to handle the completion of each subtask
-    * change in thread-dump to show virtual threads used by a `StructuredTaskScope`
-        * `jcmd <pid> Thread.dump_to_file -format=json <file>`
 * **Scoped Values**
     * promotion to standard with minor change
         * `ScopedValue.orElse` method no longer accepts null as its argument
@@ -97,52 +42,39 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
         * mutability: any object can update the variable if it has access to it
         * unbounded lifetime: it is stored until the thread is destroyed, if is used in a pool it can take a long time
         * expensive inheritance: a child thread must allocate memory for every variable stored in the parent thread
-    * a scoped value allows data to be safely and efficiently shared between threads within same hierarchy
-        * `scoped value is a container object that allows a data value to be safely and efficiently shared by a method with its direct and indirect callees within the same thread, and with child threads, without resorting to method parameters`
-    * ScopedValue API works by executing a method with a `ScopedValue` object bound to some value for the bounded period of execution of a method
-    * we use an attribute of type [`ScopedValue`](https://download.java.net/java/early_access/loom/docs/api/java.base/java/lang/ScopedValue.html) declared as final static
-        * scoped value has multiple values associated with it, one per thread
-        * once the value is written to scoped value it becomes immutable and is available only for a bounded period during execution of that thread insided that scope
-    * we can create another scope when inside a scope with another variable to create a new scope
+    * a scoped value allows data to be safely and efficiently shared between components
+    * we use an attribute of type [`ScopedValue`](https://download.java.net/java/early_access/loom/docs/api/jdk.incubator.concurrent/jdk/incubator/concurrent/ScopedValue.html) declared as final static
+        * scoped value has multiple incarnations, one per thread
+        * once the value is written to scoped value it becomes immutable and is available only for a bounded period during execution of a thread
+    * we can create nested scope when inside a scope with another variable to create a new scope
     * we can create nested scope with rebinded value when using the same `ScopedValue` to create a new scope
         * the created scope will have the new value binded
         * the current scope will still have its original value
     * usage:
-        * first we need to create a scope key
-            * `private static final ScopedValue<String> SCOPE_KEY = ScopedValue.newInstance();`
-        * then we use `ScopedValue.where` to bind a value to the scope key
-            * `ScopedValue.where(SCOPE_KEY, "my-value")`
-            * if we bind a value to a scope key that is already bound, the new value will be used in the current scope (rebinding)
-            * we can set multiples values to the same scope by using the same `ScopedValue` in multiple calls to `where`
-                * `ScopedValue.where(SCOPE_KEY, "my-value").where(SCOPE_KEY_2, "other-value").run(() -> {})`
-        * then use the method `run` or `call` to bind the scoped value with the current thread and the execution scope
-            * method `run` is an one-way sharing to the execution scope
-                * `run` has parameter of type `Runnable`
-            * method `call` allow us to receive a result from the execution scope
-                * `call` has parameter of type functional interface: `ScopedValue.CallableOp<T, X extends Throwable>`
-                * `call` will return the result of the execution of the lambda expression
-        * during the lifetime of the lambda expression (and every method called by it) we can read the scoped value using the method `get`
-            * we use scoped key to read: `SCOPE_KEY.get()`
-            * `NoSuchElementException` if the scoped value is not bounded
-            * we can use `orElse` to set a default value if the scoped value is not bounded
-                * `SCOPE_KEY.getOrElse("default-value")`
-        * ex.:
-            * `run`:
-                ```java
-                public final static ScopedValue<String> PRINCIPAL = ScopedValue.newInstance();
-                ScopedValue.where(PRINCIPAL, "guest")
-                    .run(() -> {
-                        var userRole = PRINCIPAL.get();
-                    });
-                ```
-            * `call`:
-                ```java
-                public final static ScopedValue<String> PRINCIPAL = ScopedValue.newInstance();
-                var userRole = ScopedValue.where(PRINCIPAL, "guest")
-                    .call(() -> {
-                        return "Value: " + PRINCIPAL.get();
-                    });
-                ```
+        * we use `ScopedValue.where` to set the value
+        * then use the method `run` or `call` to bind the scoped value with the current thread and defining the lambda expression
+        * the scope of the methods `run`/`call`, the lambda expression (and every method called by it) can access the scoped value using the method `get` from static final attribute
+    * ex.:
+        *
+        ```java
+        public final static ScopedValue<String> PRINCIPAL = ScopedValue.newInstance();
+        // [...]
+        ScopedValue.where(PRINCIPAL, "guest")
+            .run(() -> {
+                var userRole = PRINCIPAL.get();
+            });
+        ```
+    * `ScopedValue.where` provides a one-way sharing to the execution scope of method `run`
+    * to receive a result from another execution scope we need to use `call` instead of `run`
+    * ex.:
+        *
+        ```java
+        var universeAnswer = ScopedValue.where(SUBJECT, "Deep Thought")
+            .call(() -> {
+                // some magic
+                return 42;
+            });
+        ```
     * virtual thread and cross-thread sharing
         * to share data between a thread and its child thread we need to make the scoped values inherited by child thread
             * we can use the Structured Concurrency API
@@ -305,4 +237,5 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
 
 * [JDK 25 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=23200)
 * [JDK 25 JEPs](https://openjdk.org/projects/jdk/25/)
+* [Java 25 Brings 18 JEPs - Inside Java Newscast #92](https://www.youtube.com/watch?v=T5q72vcSjyk)
 
