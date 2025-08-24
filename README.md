@@ -15,6 +15,9 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 `standard` shows the version in which a preview feature became stable and available for production use.
 
+* [Java 26](java-26/)
+  * Remove the Applet API
+
 * [Java 25](java-25/)
   * Stable Values (preview)
   * Remove the 32-bit x86 Port
