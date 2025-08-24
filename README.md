@@ -294,10 +294,11 @@ jdeprscan --release <Jdk_Version> -l --for-removal
   * [Migrating From JDK 8 to Later JDK Releases](https://docs.oracle.com/en/java/javase/17/migrate/migrating-jdk-8-later-jdk-releases.html#GUID-7744EF96-5899-4FB2-B34E-86D49B2E89B6)
   * [Eclipse Migration Toolkit for Java (EMT4J) Simplifies Upgrading Java Applications](https://www.infoq.com/news/2022/12/eclipse-migration-toolkit-java/)
   * [Rewrite - Migrate to Java 17](https://docs.openrewrite.org/running-recipes/popular-recipe-guides/migrate-to-java-17)
-* Presentations:
-  * [The Amazing Features of Modern Java - Venkat Subramaniam](https://youtu.be/nlZe-y2XvQY)
 * Java Projects:
   * [Project Leyden - Capturing Lightning in a Bottle](https://www.youtube.com/watch?v=lnth19Kf-x0&ab_channel=Java)
+* Presentations:
+  * [The Amazing Features of Modern Java - Venkat Subramaniam](https://youtu.be/nlZe-y2XvQY)
+  * [JVM Language Submit 2025 - Growing the Java Language (Brian Goetz)](https://www.youtube.com/watch?v=Gz7Or9C0TpM)
 * Blogs:
   * [JDK Security Enhancements - Sean Mullan](https://seanjmullan.org/blog/)
 

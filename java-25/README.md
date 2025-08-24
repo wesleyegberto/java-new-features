@@ -410,4 +410,5 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
 * [JDK 25 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=23200)
 * [JDK 25 JEPs](https://openjdk.org/projects/jdk/25/)
 * [Java 25 Brings 18 JEPs - Inside Java Newscast #92](https://www.youtube.com/watch?v=T5q72vcSjyk)
+* [How to Upgrade to Java 25](https://youtu.be/9azNjz7s1Ck?si=J1LPBZG1uManLu4-)
 
