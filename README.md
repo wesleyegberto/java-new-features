@@ -1,5 +1,7 @@
 # Java New Features
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/wesleyegberto/java-new-features)
+
 A project to explore more about the new features from Java 8 through Java 21.
 
 [JDK Release Notes](https://www.oracle.com/java/technologies/javase/jdk-relnotes-index.html)
