@@ -19,8 +19,10 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 * [Java 26](java-26/)
   * Remove the Applet API
+  * HTTP/3 for the HTTP Client API
+  * G1 GC: Improve Throughput by Reducing Synchronization
 
-* [Java 25](java-25/)
+* [Java 25](java-25/) (Sep, 2026)
   * Stable Values (preview)
   * Remove the 32-bit x86 Port
   * Structured Concurrency (preview 5)
