@@ -4,9 +4,16 @@ To run each example use: `java --enable-preview --source 26 <FileName.java>`
 
 ## JEPs
 
+* [500](https://openjdk.org/jeps/500) - Prepare to Make Final Mean Final
 * [504](https://openjdk.org/jeps/504) - Remove the Applet API
+* [516](https://openjdk.org/jeps/516) - Ahead-of-Time Object Caching with Any GC
 * [517](https://openjdk.org/jeps/517) - HTTP/3 for the HTTP Client API
 * [522](https://openjdk.org/jeps/522) - G1 GC: Improve Throughput by Reducing Synchronization
+* [524](https://openjdk.org/jeps/524) - PEM Encodings of Cryptographic Objects (Second Preview)
+* [525](https://openjdk.org/jeps/525) - Structured Concurrency (Sixth Preview)
+* [526](https://openjdk.org/jeps/526) - Lazy Constants (Second Preview)
+* [529](https://openjdk.org/jeps/529) - Vector API (Eleventh Incubator)
+* [530](https://openjdk.org/jeps/530) - Primitive Types in Patterns, instanceof, and switch (Fourth Preview)
 
 ## Features
 

@@ -18,9 +18,16 @@ A project to explore more about the new features from Java 8 through Java 21.
 `standard` shows the version in which a preview feature became stable and available for production use.
 
 * [Java 26](java-26/)
+  * Prepare to Make Final Mean Final
   * Remove the Applet API
+  * Ahead-of-Time Object Caching with Any GC
   * HTTP/3 for the HTTP Client API
   * G1 GC: Improve Throughput by Reducing Synchronization
+  * PEM Encodings of Cryptographic Objects (preview 2)
+  * Structured Concurrency (preview 6)
+  * Lazy Constants (Second Preview)
+  * Vector API (Eleventh Incubator)
+  * Primitive Types in Patterns, instanceof, and switch (preview 4)
 
 * [Java 25](java-25/) (Sep, 2025)
   * Stable Values (preview)
