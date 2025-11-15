@@ -12,6 +12,7 @@ A project to explore more about the new features from Java 8 through Java 21.
 
 * [Valhalla](./projects/valhalla/): enhance Java object model with value objects and primitive values.
 * [Loom](./projects/loom/): project to bring user-mode threads.
+* [Leyden](https://openjdk.org/projects/leyden/): improve the startup time, time to peak performance and footprint
 
 ## Resume by Version
 

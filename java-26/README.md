@@ -17,6 +17,16 @@ To run each example use: `java --enable-preview --source 26 <FileName.java>`
 
 ## Features
 
+* **Ahead-of-Time Object Caching with Any GC**
+    * enhance the AOT cache (improves startup and warmup time) to be used with any GC
+    * this is done by making possibl to load cached objects sequentially into memory
+        * using a GC-agnostic format
+        * previously the objects were mapped into memory using GC-specific format (bitwise heap format)
+    * main goal is to allow all GC to work with AOT cache introduced by Project Leyden
+        * this step will be optional though
+    * the challenge is how to handle object references, because it depends on each GC and its policies
+    * to achieve this the AOT cache will use logical indices in a streaming format to store the objects references
+    * we can use the parameter `-XX:+AOTStreamableObjects` to create a cache in a GC-agnostic format
 * **HTTP/3 for the HTTP Client API**
     * added support for HTTP/3 in the HTTP Client API
     * HTTP/3 was standardized in 2022
@@ -33,6 +43,20 @@ To run each example use: `java --enable-preview --source 26 <FileName.java>`
               .GET()
               .build();
           ```
+* **Lazy Constants**
+    * re-preview with changes
+    * Stable Values was renamed to Lazy Constants
+    * changes from first preview:
+        * changed the API to focus on high-level use cases
+        * removed low-level methods like `orElseSet`, `setOrThrow`, `trySet`, `function` and `intFunction`
+        * moved the factory methods for lazy lists and maps to `List` and `Map` interfaces
+        * disallow null as a computed value to improve performance and align with constructs (unmodifiable collections, `ScopedValue`)
+            * we must use `Optional`
+    * now we always must create a lazy constant using `of(Supplier)`, the previous unset state isn't allowed
+    * `get()` will trigger the lazy constant initialization using the given supplier in factory method `of(Supplier)`
+        * after calling the state will be initialized (`isInitialized()` will return true)
+    * the lazy constant can be in an uninitialized state, when the method `get()` wasn't called yet
+        * `orElse(T)` will return the given value in this case
 
 ## Links
 
