@@ -17,9 +17,12 @@ To run each example use: `java --enable-preview --source 26 <FileName.java>`
 
 ## Features
 
+* **Prepare to Make Final Mean Final**
+    * issue warnings about use of deep reflection to mutate final fields
+    * prepare developers for a future release that ensures integrity by default by restricting final field mutation
 * **Ahead-of-Time Object Caching with Any GC**
     * enhance the AOT cache (improves startup and warmup time) to be used with any GC
-    * this is done by making possibl to load cached objects sequentially into memory
+    * this is done by making possible to load cached objects sequentially into memory
         * using a GC-agnostic format
         * previously the objects were mapped into memory using GC-specific format (bitwise heap format)
     * main goal is to allow all GC to work with AOT cache introduced by Project Leyden
@@ -43,6 +46,21 @@ To run each example use: `java --enable-preview --source 26 <FileName.java>`
               .GET()
               .build();
           ```
+* **G1 GC: Improve Throughput by Reducing Synchronization**
+    * increase application throughput when using G1 GC by reducing the amount of synchronization required between application threads and GC threads
+    * goals:
+        * reduce the G1 GC's synchronization overhead
+        * reduce the size of the injected code for G1's write barriers
+        * maintain the overall architecture of G1
+    * G1 will use a second card table so that optimizer and application threads can run freely
+    * the change will reduce overhead both while the application is running and during GC pauses
+* **Structured Concurrency**
+    * re-preview with minor changes
+    * changes:
+        * a new method `Joiner.onTimeout` to allow implementation to return a result when a timeout expires
+        * `Joiner.allSuccessfulOrThrow` now returns a list of results rather than a stream of subtasks
+        * `Joiner.anySuccessfulResultOrThrow` was renamed to `anySuccessfulOrThrow`
+        * static method `StructuredTaskScope.open` that takes a Joiner and a function to modify the default configuration now takes a `UnaryOperator` instead of a `Function`
 * **Lazy Constants**
     * re-preview with changes
     * Stable Values was renamed to Lazy Constants
@@ -57,6 +75,11 @@ To run each example use: `java --enable-preview --source 26 <FileName.java>`
         * after calling the state will be initialized (`isInitialized()` will return true)
     * the lazy constant can be in an uninitialized state, when the method `get()` wasn't called yet
         * `orElse(T)` will return the given value in this case
+* **Primitive Types in Patterns, instanceof and switch**
+    * re-preview with two changes
+    * enhance the definition of [unconditional exactness](https://openjdk.org/jeps/530#Safety-of-conversions)
+    * apply tighter dominance check in switch constructs by expanding the definition of [dominance](https://openjdk.org/jeps/530#Dominance) to also cover primitive type patterns
+        * if a case label is `float f`, we cannot have a case label `42` because 42 will be captured by the first match
 
 ## Links
 
