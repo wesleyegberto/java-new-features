@@ -128,7 +128,7 @@ To run each example use: `java --enable-preview --source 25 <FileName.java>`
     * the full [performance](https://cr.openjdk.org/~pminborg/stable-values2/api/java.base/java/lang/StableValue.html#performance) can be achieved by using static final fields:
         * the core reflaction API allows instance final fields to be [updated arbitrarily](https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/reflect/AccessibleObject.html#setAccessible(boolean))
         * this will be improved with [integrity by default](https://openjdk.org/jeps/8305968)
-* **Primitive Types in Patterns, instance of and switch**
+* **Primitive Types in Patterns, instanceof and switch**
     * re-preview without change
 * **Structured Concurrency**
     * re-preview with several API changes
