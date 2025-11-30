@@ -13,14 +13,17 @@ import static java.lang.IO.println;
  * https://cr.openjdk.org/~pminborg/lazy-constants-second-preview/api/java.base/java/lang/LazyConstant.html
  */
 public class LazyConstantExample {
-	static final LazyConstant<ElementClass> ELEMENT = LazyConstant.of();
+	static final LazyConstant<ElementClass> ELEMENT = LazyConstant.of(() -> {
+		System.out.println("Initializing ELEMENT");
+		return new ElementClass(42);
+	});
 
 	static final List<ElementClass> ELEMENTS_LIST = List.ofLazy(5, index -> {
 		System.out.println("Initializing ElementClass at index " + index);
 		return new ElementClass(index);
 	});
 
-	static final Map<String, ElementClass> ELEMENTS_MAP = LazyConstant.ofLazy(Set.of("foo", "bar"), key -> {
+	static final Map<String, ElementClass> ELEMENTS_MAP = Map.ofLazy(Set.of("foo", "bar"), key -> {
 		System.out.println("Initializing ElementClass for key " + key);
 		return new ElementClass(key);
 	});
@@ -32,17 +35,13 @@ public class LazyConstantExample {
 		stableMapExample();
 	}
 
-	static ElementClass getElement() {
-		return ELEMENT.orElseSet(() -> {
-			System.err.println("orElseSet called, initializing ElementClass");
-			return new ElementClass("Lazy Initialization");
-		});
-	}
-
 	static void basicApiExample() {
 		println("=== Basic API Example ===");
 		// removed factory method `of()` to always have a initializer
-		var stableValue = LazyConstant.of(() -> 42);
+		var stableValue = LazyConstant.of(() -> {
+			System.out.println("Initializing lazy constant");
+			return 42;
+		});
 
 		// removed `orElseThrow`
 		// println(stableValue.orElseThrow());
@@ -56,14 +55,16 @@ public class LazyConstantExample {
 
 		// `get` will trigger initialization
 		println("Reading with initialization: " + stableValue.get());
+
+		println("Reading an already initialized: " + stableValue.get());
 	}
 
 	static void lazyInitializationExample() {
 		println("\n=== Lazy Initialization Example ===");
 		println("First call to getElement() will initialize ElementClass lazily");
-		println("First call: " + getElement());
+		println("First call: " + ELEMENT.get());
 		println("Subsequent calls will return the already initialized value without re-initialization");
-		println("Second call: " + getElement());
+		println("Second call: " + ELEMENT.get());
 	}
 
 	static void stableListExample() {

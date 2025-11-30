@@ -81,6 +81,11 @@ To run each example use: `java --enable-preview --source 26 <FileName.java>`
     * apply tighter dominance check in switch constructs by expanding the definition of [dominance](https://openjdk.org/jeps/530#Dominance) to also cover primitive type patterns
         * if a case label is `float f`, we cannot have a case label `42` because 42 will be captured by the first match
 
+### API
+
+- removed `Thread.stop` method
+- `java.lang.Process` now implements `AutoCloseable` and `Closeable`
+
 ## Links
 
 * [JDK 26 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=23506)
