@@ -44,7 +44,7 @@ To run each example use: `java --enable-preview --source 21 <FileName.java>`
   * promoted from incubated to preview feature
   * moved from pacote `jdk.incubator.concurrent` to `java.util.concurrent`
   * changes from JDK 19 and 20:
-    * changed method `StructuredTaskScope::fork` to return a `Subtask` instanceof of a `Future`
+    * changed method `StructuredTaskScope::fork` to return a `Subtask` instead of a `Future`
     * the sealed interface `Subtask` extends `Supplier<T>`
     * the method `Subtask::get` behaves exaclty like `Future::resultNow`
     * calling the method `Subtask::get` never blocks, it throws an `IllegalStateException` when calling before `join` or when the subtask has not completed successfully
