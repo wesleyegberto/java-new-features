@@ -20,6 +20,41 @@ To run each example use: `java --enable-preview --source 26 <FileName.java>`
 * **Prepare to Make Final Mean Final**
     * issue warnings about use of deep reflection to mutate final fields
     * prepare developers for a future release that ensures integrity by default by restricting final field mutation
+    * goals:
+        * prepare Java ecosystem for the future where, by default, disallows the mutation of final fields by deep reflection
+        * align final fields of classes with the implicity declared fields of record classes, which cannot be mutated
+        * allow serialization to continue working with Serializable classes, even classes with final fields
+    * the mutation of final fields by deep reflection was introduced in JDK 5 to allow serialization to initialize the objects with final fields
+        * `Field.setAccessible(boolean)`
+    * deep reflection is disallowed in hidden and record classes
+    * the JVM cannot consider a final field as really final, thus optimizations are not applied
+    * by default, JVM will print a warning every time that a final field is mutated
+        * in the future, an exception will be thrown
+    * enabling final field mutation
+        * to avoid the warning, and the exception in the future, we can pass inform the JVM with a new flag `enable-final-field-mutation`
+            * we can enable all modules or a specific module
+            * `java --enable-final-field-mutation=ALL-UNNAMED`
+            * `java --enable-final-field-mutation=M1,M2`
+        * to allow the mutation, we must enable with the flag and the module enabled also must be open to deep reflection
+        * we have different options to pass this new flag:
+            * passing the flag in the env `JDK_JAVA_OPTIONS`
+            * passing the flag in the argument file
+            * adding `Enable-Final-Field-Mutation` with value `ALL-UNNAMED` (only accepted option) in the manifest of a JAR file
+            * passing the flag to jlink via the `--add-options` option
+            * in JNI, passing the flag to JVM creation
+    * final field mutation restrictions
+        * it's illegal to mutate a final field if either:
+            * the code is in a module for which final field mutation is not enabled
+            * the code is in a module to which the field's package is not open
+        * the behavior of the JVM when an illegal final field mutation occurs is controled by a new flag `illegal-final-field-mutation`
+        * the options are `allow`, `warn`, `debug` and `deny`
+        * in JDK 26 the default option is `warn`, in the future will be `deny`
+    * a new event in JDK Flight Recorder was added: `jdk.FinalFieldMutation`
+    * serialization libraries should use `sun.reflect.ReflectionFactory`
+        * it initialize the class instance bypassing the constructor and setting its fields directly without having to mutate it
+        * this is the only mechanism to mutate final field if final field mutation is not enabled
+        * it adds a restriction because the target class need to implements `java.io.Serializable` interface
+        * the JVM will treat the final field as immutable if it detects that a handle returned by `ReflectionFactory` is not used to mutate a final field
 * **Ahead-of-Time Object Caching with Any GC**
     * enhance the AOT cache (improves startup and warmup time) to be used with any GC
     * this is done by making possible to load cached objects sequentially into memory
@@ -60,7 +95,7 @@ To run each example use: `java --enable-preview --source 26 <FileName.java>`
         * a new method `Joiner.onTimeout` to allow implementation to return a result when a timeout expires
         * `Joiner.allSuccessfulOrThrow` now returns a list of results rather than a stream of subtasks
         * `Joiner.anySuccessfulResultOrThrow` was renamed to `anySuccessfulOrThrow`
-        * static method `StructuredTaskScope.open` that takes a Joiner and a function to modify the default configuration now takes a `UnaryOperator` instead of a `Function`
+        * static method [`StructuredTaskScope.open`](https://cr.openjdk.org/~alanb/sc-jdk26/api/java.base/java/util/concurrent/StructuredTaskScope.html#open(java.util.concurrent.StructuredTaskScope.Joiner,java.util.function.UnaryOperator)) that takes a Joiner and a function to modify the default configuration now takes a `UnaryOperator` instead of a `Function`
 * **Lazy Constants**
     * re-preview with changes
     * Stable Values was renamed to Lazy Constants
