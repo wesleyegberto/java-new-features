@@ -21,7 +21,7 @@ A project to explore more about the new features from Java 8 through Java 21.
 * [Java 27](java-27/)
   * Post-Quantum Hybrid Key Exchange for TLS 1.3
 
-* [Java 26](java-26/)
+* [Java 26](java-26/) (Mar, 2026)
   * Prepare to Make Final Mean Final
   * Remove the Applet API
   * Ahead-of-Time Object Caching with Any GC

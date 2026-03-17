@@ -125,4 +125,6 @@ To run each example use: `java --enable-preview --source 26 <FileName.java>`
 
 * [JDK 26 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=23506)
 * [JDK 26 JEPs](https://openjdk.org/projects/jdk/26/)
+* Blog posts:
+    * [Critique of JEP 505: Structured Concurrency (Fifth Preview)](https://softwaremill.com/critique-of-jep-505-structured-concurrency-fifth-preview/)
 
