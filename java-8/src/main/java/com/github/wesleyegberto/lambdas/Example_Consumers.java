@@ -24,7 +24,7 @@ public class Example_Consumers {
 
 		System.out.println("\nUsing method reference (will create a class on the fly)");
 		Consumer<String> myConsumer = System.out::println;
-		names.forEach(System.out::println);
+		names.forEach(myConsumer);
 
 		System.out.println("\nUsing stream to map to another class");
 		names.stream().map(Hero::new)
