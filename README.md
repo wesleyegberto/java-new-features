@@ -4,7 +4,7 @@
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/wesleyegberto/java-new-features)
 ![License](https://img.shields.io/github/license/wesleyegberto/java-new-features?style=flat-square)
 
-A project to explore more about the new features from Java 8 through Java 21.
+Explore the Java platform evolution from Java 8 onwards.
 
 [JDK Release Notes](https://www.oracle.com/java/technologies/javase/jdk-relnotes-index.html)
 
@@ -21,7 +21,13 @@ A project to explore more about the new features from Java 8 through Java 21.
 `standard` shows the version in which a preview feature became stable and available for production use.
 
 * [Java 27](java-27/)
+  * Make G1 the Default Garbage Collector in All Environments
   * Post-Quantum Hybrid Key Exchange for TLS 1.3
+  * Lazy Constants (preview 3)
+  * Primitive Types in Patterns, instanceof, and switch (preview 4)
+  * Structured Concurrency (preview 7)
+  * Compact Object Headers by Default
+  * Vector API (incubator)
 
 * [Java 26](java-26/) (Mar, 2026)
   * Prepare to Make Final Mean Final
