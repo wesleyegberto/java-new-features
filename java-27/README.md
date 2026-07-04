@@ -21,6 +21,11 @@ To run each example use: `java --enable-preview --source 27 <FileName.java>`
     * G1 will be default GC in all environments when no GC is specified
     * in some scenarios, Serial GC could be selected depending on memory and CPU
         * single CPU or memory less than 1792 MB
+* **Lazy Constants**
+    * re-preview with minor changes
+    * changes:
+        * removed low-level methods `isInitialized` and `orElse`
+        * added new factory method `Set.ofLazy`
 * **Primitive Types in Patterns, instanceof and switch**
     * re-preview without change
 * **Structured Concurrency**
