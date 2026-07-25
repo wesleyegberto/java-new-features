@@ -20,6 +20,10 @@ Explore the Java platform evolution from Java 8 onwards.
 
 `standard` shows the version in which a preview feature became stable and available for production use.
 
+* [Java 28](java-28/)
+  * Value Objects (preview)
+  * Strict Field Initialization in the JVM (preview)
+
 * [Java 27](java-27/)
   * Make G1 the Default Garbage Collector in All Environments
   * Post-Quantum Hybrid Key Exchange for TLS 1.3
