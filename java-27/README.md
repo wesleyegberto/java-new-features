@@ -47,6 +47,6 @@ To run each example use: `java --enable-preview --source 27 <FileName.java>`
 
 ## Links
 
-* [JDK 27 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=24503)
 * [JDK 27 JEPs](https://openjdk.org/projects/jdk/27/)
+* [JDK 27 - JEP Dashboard](https://bugs.openjdk.org/secure/Dashboard.jspa?selectPageId=24503)
 
