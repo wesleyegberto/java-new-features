@@ -22,7 +22,11 @@ Explore the Java platform evolution from Java 8 onwards.
 
 * [Java 28](java-28/)
   * Value Objects (preview)
+  * Shenandoah GC: Generational Mode by Default
   * Strict Field Initialization in the JVM (preview)
+  * Simple JSON API (incubator)
+  * Deprecate the macOS/x64 Port for Removal
+  * PEM Encodings of Cryptographic Objects
 
 * [Java 27](java-27/)
   * Make G1 the Default Garbage Collector in All Environments
