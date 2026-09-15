@@ -28,7 +28,7 @@ Explore the Java platform evolution from Java 8 onwards.
   * Deprecate the macOS/x64 Port for Removal
   * PEM Encodings of Cryptographic Objects
 
-* [Java 27](java-27/)
+* [Java 27](java-27/) (Sep, 2026)
   * Make G1 the Default Garbage Collector in All Environments
   * Post-Quantum Hybrid Key Exchange for TLS 1.3
   * Lazy Constants (preview 3)
@@ -49,7 +49,7 @@ Explore the Java platform evolution from Java 8 onwards.
   * Vector API (Eleventh Incubator)
   * Primitive Types in Patterns, instanceof, and switch (preview 4)
 
-* [Java 25](java-25/) (Sep, 2025)
+* [Java 25](java-25/) (LST; Sep, 2025)
   * Stable Values (preview)
   * Remove the 32-bit x86 Port
   * Structured Concurrency (preview 5)
