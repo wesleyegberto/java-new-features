@@ -13,6 +13,13 @@ To run each example use: `java --enable-preview --source 28 <FileName.java>`
 
 ## Featuers
 
+**Shenandoah GC: Generational Mode by Default**
+  * Shenandoah is a low-pause-time garbage collector
+  * switch the default mode of Shenandoah GC to the generational mode
+  * deprecate the non-generational mode
+  * default mode: `XX:+UseShenandoahGC -XX:ShenandoahGCMode=generational`
+  * to use non-generational mode: `-XX:+UseShenandoahGC -XX:ShenandoahGCMode=satb`
+
 ## Links
 
 * [JDK 28 JEPs](https://openjdk.org/projects/jdk/28/)
