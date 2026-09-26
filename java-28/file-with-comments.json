@@ -1,0 +1,5 @@
+{
+  // config as example with comment
+  # comment with other format
+  "config": 42
+}
