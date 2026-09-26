@@ -11,8 +11,7 @@ import jdk.incubator.json.JsonParseException;
 import jdk.incubator.json.JsonValueException;
 
 /**
- * To run: `java --source 28 --enable-preview --add-modules jdk.incubator.json
- * SimpleJsonExample.java`
+ * To run: `java --source 28 --enable-preview --add-modules jdk.incubator.json SimpleJsonExample.java`
  */
 void main() {
 	parsing();
