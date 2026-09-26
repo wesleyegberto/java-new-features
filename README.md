@@ -26,7 +26,7 @@ Explore the Java platform evolution from Java 8 onwards.
   * Strict Field Initialization in the JVM (preview)
   * Simple JSON API (incubator)
   * Deprecate the macOS/x64 Port for Removal
-  * PEM Encodings of Cryptographic Objects
+  * PEM Encodings of Cryptographic Objects (standard)
 
 * [Java 27](java-27/) (Sep, 2026)
   * Make G1 the Default Garbage Collector in All Environments
@@ -36,6 +36,7 @@ Explore the Java platform evolution from Java 8 onwards.
   * Structured Concurrency (preview 7)
   * Compact Object Headers by Default
   * Vector API (incubator)
+  * PEM Encodings of Cryptographic Objects (preview 3)
 
 * [Java 26](java-26/) (Mar, 2026)
   * Prepare to Make Final Mean Final

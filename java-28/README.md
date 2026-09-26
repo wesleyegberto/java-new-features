@@ -47,6 +47,10 @@ To run each example use: `java --enable-preview --source 28 <FileName.java>`
     * there is no conversion method for null value, we should check with `instanceof JsonNull` or use [`tryValue`](https://cr.openjdk.org/~naoto/json/javadoc/api/jdk.incubator.json/jdk/incubator/json/JsonValue.html#tryValue()) that returns an `Optional`
     * if a `JsonValue` is not an instance of the appropriate subtype for a conversion method then the method throws a JsonValueException
     * numeric conversions can fail for reasons such as the numeric value not being representable in the target Java numeric type, which also causes a `JsonValueException` to be thrown
+* **PEM Encodings of Cryptographic Objects**
+    * promotion to standard
+    * "introduce an API for encoding objects that represent cryptographic keys, certificates, and certificate revocation lists into the widely-used Privacy-Enhanced Mail (PEM) transport format"
+    * support conversions between PEM text and cryptographic objects that have standard representations in the binary formats of PKCS#8 (for private keys), X.509 (public keys, certificates, and certificate revocation lists), and PKCS#8 v2.0 (encrypted private keys and asymmetric keys)
 
 ## Links
 

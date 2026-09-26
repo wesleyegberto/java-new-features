@@ -12,7 +12,7 @@ To run each example use: `java --enable-preview --source 27 <FileName.java>`
 * [534](https://openjdk.org/jeps/534) - Compact Object Headers by Default
 * [536](https://openjdk.org/jeps/536) - JFR In-Process Data Redaction
 * [537](https://openjdk.org/jeps/537) - Vector API (Twelfth Incubator)
-* [538](https://openjdk.org/jeps/538) - PEM Encodings of Cryptographic Objects
+* [538](https://openjdk.org/jeps/538) - PEM Encodings of Cryptographic Objects (Third Preview)
 
 ## Features
 
@@ -40,10 +40,6 @@ To run each example use: `java --enable-preview --source 27 <FileName.java>`
     * compact object headers will be default object header layout in the HotSpot JVM
     * "reduce object headers from 96 bits down to 64 bits on 64-bit architectures, thereby reducing heap size, improving deployment density, and increasing data locality"
     * to disabled: `java -XX:-UseCompactObjectHeaders ...`
-* **PEM Encodings of Cryptographic Objects**
-    * promotion to standard
-    * "introduce an API for encoding objects that represent cryptographic keys, certificates, and certificate revocation lists into the widely-used Privacy-Enhanced Mail (PEM) transport format"
-    * support conversions between PEM text and cryptographic objects that have standard representations in the binary formats of PKCS#8 (for private keys), X.509 (public keys, certificates, and certificate revocation lists), and PKCS#8 v2.0 (encrypted private keys and asymmetric keys)
 
 ## Links
 

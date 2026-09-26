@@ -7,6 +7,9 @@ String PEM = """
 		-----END PUBLIC KEY-----
 		""";
 
+/**
+ * To run: `java PEMEncodingsTest.java`
+ */
 void main() throws Exception {
 	decodeExamples();
 
