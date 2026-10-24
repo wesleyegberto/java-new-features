@@ -10,6 +10,10 @@ To run each example use: `java --enable-preview --source 28 <FileName.java>`
 * [540](https://openjdk.org/jeps/540) - Simple JSON API (Incubator)
 * [541](https://openjdk.org/jeps/541) - Deprecate the macOS/x64 Port for Removal
 * [542](https://openjdk.org/jeps/542) - PEM Encodings of Cryptographic Objects
+* [543](https://openjdk.org/jeps/543) - Structured Concurrency
+* [544](https://openjdk.org/jeps/544) - Ahead-of-Time Code Compilation
+* [545](https://openjdk.org/jeps/545) - Faster Startup and Warmup with ZGC
+* [546](https://openjdk.org/jeps/546) - Adaptive Heap Sizing for ZGC
 
 ## Features
 
@@ -51,6 +55,46 @@ To run each example use: `java --enable-preview --source 28 <FileName.java>`
     * promotion to standard
     * "introduce an API for encoding objects that represent cryptographic keys, certificates, and certificate revocation lists into the widely-used Privacy-Enhanced Mail (PEM) transport format"
     * support conversions between PEM text and cryptographic objects that have standard representations in the binary formats of PKCS#8 (for private keys), X.509 (public keys, certificates, and certificate revocation lists), and PKCS#8 v2.0 (encrypted private keys and asymmetric keys)
+* **Structured Concurrency**
+  * promoted to standard without changes
+* **Ahead-of-Time Code Compilation**
+  * improve startup and warmup time by making optimized native code for an application instantly available when the HotSpot Java Virtual Machine starts
+  * goals:
+    * enable applications to achieve peak performance more quickly
+    * enable applications to sustain peak even as workloads change
+    * do not require any change in the application code
+    * do not require any change to the configuration of HotSpot beyond the use of AOT cache
+    * ensure that shifting from AOT-compiled code to JIT-compiled code is invisible to applications
+  * the application code is compiled to native code during training run and stored in the AOT cache
+  * the optimized native code stored in AOT cache during training run is called AOT code
+  * during a production run, a request for optimized code for a method can be fulfilled instantly if matching AOT code is found in the cache
+  * if AOT code is unavailable, incompatible, otherwise unsuitable, or later deoptimized, execution falls back to the existing interpreter and JIT mechanisms
+    * regenerate native code dynamically for continued peak performance, providing the best of both ahead-of-time (AOT) and just-in-time (JIT) compilation
+  * previous JEP that enabled this:
+    * JEP 483: shifting class loading and linking work earlier during training run
+    * JEP 515: profiling work earlier during training run
+  * this JEP enables the shifting of compilation and optimization work earlier during training run
+  * result with all this JEPs:
+    * the AOT cache without AOT code improves startup time by about 30%; adding AOT code brings an additional 45% improvement, for a total of about 75%
+  * recommendations is the same from JEP 483:
+    * try to do a training run with the application as close as possible to production run
+    * if external resources cannot be used during the training run, we could mock or disable them (it will be loaded just-in-time)
+    * we could use a smoke test to run enough scenarios used by the application, some testing classes will be cached (in the future a filter will be provided)
+    * we should avoid using complete large test suites (unit tests, corner cases, so on) because it will increase the size of the cache with useless classes (scenarios with fewer usage)
+    * the training run should do similar things as production run, otherwise the cache will be less useful
+  * this JEP adds two constraints to use the AOT code:
+    * all runs should use CPUs of the same architecture and with the same features
+    * all runs should use the same GC, since AOT code contains GC-specific read/write barriers
+  * steps (same as before):
+    * to create AOT cache (cache will contain pre-linked classes, profiling data and AOT code):
+      * `java -XX:AOTCacheOutput=app.aot -cp app.jar com.example.App`
+    * to use the AOT cache:
+      * `java -XX:AOTCache=app.aot -cp app.jar com.example.App`
+  * options:
+    * `-XX:+PrintCompilation`: reports AOT code loading and JIT compilation
+    * `-XX:AOTMode=required`: requires the JVM to use the full AOT cache, failing if cache violates any constraint
+    * `-XX:-AOTCodeCaching`: disable the AOT cache
+  * we can use the environment variable `JDK_AOT_VM_OPTIONS` to pass options
 
 ## Links
 

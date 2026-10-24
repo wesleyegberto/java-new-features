@@ -27,6 +27,10 @@ Explore the Java platform evolution from Java 8 onwards.
   * Simple JSON API (incubator)
   * Deprecate the macOS/x64 Port for Removal
   * PEM Encodings of Cryptographic Objects (standard)
+  * Structured Concurrency (standard) :rocket:
+  * Ahead-of-Time Code Compilation
+  * Faster Startup and Warmup with ZGC
+  * Adaptive Heap Sizing for ZGC
 
 * [Java 27](java-27/) (Sep, 2026)
   * Make G1 the Default Garbage Collector in All Environments
