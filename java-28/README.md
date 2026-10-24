@@ -170,7 +170,7 @@ To run each example use: `java --enable-preview --source 28 <FileName.java>`
   * options:
     * `-XX:+PrintCompilation`: reports AOT code loading and JIT compilation
     * `-XX:AOTMode=required`: requires the JVM to use the full AOT cache, failing if cache violates any constraint
-    * `-XX:-AOTCodeCaching`: disable the AOT cache
+    * `-XX:+UnlockDiagnosticVMOptions -XX:-AOTCodeCaching`: disable the AOT cache
   * we can use the environment variable `JDK_AOT_VM_OPTIONS` to pass options
 
 ## Links
