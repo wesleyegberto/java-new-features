@@ -56,7 +56,84 @@ To run each example use: `java --enable-preview --source 28 <FileName.java>`
     * "introduce an API for encoding objects that represent cryptographic keys, certificates, and certificate revocation lists into the widely-used Privacy-Enhanced Mail (PEM) transport format"
     * support conversions between PEM text and cryptographic objects that have standard representations in the binary formats of PKCS#8 (for private keys), X.509 (public keys, certificates, and certificate revocation lists), and PKCS#8 v2.0 (encrypted private keys and asymmetric keys)
 * **Structured Concurrency**
-  * promoted to standard without changes
+  * promoted to standard without changes from JDK 27
+  * goal is simplify multithreaded programming:
+  * treats multiple tasks running in different threads as a single unit of work:
+    * streamlining error handling and cancellation
+    * improving reliability
+    * enhancing observability
+  * steps to use:
+    * create a scope (using `StructuredTaskScope`);
+    * fork concurrent subtasks in the scope;
+    * scope's owner joins the scope:
+      * blocks until all subtasks either complete (sucessfully or not) or the scope is cancelled (by the joiner policy, by a timeout or by an interruption)
+    * after joining, handle any errors and process theirs results:
+      * we should only query the subtasks results after `join` returns (when all subtasks are known to be completed or canceled)
+    * close the scope (implicity when using try-with-resources).
+  * characteristics:
+    * each fork creates its own thread (by default is a virtual thread)
+    * allow nested scope (when creating a scope in a subtask)
+    * when the scope is cancelled, the threads of all forks that are still active in the scope are interrupted
+      * all subtasks should be written to be responsive to interruption
+    * when calling `close`, it propagates the the state of the unit of work (either awaits all subtasks to finish or cancel each one of them)
+    * scoped values are inherited by the child threads
+      * the binding will remains until the child threads are finished and we can use `StructuredTaskScope.join` to ensure
+    * [output from the structured concurrency example](../java-19/structured-concurrency-example.md)
+  * `java.util.concurrent.StructuredTaskScope`:
+    * `fork` returns a `Subtask`
+      * the sealed interface `Subtask` extends `Supplier<T>`
+      * `Subtask::get` behaves like `Future::resultNow`, it never blocks and throws an `IllegalStateException` when called before `join` or when the subtask has not completed successfully
+    * the scope is opened using static factory methods:
+      * `open()`: creates a scope with the joiner strategy default of `Joiner.allSuccessfulOrThrow()`
+      * `open(Joiner)`: creates a scope with the specified joiner strategy
+      * `open(Joiner, UnaryOperator)`: creates a scope with the specified joiner strategy and a function to customize the default configuration
+      * `open(UnaryOperator)`: creates a scope with the default joiner strategy and a function to customize the default configuration
+    * the scope is configured with an instance of [`Configuration`](https://cr.openjdk.org/~alanb/sc-jdk28/api/java.base/java/util/concurrent/StructuredTaskScope.Configuration.html):
+      * `withName(String)`: sets the name of the scope to be monitored and managed
+      * `withThreadFactory(ThreadFactory)`: sets the thread factory to use for each subtask
+      * `withTimeout(Duration)`: sets the timeout for the scope, should use `Instant` to calculates the deadline (`Duration.between(Instant.now(), deadline)`)
+    * `StructuredTaskScope` and `Joiner` have a type parameter to define the exception that can be thrown by [`join()`](https://cr.openjdk.org/~alanb/sc-jdk28/api/java.base/java/util/concurrent/StructuredTaskScope.html#join())
+  * `Joiner`:
+    * introduce the concept of execution policy
+    * handles subtask completion and produces the outcome for the `join()` method
+    * depending on the joiner, the `join()` method may return a result, a list of results, or some other object
+    * the result of `join()` is useful when we don't handle each subtask individually, rather we want to wait for all subtasks to finish and then process the results (first result or all)
+    * a joiner instance should never be reused, always create a new instance
+    * interface:
+        ```java
+        public interface Joiner<T, R, R_X extends Throwable> {
+            public default boolean onFork(Subtask<T> subtask);
+            public default boolean onComplete(Subtask<T> subtask);
+            public R result() throws R_X;
+            public R timeout() throws R_X;
+        }
+        ```
+    * the method [`timeout()`](https://cr.openjdk.org/~alanb/sc-jdk28/api/java.base/java/util/concurrent/StructuredTaskScope.Joiner.html#timeout()) allows the implementation to return a result when a timeout expires
+    * factory methods for default policies (the ones that fail throw `ExecutionException`):
+      * `allSuccessfulOrThrow`:
+        * waits for all tasks to complete successfully or throws an exception if any subtask fails
+        * `join()` will return a list of the subtask results
+        * useful when all subtasks return a result of same type and we want to process them all
+      * `anySuccessfulOrThrow`:
+        * waits for any subtask to complete successfully or throws an exception if all tasks fail
+        * `join()` will return the result of a successful subtask
+        * useful when we want to process the result of the first successful subtask
+      * `awaitAllSuccessfulOrThrow()`:
+        * waits for all tasks to complete successfully or throws an exception if any subtask fails
+        * `join()` returns `Void`
+        * useful when the subtasks return a result of different types and we process each subtask submitted with `fork` method individually
+      * `allUntil(Predicate)`:
+        * waits all subtasks are completed or the predicate is satisfied to cancel the scope
+        * `join()` returns list of all subtasks in the order they were forked
+          * each subtask can have the following states: `SUCCESS`, `FAILED` or `UNAVAILABLE` (if the scope has been cancelled before it were forked or completed)
+        * predicate is an instance of [`Predicate<? super Subtask<T>>`](https://cr.openjdk.org/~alanb/sc-jdk28/api/java.base/java/util/function/Predicate.html)
+        * each subtask that is completed successfully or failed will be passed to the predicate
+          * if the predicate returns true, the scope will be cancelled
+          * if throws an exception, `Thread.UncaughtExceptionHandler.uncaughtException` will be called
+    * we can implement our own joiner by implementing the interface `StructuredTaskScope.Joiner`
+      * we can implement the method `result` to return a result of type `R` and the method `onComplete` to handle the completion of each subtask
+  * observability: thread-dump shows the virtual threads used by a `StructuredTaskScope`
+    * `jcmd <pid> Thread.dump_to_file -format=json <file>`
 * **Ahead-of-Time Code Compilation**
   * improve startup and warmup time by making optimized native code for an application instantly available when the HotSpot Java Virtual Machine starts
   * goals:
